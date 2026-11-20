@@ -1,0 +1,10 @@
+{
+  "company_name": "Brindlewick",
+  "website": "https://brindlewick.example",
+  "logo": {"mode": "wordmark", "monogram": "B"},
+  "og_descriptor": "Booking and parts software for independent bike shops, made by a mechanic.",
+  "people": [
+    {"name": "Maya Okafor", "title": "CEO", "email": "maya@brindlewick.example"},
+    {"name": "Tom Reyes", "title": "CTO", "email": "tom@brindlewick.example"}
+  ]
+}

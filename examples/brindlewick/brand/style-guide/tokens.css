@@ -1,0 +1,16 @@
+:root {
+  --color-primary: #2B5A36;
+  --color-accent: #E0662B;
+  --color-ink: #1A2119;
+  --color-paper: #F7F4EC;
+  --color-neutral-100: #ECE8DE;
+  --color-neutral-300: #CFC9BA;
+  --color-neutral-500: #6B675C;
+  --color-neutral-700: #45423B;
+  --font-heading: "IBM Plex Serif";
+  --font-heading-weight: 700;
+  --font-body: "IBM Plex Sans";
+  --font-body-weight: 400;
+  --font-mono: "IBM Plex Mono";
+  --font-mono-weight: 400;
+}

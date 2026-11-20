@@ -1,0 +1,5 @@
+[
+  {"heading": {"family": "IBM Plex Serif", "weight": 700}, "body": {"family": "IBM Plex Sans", "weight": 400}},
+  {"heading": {"family": "Manrope", "weight": 700}, "body": {"family": "Inter", "weight": 400}},
+  {"heading": {"family": "DM Sans", "weight": 700}, "body": {"family": "DM Sans", "weight": 400}}
+]
