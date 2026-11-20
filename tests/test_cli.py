@@ -36,7 +36,9 @@ def _capture_descriptor(monkeypatch):
     from brandkit import social
 
     seen = []
-    monkeypatch.setattr(social, "build_social", lambda brand, t, cfg, descriptor=None: seen.append(descriptor) or [])
+    monkeypatch.setattr(
+        social, "build_social", lambda brand, t, cfg, *, pattern, descriptor=None: seen.append(descriptor) or []
+    )
     return seen
 
 
@@ -54,6 +56,30 @@ def test_cli_assets_descriptor_flag_overrides_config(brand_dir, monkeypatch):
     seen = _capture_descriptor(monkeypatch)
     assert cli.main(["assets", str(brand_dir), "--only", "social", "--descriptor", "From flag"]) == 0
     assert seen == ["From flag"]
+
+
+def _capture_pattern(monkeypatch):
+    from brandkit import social
+
+    seen = []
+    monkeypatch.setattr(
+        social, "build_social", lambda brand, t, cfg, *, pattern, descriptor=None: seen.append(pattern) or []
+    )
+    return seen
+
+
+def test_cli_assets_plain_banners_by_default(brand_dir, monkeypatch):
+    seen = _capture_pattern(monkeypatch)
+    assert cli.main(["assets", str(brand_dir), "--only", "social"]) == 0
+    assert seen == [False]
+
+
+def test_cli_assets_banner_pattern_from_config(brand_dir, monkeypatch):
+    cp = brand_dir / "assets" / "config.json"
+    cp.write_text(json.dumps({**json.loads(cp.read_text()), "banner_pattern": True}))
+    seen = _capture_pattern(monkeypatch)
+    assert cli.main(["assets", str(brand_dir), "--only", "social"]) == 0
+    assert seen == [True]
 
 
 def test_cli_assets_only_unknown(brand_dir, capsys):
@@ -127,6 +153,74 @@ def test_cli_pack_unpack(brand_dir, tmp_path, capsys):
     assert cli.main(["pack", str(brand_dir), str(tmp_path / "b.zip")]) == 0
     assert cli.main(["unpack", str(tmp_path / "b.zip"), str(tmp_path / "d")]) == 0
     assert (tmp_path / "d" / "brand" / "style-guide" / "tokens.json").is_file()
+
+
+def test_cli_unpack_refuses_non_empty_brand(brand_dir, tmp_path, capsys):
+    assert cli.main(["pack", str(brand_dir), str(tmp_path / "b.zip")]) == 0
+    assert cli.main(["unpack", str(tmp_path / "b.zip"), str(tmp_path / "d")]) == 0
+    capsys.readouterr()
+    assert cli.main(["unpack", str(tmp_path / "b.zip"), str(tmp_path / "d")]) == 2
+    err = capsys.readouterr().err
+    assert err.startswith("error:") and "empty folder" in err and "Traceback" not in err
+
+
+def test_cli_preview_palette_names(tmp_path, capsys):
+    opts = [{"name": "Enamel green", "primary": "#1B3A6B", "accent": "#E4572E", "ink": "#14171A", "paper": "#FAF8F5"}]
+    (tmp_path / "o.json").write_text(json.dumps(opts))
+    assert cli.main(["preview-palette", str(tmp_path / "o.json"), str(tmp_path / "p.png")]) == 0
+    opts[0]["name"] = 5
+    (tmp_path / "o.json").write_text(json.dumps(opts))
+    assert cli.main(["preview-palette", str(tmp_path / "o.json"), str(tmp_path / "p.png")]) == 2
+    assert "name" in capsys.readouterr().err
+
+
+def _type_calls(monkeypatch):
+    from brandkit import previews
+
+    calls = []
+
+    def fake(pairings, heading_text, body_text, brand_dir, out, *, name, colours):
+        calls.append({"heading": heading_text, "body": body_text, "name": name, "colours": colours})
+        return out, []
+
+    monkeypatch.setattr(previews, "type_preview", fake)
+    return calls
+
+
+def test_cli_preview_type_sample_and_tokens(brand_dir, tmp_path, monkeypatch):
+    pairs = [{"heading": {"family": "Inter", "weight": 700}, "body": {"family": "Inter", "weight": 400}}]
+    (tmp_path / "p.json").write_text(json.dumps(pairs))
+    calls = _type_calls(monkeypatch)
+    args = ["preview-type", str(brand_dir), str(tmp_path / "p.json"), str(tmp_path / "t.png")]
+    assert cli.main(args + ["--sample", "Calm tools for small teams."]) == 0
+    c = calls[-1]
+    assert c["heading"] == c["body"] == "Calm tools for small teams."
+    assert c["name"] == "Acme"
+    assert cli.main(args + ["--sample", "Calm tools.  Built for teams of five.\nNo setup day."]) == 0
+    assert calls[-1]["heading"] == "Calm tools."
+    assert calls[-1]["body"] == "Calm tools. Built for teams of five. No setup day."
+    assert cli.main(args + ["--sample", "   "]) == 2
+    assert c["colours"].paper == "#FAF8F5" and c["colours"].primary == "#1B3A6B"
+
+
+def test_cli_preview_type_colours_only_tokens(brand_dir, tmp_path, monkeypatch):
+    tp = brand_dir / "style-guide" / "tokens.json"
+    tp.write_text(json.dumps({"colors": json.loads(tp.read_text())["colors"]}))  # fonts not chosen yet
+    pairs = [{"heading": {"family": "Inter", "weight": 700}, "body": {"family": "Inter", "weight": 400}}]
+    (tmp_path / "p.json").write_text(json.dumps(pairs))
+    calls = _type_calls(monkeypatch)
+    assert cli.main(["preview-type", str(brand_dir), str(tmp_path / "p.json"), str(tmp_path / "t.png")]) == 0
+    assert calls[-1]["colours"].ink == "#14171A"
+    assert "Sphinx" in calls[-1]["heading"]
+
+
+def test_cli_preview_type_without_tokens(brand_dir, tmp_path, monkeypatch):
+    (brand_dir / "style-guide" / "tokens.json").unlink()
+    pairs = [{"heading": {"family": "Inter", "weight": 700}, "body": {"family": "Inter", "weight": 400}}]
+    (tmp_path / "p.json").write_text(json.dumps(pairs))
+    calls = _type_calls(monkeypatch)
+    assert cli.main(["preview-type", str(brand_dir), str(tmp_path / "p.json"), str(tmp_path / "t.png")]) == 0
+    assert calls[-1]["colours"] is None and calls[-1]["name"] == "Acme"
 
 
 @pytest.mark.parametrize("cmd", ["tokens-css", "preview-palette", "preview-type", "fonts-copy", "assets", "pack", "unpack", "fonts-list"])

@@ -55,10 +55,12 @@ FAMILIES = [
                 700: "IBMPlexMono-Bold.ttf"},
      "scripts": ["latin-ext", "cyrillic"],
      "notes": "Friendly monospace with real personality; good for code, data and a technical voice."},
-    {"family": "Playfair Display", "dir": "playfairdisplay", "category": "display", "weights": [400, 700],
+    {"family": "Playfair Display", "dir": "playfairdisplay", "category": "display", "fallback": "serif",
+     "weights": [400, 700],
      "source": "PlayfairDisplay[wght].ttf", "scripts": ["latin-ext", "cyrillic"],
      "notes": "High-contrast transitional serif for headlines; elegant, editorial, a little luxurious."},
-    {"family": "Unbounded", "dir": "unbounded", "category": "display", "weights": [400, 700],
+    {"family": "Unbounded", "dir": "unbounded", "category": "display", "fallback": "sans",
+     "weights": [400, 700],
      "source": "Unbounded[wght].ttf", "scripts": ["latin-ext", "cyrillic"],
      "notes": "Wide, rounded and bold; loud, playful headlines for consumer or crypto-flavoured brands."},
 ]
@@ -125,7 +127,7 @@ def main() -> None:
             files[str(w)] = rel
             fetched[-1].setdefault("outputs", []).append(
                 {"file": rel, "sha256": hashlib.sha256(data).hexdigest()})
-        catalogue.append({k: e[k] for k in ("family", "category", "weights", "scripts")}
+        catalogue.append({k: e[k] for k in ("family", "category", "fallback", "weights", "scripts") if k in e}
                          | {"files": files, "notes": e["notes"]})
         sources["families"].append({"family": e["family"], "license_url": url_for(e, "OFL.txt"),
                                     "fetched": fetched})

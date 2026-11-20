@@ -8,6 +8,7 @@ if __package__ in (None, ""):
 
 import argparse
 import json
+import re
 
 from brandkit import BrandKitError, fonts, pack as packer, tokens
 from brandkit.config import load_config
@@ -66,10 +67,24 @@ def _preview_type(args: argparse.Namespace) -> int:
         if not isinstance(p, dict):
             raise BrandKitError(f"pairings[{i}]: expected an object with heading and body")
         pairings.append((_spec(p.get("heading"), f"pairings[{i}].heading"), _spec(p.get("body"), f"pairings[{i}].body")))
-    sample = SAMPLE
+    name = None
     if (brand / "assets" / "config.json").is_file():
-        sample = f"{load_config(brand).company_name.strip()}. {SAMPLE}"
-    out, warnings = previews.type_preview(pairings, sample, brand, Path(args.out))
+        name = load_config(brand).company_name.strip()
+    colours = None
+    tokens_path = brand / "style-guide" / "tokens.json"
+    if tokens_path.is_file():
+        colours = tokens.load_colours(tokens_path)
+    if args.sample is not None:
+        body_text = " ".join(args.sample.split())
+        if not body_text:
+            raise BrandKitError("--sample: expected some text")
+        # the first sentence as the heading, the whole sample as the paragraph
+        heading_text = re.split(r"(?<=[.!?])\s+", body_text, maxsplit=1)[0]
+    else:
+        heading_text, body_text = SAMPLE, f"{SAMPLE} {SAMPLE}"
+    out, warnings = previews.type_preview(
+        pairings, heading_text, body_text, brand, Path(args.out), name=name, colours=colours
+    )
     print(f"wrote {out} ({len(pairings)} pairing{'s' if len(pairings) != 1 else ''})")
     for w in warnings:
         print(f"warning: {w}")
@@ -112,7 +127,7 @@ def _assets(args: argparse.Namespace) -> int:
         written += favicons.build_favicons(brand, t, cfg)
     if "social" in only:
         descriptor = args.descriptor if args.descriptor is not None else cfg.og_descriptor
-        written += social.build_social(brand, t, cfg, descriptor=descriptor)
+        written += social.build_social(brand, t, cfg, descriptor=descriptor, pattern=cfg.banner_pattern)
     if "signatures" in only:
         if cfg.people:
             written += signatures.build_signatures(brand, t, cfg)
@@ -156,7 +171,10 @@ def main(argv: list[str]) -> int:
     p.set_defaults(func=_tokens_css)
 
     p = sub.add_parser("preview-palette", help="render palette options to a PNG to choose from")
-    p.add_argument("options_json", help="JSON list of colour objects shaped like tokens.colors")
+    p.add_argument(
+        "options_json",
+        help='JSON list of colour objects shaped like tokens.colors, each with an optional "name" for its row label',
+    )
     p.add_argument("out", help="output PNG")
     p.set_defaults(func=_preview_palette)
 
@@ -164,6 +182,10 @@ def main(argv: list[str]) -> int:
     p.add_argument("brand_dir")
     p.add_argument("pairings_json", help='JSON list of {"heading": {"family","weight"}, "body": {"family","weight"}}')
     p.add_argument("out", help="output PNG")
+    p.add_argument(
+        "--sample",
+        help="text to set in each pairing instead of the pangram, such as the tagline or a sentence of real copy",
+    )
     p.set_defaults(func=_preview_type)
 
     p = sub.add_parser("fonts-copy", help="copy the chosen fonts into brand/assets/fonts")

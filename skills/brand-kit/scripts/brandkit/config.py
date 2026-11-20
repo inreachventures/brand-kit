@@ -22,6 +22,7 @@ class AssetsConfig:
     logo_source: Path | None
     monogram: str
     og_descriptor: str | None
+    banner_pattern: bool
     people: list[Person] = field(default_factory=list)
 
 
@@ -45,6 +46,9 @@ def load_config(brand_dir: Path) -> AssetsConfig:
     og_descriptor = data.get("og_descriptor")
     if og_descriptor is not None and not isinstance(og_descriptor, str):
         raise BrandKitError("og_descriptor: expected a string")
+    banner_pattern = data.get("banner_pattern", False)
+    if not isinstance(banner_pattern, bool):
+        raise BrandKitError("banner_pattern: expected true or false")
     logo = data.get("logo")
     if not isinstance(logo, dict) or "mode" not in logo:
         raise BrandKitError("logo.mode: missing required key")
@@ -82,4 +86,4 @@ def load_config(brand_dir: Path) -> AssetsConfig:
                 raise BrandKitError(f"people[{i}].{k}: must not be empty")
         people.append(Person(p["name"], p["title"], p["email"]))
     monogram = monogram_raw or name.strip()[0].upper()
-    return AssetsConfig(name, website, mode, source, monogram, og_descriptor, people)
+    return AssetsConfig(name, website, mode, source, monogram, og_descriptor, banner_pattern, people)

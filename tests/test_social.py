@@ -42,7 +42,7 @@ def _bbox_diff(img, bg):
 
 def test_social_sizes(brand_dir):
     tokens, cfg = _load(brand_dir)
-    paths = social.build_social(brand_dir, tokens, cfg, descriptor="Tools for makers")
+    paths = social.build_social(brand_dir, tokens, cfg, descriptor="Tools for makers", pattern=False)
     names = {p.name for p in paths}
     assert {"linkedin-banner-1584x396.png", "linkedin-company-1128x191.png", "x-header-1500x500.png",
             "call-background-1920x1080.png", "avatar-400x400.png", "og-image.png"} <= names
@@ -59,7 +59,7 @@ def test_social_sizes(brand_dir):
 
 def test_og_without_descriptor(brand_dir):
     tokens, cfg = _load(brand_dir)
-    paths = social.build_social(brand_dir, tokens, cfg)
+    paths = social.build_social(brand_dir, tokens, cfg, pattern=False)
     assert Image.open(brand_dir / "assets" / "og-image.png").size == (1200, 630)
     assert paths
 
@@ -137,17 +137,17 @@ def test_low_contrast_palette(brand_dir):
 
 def test_pattern_is_deterministic(brand_dir):
     tokens, cfg = _load(brand_dir)
-    social.build_social(brand_dir, tokens, cfg)
+    social.build_social(brand_dir, tokens, cfg, pattern=True)
     p = brand_dir / "assets" / "social" / "x-header-1500x500.png"
     a = p.read_bytes()
-    social.build_social(brand_dir, tokens, cfg)
+    social.build_social(brand_dir, tokens, cfg, pattern=True)
     assert p.read_bytes() == a
 
 
 def test_og_long_descriptor_capped(brand_dir):
     tokens, cfg = _load(brand_dir)
     long = " ".join(["extraordinarily verbose descriptor words"] * 40)
-    social.build_social(brand_dir, tokens, cfg, descriptor=long)
+    social.build_social(brand_dir, tokens, cfg, descriptor=long, pattern=True)
     img = Image.open(brand_dir / "assets" / "og-image.png").convert("RGB")
     assert img.size == (1200, 630)
     bg = tokens.primary
@@ -163,3 +163,49 @@ def test_og_long_descriptor_capped(brand_dir):
     assert set(_pixels(above)) == {lo}
     tx = img.crop((0, top + 150 + 36 + 100, 1200, top + 336))
     assert len(set(_pixels(tx))) > 1  # third line is drawn
+
+
+def test_pattern_uses_primary_tints_only(brand_dir):
+    tokens, cfg = _load(brand_dir)
+    layer = social._pattern((1500, 500), tokens, "Acme", (0, 0, 0, 0))
+    p, a = social._rgb(tokens.primary), social._rgb(tokens.accent)
+    for px in set(_pixels(layer)):
+        if px == (0, 0, 0):
+            continue  # transparent background
+        # every drawn colour sits between primary and paper or ink, never towards the accent
+        assert sum(abs(x - y) for x, y in zip(px, p)) < sum(abs(x - y) for x, y in zip(px, a)), px
+
+
+def test_plain_banner_has_only_background_and_logo(brand_dir):
+    tokens, cfg = _load(brand_dir)
+    social.build_social(brand_dir, tokens, cfg, pattern=False)
+    img = Image.open(brand_dir / "assets" / "social" / "x-header-1500x500.png").convert("RGB")
+    box = _bbox_diff(img, (0x1B, 0x3A, 0x6B))
+    # outside the logo's box the banner is the plain primary colour
+    left = img.crop((0, 0, box[0], img.height))
+    assert set(_pixels(left)) == {(0x1B, 0x3A, 0x6B)}
+
+
+@pytest.mark.parametrize("fname", [b[0] for b in social.BANNERS])
+def test_logo_inside_side_safe_margin(brand_dir, fname):
+    _set(brand_dir, name="Northwind Meridian Holdings International Ltd")
+    tokens, cfg = _load(brand_dir)
+    social.build_social(brand_dir, tokens, cfg, pattern=False)
+    img = Image.open(brand_dir / "assets" / "social" / fname)
+    box = _bbox_diff(img, (0x1B, 0x3A, 0x6B))
+    assert img.width - box[2] >= img.width * 0.06, fname
+
+
+def test_web_manifest(brand_dir):
+    tokens, cfg = _load(brand_dir)
+    paths = favicons.build_favicons(brand_dir, tokens, cfg)
+    mp = brand_dir / "assets" / "favicons" / "site.webmanifest"
+    assert mp in paths
+    m = json.loads(mp.read_text())
+    assert m["name"] == m["short_name"] == "Acme"
+    assert m["theme_color"] == "#1B3A6B" and m["background_color"] == "#FAF8F5"
+    icons = {i["sizes"]: i for i in m["icons"]}
+    assert icons["192x192"]["src"] == "/icon-192.png" and icons["512x512"]["src"] == "/icon-512.png"
+    for i in m["icons"]:
+        assert i["type"] == "image/png"
+        assert (brand_dir / "assets" / "favicons" / i["src"].lstrip("/")).is_file()

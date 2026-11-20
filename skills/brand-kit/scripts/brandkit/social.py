@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import math
 import random
 from pathlib import Path
 
@@ -14,6 +15,7 @@ from .tokens import Tokens, best_on
 MARGIN = 24
 MOBILE_CROP = 0.12  # bottom share of a banner that mobile apps may crop
 AVATAR_ZONE = 0.25  # left share of LinkedIn and X banners the profile photo overlaps
+SIDE_SAFE = 0.06  # right share of a banner that mobile apps may crop from the side
 OG_MAX_LINES = 3
 SS = 2  # pattern supersampling factor
 
@@ -48,14 +50,14 @@ def _fit(logo: Image.Image, max_w: int, max_h: int) -> Image.Image:
 
 
 def _pattern(size: tuple[int, int], tokens: Tokens, seed: str, keep_out: tuple[int, int, int, int]) -> Image.Image:
-    """Low-contrast circles and rings in palette colours; none touches keep_out. Seeded by name."""
+    """Low-contrast circles and rings in tints of the primary colour; none touches keep_out. Seeded by name."""
     w, h = size
     rng = random.Random(int(hashlib.sha256(seed.encode()).hexdigest()[:12], 16))
     layer = Image.new("RGBA", (w * SS, h * SS), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
     tints = [
-        _mix(tokens.primary, tokens.accent, 0.13),
-        _mix(tokens.primary, tokens.paper, 0.07),
+        _mix(tokens.primary, tokens.paper, 0.11),
+        _mix(tokens.primary, tokens.paper, 0.06),
         _mix(tokens.primary, tokens.ink, 0.09),
     ]
     kx0, ky0, kx1, ky1 = keep_out
@@ -89,10 +91,11 @@ def _banner(
     colour = best_on(tokens.primary, [tokens.paper, tokens.ink])
     bottom = min(h - MARGIN, int(h * (1 - MOBILE_CROP)))
     max_h = min(round(h * height_frac), bottom - MARGIN)
+    right = max(MARGIN, math.ceil(w * SIDE_SAFE))
     # leave the avatar column free of the logo on every banner, whatever the width cap says
-    max_w = min(round(w * width_frac), w - MARGIN - round(w * AVATAR_ZONE))
+    max_w = min(round(w * width_frac), w - right - MARGIN - round(w * AVATAR_ZONE))
     lg = _fit(_recolour(logo, colour), max_w, max_h)
-    x, y = w - MARGIN - max(0, round(w * 0.03)) - lg.width, bottom - lg.height
+    x, y = w - right - lg.width, bottom - lg.height
     img = Image.new("RGBA", size, _rgb(tokens.primary) + (255,))
     if pattern:
         img.alpha_composite(_pattern(size, tokens, name, (x, y, x + lg.width, y + lg.height)))
@@ -137,9 +140,13 @@ def _og(logo: Image.Image, tokens: Tokens, brand_dir: Path, name: str, descripto
 
 
 def build_social(
-    brand_dir: Path, tokens: Tokens, cfg: AssetsConfig, *, descriptor: str | None = None, pattern: bool = True
+    brand_dir: Path, tokens: Tokens, cfg: AssetsConfig, *, pattern: bool, descriptor: str | None = None
 ) -> list[Path]:
-    """Write brand/assets/social/* and brand/assets/og-image.png. Builds the logos first if missing."""
+    """Write brand/assets/social/* and brand/assets/og-image.png. Builds the logos first if missing.
+
+    pattern adds low-contrast circles in tints of the primary colour; plain is the default in
+    assets/config.json (banner_pattern).
+    """
     brand_dir = Path(brand_dir)
     logos.ensure_logos(brand_dir, tokens, cfg)
     logo = logos.load_logo(brand_dir, "light")

@@ -56,3 +56,22 @@ def test_unpack_bad_zip(tmp_path):
     z.write_text("not a zip")
     with pytest.raises(BrandKitError):
         pack.unpack(z, tmp_path / "dest")
+
+
+def test_unpack_refuses_non_empty_brand(brand_dir, tmp_path_factory):
+    tmp_path = tmp_path_factory.mktemp("elsewhere")
+    z = pack.pack(brand_dir, tmp_path / "brand.zip")
+    dest = tmp_path / "dest"
+    (dest / "brand" / "strategy").mkdir(parents=True)
+    (dest / "brand" / "strategy" / "audience-old.md").write_text("old")
+    with pytest.raises(BrandKitError, match="empty folder"):
+        pack.unpack(z, dest)
+    assert not (dest / "brand" / "style-guide").exists()
+
+
+def test_unpack_into_empty_brand_folder_is_fine(brand_dir, tmp_path_factory):
+    tmp_path = tmp_path_factory.mktemp("elsewhere")
+    z = pack.pack(brand_dir, tmp_path / "brand.zip")
+    dest = tmp_path / "dest"
+    (dest / "brand").mkdir(parents=True)
+    assert (pack.unpack(z, dest) / "style-guide" / "tokens.json").is_file()

@@ -59,10 +59,38 @@ def test_write_css(brand_dir, tmp_path):
     tokens.write_css(t, out)
     css = out.read_text()
     assert "--color-primary: #1B3A6B;" in css
-    assert '--font-heading: "' in css
+    assert '--font-heading: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;' in css
+    assert '--font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;' in css
 
 
 def test_load_tokens_rejects_quote_in_family(brand_dir):
     p = _edit(brand_dir, lambda d: d["fonts"]["body"].update(family='Bad"; x'))
     with pytest.raises(BrandKitError, match=r"fonts\.body\.family"):
+        tokens.load_tokens(p)
+
+
+@pytest.mark.parametrize(
+    "family,stack",
+    [
+        ("Lora", 'Georgia, "Times New Roman", serif'),
+        ("IBM Plex Serif", 'Georgia, "Times New Roman", serif'),
+        ("Manrope", 'system-ui, -apple-system, "Segoe UI", Arial, sans-serif'),
+        ("IBM Plex Mono", "ui-monospace, Menlo, Consolas, monospace"),
+        ("Playfair Display", 'Georgia, "Times New Roman", serif'),
+        ("Unbounded", 'system-ui, -apple-system, "Segoe UI", Arial, sans-serif'),
+        ("Founder Grotesk", 'system-ui, -apple-system, "Segoe UI", Arial, sans-serif'),
+    ],
+)
+def test_css_font_fallbacks(brand_dir, tmp_path, family, stack):
+    p = _edit(brand_dir, lambda d: d["fonts"]["heading"].update(family=family))
+    out = tmp_path / "t.css"
+    tokens.write_css(tokens.load_tokens(p), out)
+    assert f'--font-heading: "{family}", {stack};' in out.read_text()
+
+
+def test_load_colours_without_fonts(brand_dir):
+    p = _edit(brand_dir, lambda d: d.pop("fonts"))
+    c = tokens.load_colours(p)
+    assert c.primary == "#1B3A6B" and c.neutrals["500"] == "#8A857D"
+    with pytest.raises(BrandKitError, match="fonts"):
         tokens.load_tokens(p)

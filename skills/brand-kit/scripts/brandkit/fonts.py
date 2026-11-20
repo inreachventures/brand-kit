@@ -26,6 +26,28 @@ def catalogue() -> list[dict]:
     return json.loads((BUNDLED_DIR / "catalogue.json").read_text())
 
 
+CSS_FALLBACKS = {
+    "serif": 'Georgia, "Times New Roman", serif',
+    "sans": 'system-ui, -apple-system, "Segoe UI", Arial, sans-serif',
+    "mono": "ui-monospace, Menlo, Consolas, monospace",
+}
+
+
+def css_fallback(family: str) -> str:
+    """Generic CSS fallback stack for a family, by its catalogue category.
+
+    Display faces use their "fallback" category (serif or sans). Families not in the catalogue,
+    such as fonts the founder supplied, are treated as sans.
+    """
+    for entry in catalogue():
+        if _norm(entry["family"]) == _norm(family):
+            category = entry["category"]
+            if category == "display":
+                category = entry.get("fallback", "sans")
+            return CSS_FALLBACKS.get(category, CSS_FALLBACKS["sans"])
+    return CSS_FALLBACKS["sans"]
+
+
 def _norm(name: str) -> str:
     return "".join(name.lower().split())
 

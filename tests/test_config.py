@@ -23,11 +23,17 @@ def test_config_defaults(brand_dir):
     assert c.people == []
     assert c.website is None
     assert c.og_descriptor is None
+    assert c.banner_pattern is False
 
 
 def test_config_og_descriptor(brand_dir):
     _write(brand_dir, {"company_name": "Acme", "logo": {"mode": "wordmark"}, "og_descriptor": "Calm tools for small teams"})
     assert config.load_config(brand_dir).og_descriptor == "Calm tools for small teams"
+
+
+def test_config_banner_pattern(brand_dir):
+    _write(brand_dir, {"company_name": "Acme", "logo": {"mode": "wordmark"}, "banner_pattern": True})
+    assert config.load_config(brand_dir).banner_pattern is True
 
 
 def test_config_upload_requires_source(brand_dir):
@@ -59,6 +65,7 @@ def test_cli_tokens_css(brand_dir):
         ({"company_name": "A", "website": 5, "logo": {"mode": "wordmark"}}, "website"),
         ({"company_name": "A", "logo": {"mode": "wordmark", "monogram": 5}}, r"logo\.monogram"),
         ({"company_name": "A", "logo": {"mode": "wordmark"}, "og_descriptor": 5}, "og_descriptor"),
+        ({"company_name": "A", "logo": {"mode": "wordmark"}, "banner_pattern": "yes"}, "banner_pattern"),
     ],
 )
 def test_config_bad_shapes(brand_dir, bad, key):

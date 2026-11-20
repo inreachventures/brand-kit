@@ -28,8 +28,18 @@ def pack(brand_dir: Path, out: Path) -> Path:
 
 
 def unpack(zip_path: Path, dest: Path) -> Path:
-    """Extract into dest and return dest/brand. Refuses entries that would land outside dest."""
+    """Extract into dest and return dest/brand.
+
+    Refuses entries that would land outside dest, and refuses to extract over a dest/brand that
+    already has files in it, since old and new files would mix.
+    """
     zip_path, dest = Path(zip_path), Path(dest)
+    existing = dest / ROOT
+    if existing.exists() and (not existing.is_dir() or any(existing.iterdir())):
+        raise BrandKitError(
+            f"{existing} already exists and is not empty; unpack into an empty folder, "
+            f"or remove the old brand folder first"
+        )
     try:
         zf = zipfile.ZipFile(zip_path)
     except FileNotFoundError:
