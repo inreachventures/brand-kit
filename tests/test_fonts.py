@@ -115,3 +115,28 @@ def test_declared_scripts_are_covered(entry):
     path = FONTS_DIR / entry["files"]["400"]
     for script, sample in _SAMPLES.items():
         assert (script in entry["scripts"]) == (fonts.missing_glyphs(sample, path) == [])
+
+
+def test_nfc_normalisation():
+    path = fonts.resolve(FontSpec("Inter", 400), Path("."))
+    decomposed = "é"
+    composed = "é"
+    assert fonts.text_path(decomposed, path, 100) == fonts.text_path(composed, path, 100)
+    assert fonts.missing_glyphs(decomposed, path) == []
+
+
+def test_copy_to_brand_returns_founder_files(tmp_path):
+    dest = tmp_path / "assets" / "fonts" / "Mine"
+    dest.mkdir(parents=True)
+    src = fonts.resolve(FontSpec("Inter", 400), tmp_path)
+    shutil.copy2(src, dest / "Mine-Regular.ttf")
+    # a founder file keeps its internal family name, so rename via fontTools
+    from fontTools.ttLib import TTFont
+    f = TTFont(dest / "Mine-Regular.ttf")
+    for rec in f["name"].names:
+        if rec.nameID in (1, 16):
+            rec.string = "Mine Sans"
+    f.save(dest / "Mine-Regular.ttf")
+    fonts._font_info.cache_clear()
+    out = fonts.copy_to_brand(FontSpec("Mine Sans", 400), tmp_path)
+    assert out == [dest / "Mine-Regular.ttf"]

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import shutil
+import unicodedata
 from functools import lru_cache
 from pathlib import Path
 
@@ -85,6 +86,7 @@ def pil_font(spec: FontSpec, brand_dir: Path, size: int) -> ImageFont.FreeTypeFo
 
 def missing_glyphs(text: str, font_path: Path) -> list[str]:
     """Distinct characters in text (in order of first appearance) that the font cannot draw."""
+    text = unicodedata.normalize("NFC", text)
     with TTFont(font_path, lazy=True) as f:
         cmap = f.getBestCmap()
     out: list[str] = []
@@ -101,6 +103,7 @@ def text_path(text: str, font_path: Path, size: float) -> tuple[str, float, floa
     at y=0 and the glyphs rise into negative y, so translate by the baseline when placing.
     No kerning is applied. Characters missing from the font draw as .notdef.
     """
+    text = unicodedata.normalize("NFC", text)
     with TTFont(font_path) as font:
         cmap = font.getBestCmap()
         glyphs = font.getGlyphSet()
@@ -123,6 +126,9 @@ def text_path(text: str, font_path: Path, size: float) -> tuple[str, float, floa
 
 def copy_to_brand(spec: FontSpec, brand_dir: Path) -> list[Path]:
     """Copy the bundled family (all weights plus OFL.txt) into brand/assets/fonts/<Family>/."""
+    own = _brand_fonts(brand_dir, spec.family)
+    if own:
+        return [p for _, p in own]
     for entry in _catalogue():
         if _norm(entry["family"]) == _norm(spec.family):
             dest = Path(brand_dir) / "assets" / "fonts" / _folder(entry["family"])
@@ -134,5 +140,5 @@ def copy_to_brand(spec: FontSpec, brand_dir: Path) -> list[Path]:
                 shutil.copy2(src, dest / src.name)
                 out.append(dest / src.name)
             return out
-    resolve(spec, brand_dir)  # raises the helpful error unless the founder already supplied it
+    resolve(spec, brand_dir)  # raises the helpful error when the family is unknown
     raise BrandKitError(f"font family {spec.family!r} is not bundled, so there is nothing to copy")
