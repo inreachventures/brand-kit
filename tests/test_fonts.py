@@ -1,3 +1,4 @@
+import hashlib
 import json
 import shutil
 from pathlib import Path
@@ -151,3 +152,27 @@ def test_resolve_lists_families_found_in_brand_fonts(tmp_path):
     with pytest.raises(BrandKitError) as exc:
         fonts.resolve(FontSpec("Nonexistent Face", 400), tmp_path)
     assert "brand/assets/fonts/ are for" in str(exc.value) and e["family"] in str(exc.value)
+
+
+SOURCES = json.loads((FONTS_DIR / "SOURCES.json").read_text(encoding="utf-8"))
+
+
+def _declares_rfn(ofl: Path) -> bool:
+    header = ofl.read_text(encoding="utf-8", errors="replace").split("This Font Software is licensed", 1)[0]
+    return "reserved font name" in header.lower()
+
+
+@pytest.mark.parametrize("entry", CATALOGUE, ids=lambda e: e["family"])
+def test_reserved_font_name_families_are_unmodified(entry):
+    """SIL OFL: a family with a Reserved Font Name ships byte for byte as its upstream statics."""
+    folder = entry["family"].replace(" ", "")
+    source = next(s for s in SOURCES["families"] if s["family"] == entry["family"])
+    rfn = _declares_rfn(FONTS_DIR / folder / "OFL.txt")
+    assert source["reserved_font_name"] is rfn
+    outputs = {o["file"]: o["sha256"] for f in source["fetched"] for o in f["outputs"]}
+    assert set(outputs) == set(entry["files"].values())
+    for rel, sha in outputs.items():
+        assert hashlib.sha256((FONTS_DIR / rel).read_bytes()).hexdigest() == sha, rel
+    if rfn:
+        assert {f["method"] for f in source["fetched"]} == {"unmodified"}
+        assert not any(f.get("instanced_weights") for f in source["fetched"])
