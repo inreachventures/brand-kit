@@ -27,6 +27,12 @@ def _set(brand_dir, name=None, primary=None, ink=None, paper=None):
         cp.write_text(json.dumps(c))
 
 
+def _pixels(img):
+    """Pixel tuples, without the Image.getdata call that Pillow 13 deprecates."""
+    raw = img.convert("RGB").tobytes()
+    return [tuple(raw[i : i + 3]) for i in range(0, len(raw), 3)]
+
+
 def _bbox_diff(img, bg):
     img = img.convert("RGB")
     bgimg = Image.new("RGB", img.size, bg)
@@ -124,7 +130,7 @@ def test_low_contrast_palette(brand_dir):
     img = Image.open(brand_dir / "assets" / "social" / "linkedin-banner-1584x396.png").convert("RGB")
     bg = (0xF5, 0xF0, 0xE6)
     box = _bbox_diff(img, bg)
-    px = [p for p in img.crop(box).getdata() if p != bg]
+    px = [p for p in _pixels(img.crop(box)) if p != bg]
     darkest = min(px, key=sum)
     assert sum(darkest) < 120  # ink-coloured ink, not paper
 
@@ -152,8 +158,8 @@ def test_og_long_descriptor_capped(brand_dir):
     # block is vertically centred: max block = 150 logo + 36 gap + 150 text
     top = (630 - 336) // 2
     below = img.crop((0, top + 336 + 4, 1200, 630))
-    assert set(below.getdata()) == {lo}
+    assert set(_pixels(below)) == {lo}
     above = img.crop((0, 0, 1200, top - 4))
-    assert set(above.getdata()) == {lo}
+    assert set(_pixels(above)) == {lo}
     tx = img.crop((0, top + 150 + 36 + 100, 1200, top + 336))
-    assert len(set(tx.getdata())) > 1  # third line is drawn
+    assert len(set(_pixels(tx))) > 1  # third line is drawn

@@ -58,3 +58,17 @@ def test_config_bad_shapes(brand_dir, bad, key):
     _write(brand_dir, bad)
     with pytest.raises(BrandKitError, match=key):
         config.load_config(brand_dir)
+
+
+def test_empty_person_name_or_email_rejected(brand_dir):
+    import json
+    import pytest
+    from brandkit import BrandKitError
+    from brandkit.config import load_config
+    p = brand_dir / "assets" / "config.json"
+    for key in ("name", "email"):
+        c = json.loads(p.read_text())
+        c["people"] = [{"name": "Jane", "title": "CEO", "email": "j@x.example", key: "  "}]
+        p.write_text(json.dumps(c))
+        with pytest.raises(BrandKitError, match=rf"people\[0\]\.{key}"):
+            load_config(brand_dir)

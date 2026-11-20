@@ -14,7 +14,7 @@ from xml.sax.saxutils import escape
 
 from fontTools.pens.boundsPen import BoundsPen
 from fontTools.svgLib.path import parse_path
-from PIL import Image, ImageChops, ImageDraw, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFont, UnidentifiedImageError
 
 from . import BrandKitError, fonts
 from .config import AssetsConfig, load_config
@@ -59,7 +59,7 @@ def _check_glyphs(text: str, font_path: Path, family: str) -> None:
         return
     chars = " ".join(missing)
     alternatives = []
-    for entry in fonts._catalogue():
+    for entry in fonts.catalogue():
         if entry["family"] == family:
             continue
         w = max(int(k) for k in entry["files"])
@@ -245,17 +245,27 @@ def _recolour_svg(svg: str, colour: str) -> str:
     return out
 
 
+def _read_image(path: Path) -> Image.Image:
+    try:
+        return Image.open(path).convert("RGBA")
+    except (UnidentifiedImageError, OSError, Image.DecompressionBombError, ValueError) as e:
+        raise BrandKitError(f"logo.source: {path.name} is not a readable image ({e})") from None
+
+
 def _rasterise_svg(svg: str, source: Path) -> Image.Image:
     try:
         import cairosvg  # type: ignore[import-not-found]
     except ImportError:
         cairosvg = None
     if cairosvg is not None:
-        png = cairosvg.svg2png(bytestring=svg.encode(), output_width=WIDTHS[-1])
+        try:
+            png = cairosvg.svg2png(bytestring=svg.encode(), output_width=WIDTHS[-1])
+        except Exception as e:
+            raise BrandKitError(f"logo.source: {source.name} is not a readable SVG ({e})") from None
         return Image.open(io.BytesIO(png)).convert("RGBA")
     sibling = source.with_suffix(".png")
     if sibling.is_file():
-        return _key_out_background(Image.open(sibling).convert("RGBA"), sibling)
+        return _key_out_background(_read_image(sibling), sibling)
     raise BrandKitError(
         f"{source.name} is an SVG and cairosvg is not installed, so it cannot be turned into PNGs. "
         f"Supply a PNG of the logo at least 1200 px wide as {sibling.name} next to it, "
@@ -274,11 +284,14 @@ def _build_upload(brand_dir: Path, tokens: Tokens, cfg: AssetsConfig) -> list[Pa
     shutil.copy2(source, original)
     written.append(original)
 
-    svg_text = source.read_text() if is_svg else ""
+    try:
+        svg_text = source.read_text() if is_svg else ""
+    except (UnicodeDecodeError, OSError) as e:
+        raise BrandKitError(f"logo.source: {source.name} is not a readable SVG ({e})") from None
     if is_svg:
         base = _trim(_rasterise_svg(svg_text, source))
     else:
-        base = _trim(_key_out_background(Image.open(source).convert("RGBA"), source))
+        base = _trim(_key_out_background(_read_image(source), source))
         print("note: the logo is a PNG, so SVG variants and favicon.svg are skipped; PNG variants only.")
         if base.width < WIDTHS[-1]:
             print(f"note: the logo is only {base.width} px wide; the 1200 px variants are upscaled.")
@@ -307,7 +320,10 @@ def _upload_tile_svg(out_dir: Path, svg_text: str, primary: str, mono: str) -> P
     vb = re.search(r'viewBox\s*=\s*"([^"]+)"', root.group(0)) if root else None
     if vb is None:
         raise BrandKitError("the logo SVG needs a viewBox attribute so it can be placed in the tile")
-    _, _, vw, vh = (float(v) for v in vb.group(1).replace(",", " ").split())
+    try:
+        _, _, vw, vh = (float(v) for v in vb.group(1).replace(",", " ").split())
+    except ValueError:
+        raise BrandKitError("the logo SVG has an unreadable viewBox attribute") from None
     box = 1000 * TILE_FIT
     s = min(box / vw, box / vh)
     w, h = vw * s, vh * s

@@ -110,3 +110,36 @@ def test_cli_help(cmd, capsys):
     with pytest.raises(SystemExit) as e:
         cli.main([cmd, "--help"])
     assert e.value.code == 0
+
+
+def _upload_config(brand_dir, source):
+    cp = brand_dir / "assets" / "config.json"
+    c = json.loads(cp.read_text())
+    c["logo"] = {"mode": "upload", "source": source}
+    cp.write_text(json.dumps(c))
+
+
+def test_cli_corrupt_png_logo(brand_dir, capsys):
+    (brand_dir / "assets" / "bad.png").write_bytes(b"not a png")
+    _upload_config(brand_dir, "assets/bad.png")
+    assert cli.main(["assets", str(brand_dir), "--only", "logos"]) == 2
+    err = capsys.readouterr().err
+    assert "logo.source" in err and "Traceback" not in err
+
+
+@pytest.mark.parametrize("content", [b"\xff\xfe not svg \x00", b"hello", b"<svg viewBox=\"a b c d\"></svg>"])
+def test_cli_corrupt_svg_logo(brand_dir, capsys, content):
+    (brand_dir / "assets" / "bad.svg").write_bytes(content)
+    _upload_config(brand_dir, "assets/bad.svg")
+    assert cli.main(["assets", str(brand_dir), "--only", "logos"]) == 2
+    assert "Traceback" not in capsys.readouterr().err
+
+
+def test_cli_unwritable_output_is_clean(brand_dir, tmp_path, capsys):
+    blocker = tmp_path / "file"
+    blocker.write_text("x")
+    opts = [{"primary": "#1B3A6B", "accent": "#E4572E", "ink": "#14171A", "paper": "#FAF8F5"}]
+    (tmp_path / "o.json").write_text(json.dumps(opts))
+    assert cli.main(["preview-palette", str(tmp_path / "o.json"), str(blocker / "sub" / "p.png")]) == 2
+    err = capsys.readouterr().err
+    assert err.startswith("error:") and "Traceback" not in err

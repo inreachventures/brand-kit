@@ -22,7 +22,7 @@ def _folder(family: str) -> str:
     return family.replace(" ", "")
 
 
-def _catalogue() -> list[dict]:
+def catalogue() -> list[dict]:
     return json.loads((BUNDLED_DIR / "catalogue.json").read_text())
 
 
@@ -69,11 +69,11 @@ def resolve(spec: FontSpec, brand_dir: Path) -> Path:
     own = _brand_fonts(brand_dir, spec.family)
     if own:
         return _nearest(own, spec.weight)
-    for entry in _catalogue():
+    for entry in catalogue():
         if _norm(entry["family"]) == _norm(spec.family):
             options = [(int(w), BUNDLED_DIR / rel) for w, rel in entry["files"].items()]
             return _nearest(options, spec.weight)
-    available = ", ".join(e["family"] for e in _catalogue())
+    available = ", ".join(e["family"] for e in catalogue())
     raise BrandKitError(
         f"font family {spec.family!r} not found. Bundled families: {available}. "
         f"Or put the font files in brand/assets/fonts/."
@@ -129,7 +129,7 @@ def copy_to_brand(spec: FontSpec, brand_dir: Path) -> list[Path]:
     own = _brand_fonts(brand_dir, spec.family)
     if own:
         return [p for _, p in own]
-    for entry in _catalogue():
+    for entry in catalogue():
         if _norm(entry["family"]) == _norm(spec.family):
             dest = Path(brand_dir) / "assets" / "fonts" / _folder(entry["family"])
             dest.mkdir(parents=True, exist_ok=True)

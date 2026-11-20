@@ -81,6 +81,7 @@ def _render(tokens: Tokens, logo_src: str, company: str, name: str, title: str, 
             email_href: str, escape: bool = True) -> str:
     e = _esc if escape else (lambda s: s)
     stack = f"'{tokens.fonts['body'].family}', {FALLBACK_STACK}"
+    role = f"{e(title)}, {e(company)}" if title.strip() else e(company)
     muted, line = tokens.neutrals.get("500", tokens.ink), tokens.neutrals.get("300", tokens.ink)
     return (
         f'<table cellpadding="0" cellspacing="0" border="0" role="presentation" '
@@ -92,7 +93,7 @@ def _render(tokens: Tokens, logo_src: str, company: str, name: str, title: str, 
         f'    </td>\n'
         f'    <td valign="top" style="padding:0 0 0 16px;">\n'
         f'      <div style="font-size:16px;line-height:22px;font-weight:bold;color:{tokens.ink};">{e(name)}</div>\n'
-        f'      <div style="color:{muted};">{e(title)}, {e(company)}</div>\n'
+        f'      <div style="color:{muted};">{role}</div>\n'
         f'      <div style="padding-top:6px;"><a href="mailto:{_esc(email_href)}" '
         f'style="color:{tokens.primary};text-decoration:none;">{e(email)}</a></div>\n'
         f'    </td>\n'

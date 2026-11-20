@@ -60,3 +60,11 @@ def test_signature_website_trailing_slash(brand_dir):
     signatures.build_signatures(brand_dir, tokens, cfg)
     html = (brand_dir / "assets" / "email-signatures" / "jane-doe.html").read_text()
     assert "https://acme.example/brand/mark-tile-160.png" in html
+
+
+def test_signature_empty_title_has_no_comma(brand_dir):
+    _set_config(brand_dir, people=[{"name": "Jane Doe", "title": "", "email": "j@acme.example"}])
+    tokens, cfg = _load(brand_dir)
+    signatures.build_signatures(brand_dir, tokens, cfg)
+    html = (brand_dir / "assets" / "email-signatures" / "jane-doe.html").read_text()
+    assert ">Acme</div>" in html and ", Acme" not in html

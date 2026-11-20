@@ -74,6 +74,8 @@ def load_config(brand_dir: Path) -> AssetsConfig:
                 raise BrandKitError(f"people[{i}].{k}: missing required key")
             if not isinstance(p[k], str):
                 raise BrandKitError(f"people[{i}].{k}: expected a string")
+            if k in ("name", "email") and not p[k].strip():
+                raise BrandKitError(f"people[{i}].{k}: must not be empty")
         people.append(Person(p["name"], p["title"], p["email"]))
     monogram = monogram_raw or name.strip()[0].upper()
     return AssetsConfig(name, website, mode, source, monogram, people)

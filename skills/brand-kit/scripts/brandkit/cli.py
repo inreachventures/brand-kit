@@ -137,7 +137,7 @@ def _unpack(args: argparse.Namespace) -> int:
 
 def _fonts_list(args: argparse.Namespace) -> int:
     rows = [("family", "category", "weights", "scripts", "notes")]
-    for e in fonts._catalogue():
+    for e in fonts.catalogue():
         rows.append((e["family"], e["category"], ",".join(str(w) for w in e["weights"]),
                      ",".join(e["scripts"]), e.get("notes", "")))
     widths = [max(len(r[i]) for r in rows) for i in range(4)]
@@ -191,7 +191,7 @@ def main(argv: list[str]) -> int:
     args = parser.parse_args(argv)
     try:
         return args.func(args)
-    except BrandKitError as e:
+    except (BrandKitError, OSError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 2
 
