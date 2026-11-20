@@ -33,3 +33,10 @@ def test_type_preview_missing_glyphs_warns(brand_dir, tmp_path):
     out, warnings = previews.type_preview(pairs, "Καλημέρα κόσμε", brand_dir, tmp_path / "t.png")
     assert out.is_file()
     assert len(warnings) == 1 and "Lora" in warnings[0]
+
+
+def test_palette_preview_empty_raises(tmp_path):
+    import pytest
+    from brandkit import BrandKitError
+    with pytest.raises(BrandKitError):
+        previews.palette_preview([], tmp_path / "x.png")

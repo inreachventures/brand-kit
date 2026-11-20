@@ -14,6 +14,7 @@ from .tokens import Tokens, best_on
 MARGIN = 24
 MOBILE_CROP = 0.12  # bottom share of a banner that mobile apps may crop
 AVATAR_ZONE = 0.25  # left share of LinkedIn and X banners the profile photo overlaps
+OG_MAX_LINES = 3
 SS = 2  # pattern supersampling factor
 
 # name, width, height, logo width fraction, max logo height fraction, bottom-left avatar zone
@@ -116,6 +117,12 @@ def _og(logo: Image.Image, tokens: Tokens, brand_dir: Path, name: str, descripto
             else:
                 cur = trial
         lines.append(cur)
+        if len(lines) > OG_MAX_LINES:
+            lines = lines[:OG_MAX_LINES]
+            last = lines[-1].rstrip(".,;:")
+            while last and font.getlength(last + "\u2026") > w - 2 * 90:
+                last = last[:-1].rstrip()
+            lines[-1] = last + "\u2026"
         text_h = len(lines) * 50
     block_h = lg.height + (gap + text_h if lines else 0)
     x, y = 90, (h - block_h) // 2

@@ -5,7 +5,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-from . import fonts
+from . import BrandKitError, fonts
 from .tokens import FontSpec, best_on, contrast_ratio, normalise_hex
 
 _BG = "#FFFFFF"
@@ -32,6 +32,8 @@ def _swatches(option: dict) -> list[tuple[str, str]]:
 
 def palette_preview(options: list[dict[str, str]], out: Path) -> Path:
     """One row per option: swatches with hex and the contrast ratio on that option's paper and ink."""
+    if not options:
+        raise BrandKitError("palette options: expected at least one option")
     sw_w, sw_h, gap, label_h = 190, 150, 14, 56
     caption_h = 52
     row_h = label_h + sw_h + caption_h + 36

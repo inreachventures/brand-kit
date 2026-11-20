@@ -136,3 +136,24 @@ def test_pattern_is_deterministic(brand_dir):
     a = p.read_bytes()
     social.build_social(brand_dir, tokens, cfg)
     assert p.read_bytes() == a
+
+
+def test_og_long_descriptor_capped(brand_dir):
+    tokens, cfg = _load(brand_dir)
+    long = " ".join(["extraordinarily verbose descriptor words"] * 40)
+    social.build_social(brand_dir, tokens, cfg, descriptor=long)
+    img = Image.open(brand_dir / "assets" / "og-image.png").convert("RGB")
+    assert img.size == (1200, 630)
+    bg = tokens.primary
+    # nothing but background below the 3-line safe area (pattern disabled below for a clean read)
+    social.build_social(brand_dir, tokens, cfg, descriptor=long, pattern=False)
+    img = Image.open(brand_dir / "assets" / "og-image.png").convert("RGB")
+    lo = social._rgb(bg)
+    # block is vertically centred: max block = 150 logo + 36 gap + 150 text
+    top = (630 - 336) // 2
+    below = img.crop((0, top + 336 + 4, 1200, 630))
+    assert set(below.getdata()) == {lo}
+    above = img.crop((0, 0, 1200, top - 4))
+    assert set(above.getdata()) == {lo}
+    tx = img.crop((0, top + 150 + 36 + 100, 1200, top + 336))
+    assert len(set(tx.getdata())) > 1  # third line is drawn
