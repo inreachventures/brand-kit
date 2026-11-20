@@ -1,8 +1,8 @@
 [
-  {"primary": "#1F5240", "accent": "#E0662B", "ink": "#18211D", "paper": "#F7F4EC",
+  {"name": "Enamel green", "primary": "#1F5240", "accent": "#E0662B", "ink": "#18211D", "paper": "#F7F4EC",
    "neutrals": {"100": "#ECE8DE", "300": "#CFC9BA", "500": "#6B675C", "700": "#45423B"}},
-  {"primary": "#2C3331", "accent": "#E9C46A", "ink": "#1B1F1E", "paper": "#F5F3EE",
+  {"name": "Blackboard slate", "primary": "#2C3331", "accent": "#E9C46A", "ink": "#1B1F1E", "paper": "#F5F3EE",
    "neutrals": {"100": "#E9E7E1", "300": "#C9C6BE", "500": "#696760", "700": "#44433F"}},
-  {"primary": "#A3322A", "accent": "#C08A2B", "ink": "#221A17", "paper": "#FAF6F0",
+  {"name": "Toolbox red", "primary": "#A3322A", "accent": "#C08A2B", "ink": "#221A17", "paper": "#FAF6F0",
    "neutrals": {"100": "#F0EAE2", "300": "#D6CCC0", "500": "#6E655D", "700": "#4A433D"}}
 ]

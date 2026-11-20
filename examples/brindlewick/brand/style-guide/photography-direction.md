@@ -56,4 +56,4 @@ Not allowed. Maya: "If it isn't a real shop it shouldn't look like one."
   1987 Raleigh").
 - Use only photos Brindlewick took or has a written licence for. Record the shop's permission with
   the file.
-- [Not decided yet: where approved photos are kept and who looks after them.]
+- [Open: where approved photos are kept and who looks after them.]

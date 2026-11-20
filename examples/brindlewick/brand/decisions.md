@@ -218,3 +218,14 @@ entry is last.
 - **Why:** Maya: the circles "look like bubbles, not a workshop", but "keep them for now and put it
   in the designer brief."
 - **Replaces:** nothing
+
+## 2026-11-20 Plain banners
+
+- **Stage:** 6 Assets
+- **Decision:** The banners, the video-call background and the link preview are a plain enamel
+  green field with the wordmark, with no pattern (`banner_pattern` is left out of
+  `assets/config.json`). A designer's background stays in the designer brief.
+- **Alternatives considered:** keeping the generated circle pattern until a designer replaces it.
+- **Why:** Maya turned the circles down as "bubbles, not a workshop", and the asset build can now
+  leave them out.
+- **Replaces:** 2026-11-20 Banner pattern kept for now

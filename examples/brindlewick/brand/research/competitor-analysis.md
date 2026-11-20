@@ -24,7 +24,7 @@ No admired brand is in the set; Maya did not name one.
 
 ### ShopLedger
 - **Website:** not checked (no web access).
-- **Positioning line:** [Not captured: no copy available.] Maya: it sells itself as
+- **Positioning line:** [Open: their headline; no copy available.] Maya: it sells itself as
   "all-in-one".
 - **Audience:** retail shops in general; bike repairs come as an add-on. Seems to ignore the
   shop where repairs, not sales, are the business.
@@ -36,7 +36,7 @@ No admired brand is in the set; Maya did not name one.
 
 ### SpokeDesk
 - **Website:** not checked (no web access).
-- **Positioning line:** [Not captured: no copy available.]
+- **Positioning line:** [Open: their headline; no copy available.]
 - **Audience:** US repair shops.
 - **Proof they lead with:** not known.
 - **Tone:** "slick" (Maya). No quote available.
@@ -46,7 +46,7 @@ No admired brand is in the set; Maya did not name one.
 
 ### Workshop Pro
 - **Website:** not checked (no web access).
-- **Positioning line:** [Not captured: no copy available.]
+- **Positioning line:** [Open: their headline; no copy available.]
 - **Audience:** established shops; Maya says its older users are loyal.
 - **Proof they lead with:** not known.
 - **Tone:** not known.
@@ -119,6 +119,7 @@ someone who has worked in a shop.
 
 ## Limits of this analysis
 - No competitor website, copy, colour value, type or imagery was checked. Everything is Maya's
-  description.
+  description. [Open: competitor headlines, proof, colours and type; screenshots or pasted copy
+  from Maya, or a session with web access.]
 - No background knowledge was added: the competitors are not known outside this interview.
-- The Dutch market was not looked at. Dutch competitors, if any, are unknown.
+- The Dutch market was not looked at. [Open: Dutch competitors, if any.]

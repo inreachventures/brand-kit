@@ -73,7 +73,7 @@ Brindlewick is compared with the paper diary, not with other software.
 - **Emphasises:** the parts catalogue and the distributors in it.
 - **Gives up:** the simplest message; shops that buy from one distributor; it drifts towards the
   "all-in-one" cliché.
-- **Proof:** Tom's part-number matching. The number of distributors is not known.
+- **Proof:** Tom's part-number matching. [Open: the number of distributors.]
 - **Gap used:** parts ordering, which no competitor is described as offering.
 - **Risks:** needs distributor numbers the company has not confirmed; ties the brand to
   distributors' catalogues.

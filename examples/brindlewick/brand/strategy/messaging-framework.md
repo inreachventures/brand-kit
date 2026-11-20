@@ -78,7 +78,7 @@ its name.
 Maya Okafor built it after six years running a repair shop in Leeds. 140 shops in the UK and
 Ireland use it, and about 20 in the Netherlands, where Brindlewick started in spring 2026.
 
-[Not decided yet: what comes next for the product, in a form that can be said in public.]
+[Open: what comes next for the product, in a form that can be said in public.]
 
 ## Elevator pitches
 

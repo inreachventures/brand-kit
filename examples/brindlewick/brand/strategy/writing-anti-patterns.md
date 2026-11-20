@@ -155,9 +155,9 @@ This note rests on a single sample. Add two or three more of Tom's posts to
   with "so". Opens with what changed and when ("We rebuilt the parts search last month.").
 - **Words he uses:** the precise technical term when it matters ("manufacturer part number"),
   concrete examples from the trade ("the same brake pad four different ways").
-- **Words he would never use:** [Not known yet: needs more samples.]
+- **Words he would never use:** [Open: needs more samples.]
 - **Habits to keep:** giving the reason for each decision, with a real example.
-- **Habits to watch:** [Not known yet: needs more samples. Long technical posts are prone to
+- **Habits to watch:** [Open: needs more samples. Long technical posts are prone to
   lists where prose belongs; check for that.]
 - **Samples:** `research/source/voices/tom-reyes.md`. "We rebuilt the parts search last month.
   Distributors name the same brake pad four different ways, so we match on the manufacturer part

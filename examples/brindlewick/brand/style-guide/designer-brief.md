@@ -56,9 +56,9 @@ the designer can make one that no other bike business already has.
 - Full colour, black and white versions.
 - A square version legible at 16 px, for the favicon and app icon.
 - SVG and PNG files, and the source files.
-- Backgrounds for the social banners and the video-call background, in place of the generated
-  circle pattern, which Maya feels looks "like bubbles, not a workshop". Something closer to
-  steel or enamel, or plain.
+- Backgrounds for the social banners and the video-call background, in place of the plain green
+  field the build produces. Maya turned down the generated circle pattern as "like bubbles, not a
+  workshop". Something closer to steel or enamel, or plain.
 
 ## Where it will be used
 Website, the product (a web app used on phones and tablets in workshops), social avatars,
@@ -66,11 +66,10 @@ documents and quotes sent to shop customers, email signatures, and possibly stic
 customer shops.
 
 ## Practical details
-- Budget: [Not decided yet: Maya says "small"; a figure is needed before approaching designers.]
-- Timeline: [Not decided yet.]
+- Budget: [Open: Maya says "small"; a figure is needed before approaching designers.]
+- Timeline: [Open: when the logo is needed.]
 - Decision maker: Maya Okafor, with Tom Reyes consulted.
-- Concepts and revisions: [Not decided yet: suggest two or three concepts and two rounds of
-  revisions.]
+- Concepts and revisions: [Open: suggest two or three concepts and two rounds of revisions.]
 
 ## Ownership
 All rights in the final logo and its source files pass to Brindlewick on payment.

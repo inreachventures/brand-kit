@@ -16,13 +16,13 @@ repair shop.**
 | 140 shops in the UK and Ireland use it, and about 20 in the Netherlands | Company records |
 
 ### Objections and answers
-- **"I haven't got time to set it up":** [Not decided yet: an honest setup time from the support
-  team's onboarding records.] Until then, say what setup involves, not how fast it is.
+- **"I haven't got time to set it up":** [Open: an honest setup time from the support team's
+  onboarding records.] Until then, say what setup involves, not how fast it is.
 - **"My customers just WhatsApp me":** they can keep doing that. Brindlewick takes the bookings
   that would otherwise be a call, and texts them when the bike is ready, so there are fewer
   messages to answer by hand.
-- **"What does it cost?":** a monthly subscription per shop. [Not decided yet: whether to publish
-  the price.]
+- **"What does it cost?":** a monthly subscription per shop. [Open: whether to publish the
+  price.]
 
 ### What we do not claim
 - Any number of hours or calls saved: not measured.
@@ -41,11 +41,11 @@ matched on manufacturer part number whatever you call them.**
 | 140 shops in the UK and Ireland and about 20 in the Netherlands | Company records |
 
 ### Objections and answers
-Assumed objections: the founders have not heard these yet. Replace them
-with real ones as they come up.
+[Open: assumed objections; the founders have not heard these yet. Replace them
+with real ones as they come up.]
 
-- **"How many orders will we get?":** [Not decided yet: whether any order figures can be shared,
-  and with whom. Never in public.]
+- **"How many orders will we get?":** [Open: whether any order figures can be shared, and with
+  whom. Never in public.]
 - **"We already sell online":** shops still have to search each distributor's site separately.
   In Brindlewick they search once.
 
@@ -66,10 +66,10 @@ engineer run the show.**
 | A small team: nine people | Company records |
 
 ### Objections and answers
-Assumed objections: the founders have not heard these yet. Replace them
-with real ones as they come up.
+[Open: assumed objections; the founders have not heard these yet. Replace them
+with real ones as they come up.]
 
-- **"Is a seed company stable?":** [Not decided yet: what Maya is willing to say about funding.]
+- **"Is a seed company stable?":** [Open: what Maya is willing to say about funding.]
 - **"Do I need to be a mechanic?":** no. Liking bikes helps.
 
 ### What we do not claim

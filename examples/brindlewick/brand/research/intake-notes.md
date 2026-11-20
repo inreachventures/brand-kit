@@ -97,7 +97,7 @@ customer when the bike's ready, and reorder parts from distributors in one place
 - "Made by someone who's actually run a shop." (Maya, interview, tentative)
 
 ## Open questions
-- A specific best-customer story: who, what they used before, why they chose Brindlewick. Maya.
-- Why shops leave or decide not to sign up. Maya, from support and sales notes.
-- Whether the brand needs Dutch, and when. Maya.
-- How many distributors are in the parts catalogue, and which can be named. Tom.
+- [Open: a specific best-customer story: who, what they used before, why they chose Brindlewick.] Maya.
+- [Open: why shops leave or decide not to sign up.] Maya, from support and sales notes.
+- [Open: whether the brand needs Dutch, and when.] Maya.
+- [Open: how many distributors are in the parts catalogue, and which can be named.] Tom.

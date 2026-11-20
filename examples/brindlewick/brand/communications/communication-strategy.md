@@ -101,10 +101,10 @@ Maya does the adapting; it is part of her two hours a month on the email.
 See the channel calibration in `strategy/messaging-framework.md`.
 
 ### Replies and difficult moments
-- Maya answers comments on her posts, Tom on his. [Not decided yet: how quickly.]
+- Maya answers comments on her posts, Tom on his. [Open: how quickly.]
 - Product complaints in public get a short reply from the author and go to support, who follow up
   directly.
-- [Not decided yet: who handles press enquiries. Maya, unless she says otherwise.]
+- [Open: who handles press enquiries. Maya, unless she says otherwise.]
 - If something serious happens in public, Maya decides what Brindlewick says and when.
 
 ## Measurement

@@ -7,10 +7,10 @@
   --color-neutral-300: #CFC9BA;
   --color-neutral-500: #6B675C;
   --color-neutral-700: #45423B;
-  --font-heading: "IBM Plex Serif";
+  --font-heading: "IBM Plex Serif", Georgia, "Times New Roman", serif;
   --font-heading-weight: 700;
-  --font-body: "IBM Plex Sans";
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   --font-body-weight: 400;
-  --font-mono: "IBM Plex Mono";
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
   --font-mono-weight: 400;
 }
