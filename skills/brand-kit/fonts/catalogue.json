@@ -1,0 +1,173 @@
+[
+  {
+    "family": "Inter",
+    "category": "sans",
+    "weights": [
+      400,
+      600,
+      700
+    ],
+    "scripts": [
+      "latin-ext",
+      "greek",
+      "cyrillic"
+    ],
+    "files": {
+      "400": "Inter/Inter-Regular.ttf",
+      "600": "Inter/Inter-SemiBold.ttf",
+      "700": "Inter/Inter-Bold.ttf"
+    },
+    "notes": "Neutral and highly legible; clean, even and modern."
+  },
+  {
+    "family": "DM Sans",
+    "category": "sans",
+    "weights": [
+      400,
+      600,
+      700
+    ],
+    "scripts": [
+      "latin-ext"
+    ],
+    "files": {
+      "400": "DMSans/DMSans-Regular.ttf",
+      "600": "DMSans/DMSans-SemiBold.ttf",
+      "700": "DMSans/DMSans-Bold.ttf"
+    },
+    "notes": "Geometric and friendly with low contrast; approachable and open."
+  },
+  {
+    "family": "Manrope",
+    "category": "sans",
+    "weights": [
+      400,
+      600,
+      700
+    ],
+    "scripts": [
+      "latin-ext",
+      "greek",
+      "cyrillic"
+    ],
+    "files": {
+      "400": "Manrope/Manrope-Regular.ttf",
+      "600": "Manrope/Manrope-SemiBold.ttf",
+      "700": "Manrope/Manrope-Bold.ttf"
+    },
+    "notes": "Semi-condensed and technical with open shapes; confident and slightly engineered."
+  },
+  {
+    "family": "IBM Plex Sans",
+    "category": "sans",
+    "weights": [
+      400,
+      600,
+      700
+    ],
+    "scripts": [
+      "latin-ext",
+      "greek",
+      "cyrillic"
+    ],
+    "files": {
+      "400": "IBMPlexSans/IBMPlexSans-Regular.ttf",
+      "600": "IBMPlexSans/IBMPlexSans-SemiBold.ttf",
+      "700": "IBMPlexSans/IBMPlexSans-Bold.ttf"
+    },
+    "notes": "Grotesque with a humanist edge; serious and precise."
+  },
+  {
+    "family": "Lora",
+    "category": "serif",
+    "weights": [
+      400,
+      600,
+      700
+    ],
+    "scripts": [
+      "latin-ext",
+      "cyrillic"
+    ],
+    "files": {
+      "400": "Lora/Lora-Regular.ttf",
+      "600": "Lora/Lora-SemiBold.ttf",
+      "700": "Lora/Lora-Bold.ttf"
+    },
+    "notes": "Warm contemporary serif with calligraphic roots; editorial and trustworthy."
+  },
+  {
+    "family": "IBM Plex Serif",
+    "category": "serif",
+    "weights": [
+      400,
+      600,
+      700
+    ],
+    "scripts": [
+      "latin-ext",
+      "cyrillic"
+    ],
+    "files": {
+      "400": "IBMPlexSerif/IBMPlexSerif-Regular.ttf",
+      "600": "IBMPlexSerif/IBMPlexSerif-SemiBold.ttf",
+      "700": "IBMPlexSerif/IBMPlexSerif-Bold.ttf"
+    },
+    "notes": "Sturdy slab-influenced serif; reads as institutional and considered."
+  },
+  {
+    "family": "IBM Plex Mono",
+    "category": "mono",
+    "weights": [
+      400,
+      600,
+      700
+    ],
+    "scripts": [
+      "latin-ext",
+      "cyrillic"
+    ],
+    "files": {
+      "400": "IBMPlexMono/IBMPlexMono-Regular.ttf",
+      "600": "IBMPlexMono/IBMPlexMono-SemiBold.ttf",
+      "700": "IBMPlexMono/IBMPlexMono-Bold.ttf"
+    },
+    "notes": "Friendly monospace with real personality; good for code, figures and a technical voice."
+  },
+  {
+    "family": "Playfair Display",
+    "category": "display",
+    "fallback": "serif",
+    "weights": [
+      400,
+      700
+    ],
+    "scripts": [
+      "latin-ext",
+      "cyrillic"
+    ],
+    "files": {
+      "400": "PlayfairDisplay/PlayfairDisplay-Regular.ttf",
+      "700": "PlayfairDisplay/PlayfairDisplay-Bold.ttf"
+    },
+    "notes": "High-contrast transitional serif for headlines; elegant, editorial, a little luxurious."
+  },
+  {
+    "family": "Unbounded",
+    "category": "display",
+    "fallback": "sans",
+    "weights": [
+      400,
+      700
+    ],
+    "scripts": [
+      "latin-ext",
+      "cyrillic"
+    ],
+    "files": {
+      "400": "Unbounded/Unbounded-Regular.ttf",
+      "700": "Unbounded/Unbounded-Bold.ttf"
+    },
+    "notes": "Wide, rounded and bold; loud, playful headlines."
+  }
+]

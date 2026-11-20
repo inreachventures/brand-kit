@@ -1,0 +1,8 @@
+[
+  {"name": "Workshop steel and enamel red", "primary": "#434D55", "accent": "#C8392B", "ink": "#1A1D20", "paper": "#F3F3EF",
+   "neutrals": {"100": "#E6E6E1", "300": "#C6C7C2", "500": "#60656A", "700": "#3E4348"}},
+  {"name": "Workshop steel and cobalt enamel", "primary": "#434D55", "accent": "#2F5DB0", "ink": "#1A1D20", "paper": "#F3F3EF",
+   "neutrals": {"100": "#E6E6E1", "300": "#C6C7C2", "500": "#60656A", "700": "#3E4348"}},
+  {"name": "Charcoal and enamel red", "primary": "#33373B", "accent": "#D2442F", "ink": "#16181A", "paper": "#F4F4F0",
+   "neutrals": {"100": "#E7E7E2", "300": "#C8C8C2", "500": "#62656A", "700": "#404347"}}
+]

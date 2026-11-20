@@ -1,0 +1,31 @@
+name: test
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ${{ matrix.os || 'ubuntu-latest' }}
+    strategy:
+      matrix:
+        include:
+          - python-version: "3.10"
+          - python-version: "3.12"
+          # the oldest Pillow the scripts support (rounded_rectangle needs 8.2); it has wheels up to
+          # Python 3.9, which actions/python-versions builds for Ubuntu 24.04 but not 26.04
+          - python-version: "3.9"
+            pillow: "8.2.0"
+            os: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -r requirements-dev.txt
+      - if: matrix.pillow
+        run: pip install --only-binary pillow "pillow==${{ matrix.pillow }}"
+      - run: python -c "import PIL, fontTools; print('Pillow', PIL.__version__, 'fontTools', fontTools.version)"
+      - run: pytest -q
+      - name: No em-dashes
+        run: |
+          ! grep -rnI $'\xe2\x80\x94' --exclude-dir=.git --exclude-dir=.venv .
+      - run: python tools/build_zip.py dist/brand-kit.zip

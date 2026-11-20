@@ -1,0 +1,6 @@
+[
+  {"name": "Enamel green, as first shown", "primary": "#1F5240", "accent": "#E0662B", "ink": "#18211D", "paper": "#F7F4EC",
+   "neutrals": {"100": "#ECE8DE", "300": "#CFC9BA", "500": "#6B675C", "700": "#45423B"}},
+  {"name": "Warmer enamel green", "primary": "#2B5A36", "accent": "#E0662B", "ink": "#1A2119", "paper": "#F7F4EC",
+   "neutrals": {"100": "#ECE8DE", "300": "#CFC9BA", "500": "#6B675C", "700": "#45423B"}}
+]

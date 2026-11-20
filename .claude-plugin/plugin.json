@@ -1,0 +1,8 @@
+{
+  "name": "brand-kit",
+  "description": "Builds a company's brand with you, stage by stage, then generates brand assets: logos, favicons, social banners and email signatures.",
+  "version": "0.1.0",
+  "author": {"name": "InReach Ventures"},
+  "license": "MIT",
+  "repository": "https://github.com/inreachventures/brand-kit"
+}
