@@ -60,3 +60,9 @@ def test_write_css(brand_dir, tmp_path):
     css = out.read_text()
     assert "--color-primary: #1B3A6B;" in css
     assert '--font-heading: "' in css
+
+
+def test_load_tokens_rejects_quote_in_family(brand_dir):
+    p = _edit(brand_dir, lambda d: d["fonts"]["body"].update(family='Bad"; x'))
+    with pytest.raises(BrandKitError, match=r"fonts\.body\.family"):
+        tokens.load_tokens(p)

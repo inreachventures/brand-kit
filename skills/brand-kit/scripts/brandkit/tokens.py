@@ -50,6 +50,8 @@ def _font(d: dict, name: str) -> FontSpec:
     weight = _require(spec, "weight", f"fonts.{name}")
     if not isinstance(family, str) or not family.strip():
         raise BrandKitError(f"fonts.{name}.family: expected a font family name")
+    if '"' in family or "\n" in family or "\r" in family:
+        raise BrandKitError(f"fonts.{name}.family: must not contain quotes or newlines")
     if isinstance(weight, bool) or not isinstance(weight, int):
         raise BrandKitError(f"fonts.{name}.weight: expected an integer such as 400")
     return FontSpec(family, weight)
@@ -60,9 +62,9 @@ def load_tokens(path: Path) -> Tokens:
     try:
         data = json.loads(path.read_text())
     except FileNotFoundError:
-        raise BrandKitError(f"{path}: file not found")
+        raise BrandKitError(f"{path}: file not found") from None
     except json.JSONDecodeError as e:
-        raise BrandKitError(f"{path}: invalid JSON ({e})")
+        raise BrandKitError(f"{path}: invalid JSON ({e})") from None
     colors = _require(data, "colors", "")
     vals = {k: normalise_hex(_require(colors, k, "colors"), f"colors.{k}") for k in _COLOR_KEYS}
     neutrals_raw = _require(colors, "neutrals", "colors")

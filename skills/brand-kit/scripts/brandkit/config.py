@@ -30,16 +30,24 @@ def load_config(brand_dir: Path) -> AssetsConfig:
     try:
         data = json.loads(path.read_text())
     except FileNotFoundError:
-        raise BrandKitError(f"{path}: file not found")
+        raise BrandKitError(f"{path}: file not found") from None
     except json.JSONDecodeError as e:
-        raise BrandKitError(f"{path}: invalid JSON ({e})")
+        raise BrandKitError(f"{path}: invalid JSON ({e})") from None
+    if not isinstance(data, dict):
+        raise BrandKitError(f"{path}: expected a JSON object at the top level")
     name = data.get("company_name")
     if not isinstance(name, str) or not name.strip():
-        raise BrandKitError("company_name: missing required key")
+        raise BrandKitError("company_name: expected a non-empty string")
+    website = data.get("website")
+    if website is not None and not isinstance(website, str):
+        raise BrandKitError("website: expected a string")
     logo = data.get("logo")
     if not isinstance(logo, dict) or "mode" not in logo:
         raise BrandKitError("logo.mode: missing required key")
     mode = logo["mode"]
+    monogram_raw = logo.get("monogram")
+    if monogram_raw is not None and not isinstance(monogram_raw, str):
+        raise BrandKitError("logo.monogram: expected a string")
     if mode not in ("wordmark", "upload"):
         raise BrandKitError(f"logo.mode: expected 'wordmark' or 'upload', got {mode!r}")
     source = None
@@ -47,14 +55,25 @@ def load_config(brand_dir: Path) -> AssetsConfig:
         src = logo.get("source")
         if not src:
             raise BrandKitError("logo.source: required when logo.mode is 'upload'")
+        if not isinstance(src, str):
+            raise BrandKitError("logo.source: expected a string path")
         if not str(src).lower().endswith((".svg", ".png")):
             raise BrandKitError("logo.source: must be an .svg or .png file")
         source = brand_dir / src
     people = []
-    for i, p in enumerate(data.get("people") or []):
+    people_raw = data.get("people")
+    if people_raw is None:
+        people_raw = []
+    if not isinstance(people_raw, list):
+        raise BrandKitError("people: expected a list")
+    for i, p in enumerate(people_raw):
+        if not isinstance(p, dict):
+            raise BrandKitError(f"people[{i}]: expected an object")
         for k in ("name", "title", "email"):
             if k not in p:
                 raise BrandKitError(f"people[{i}].{k}: missing required key")
+            if not isinstance(p[k], str):
+                raise BrandKitError(f"people[{i}].{k}: expected a string")
         people.append(Person(p["name"], p["title"], p["email"]))
-    monogram = logo.get("monogram") or name.strip()[0].upper()
-    return AssetsConfig(name, data.get("website"), mode, source, monogram, people)
+    monogram = monogram_raw or name.strip()[0].upper()
+    return AssetsConfig(name, website, mode, source, monogram, people)

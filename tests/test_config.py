@@ -39,3 +39,22 @@ def test_config_upload_source(brand_dir):
 def test_cli_tokens_css(brand_dir):
     assert cli.main(["tokens-css", str(brand_dir)]) == 0
     assert (brand_dir / "style-guide" / "tokens.css").exists()
+
+
+@pytest.mark.parametrize(
+    "bad, key",
+    [
+        (["x"], "top level"),
+        ({"company_name": "A", "logo": {"mode": "wordmark"}, "people": "abc"}, "people"),
+        ({"company_name": "A", "logo": {"mode": "wordmark"}, "people": {"a": 1}}, "people"),
+        ({"company_name": "A", "logo": {"mode": "wordmark"}, "people": ["x"]}, r"people\[0\]"),
+        ({"company_name": "A", "logo": {"mode": "wordmark"}, "people": [{"name": 1, "title": "t", "email": "e"}]}, r"people\[0\]\.name"),
+        ({"company_name": 5, "logo": {"mode": "wordmark"}}, "company_name"),
+        ({"company_name": "A", "website": 5, "logo": {"mode": "wordmark"}}, "website"),
+        ({"company_name": "A", "logo": {"mode": "wordmark", "monogram": 5}}, r"logo\.monogram"),
+    ],
+)
+def test_config_bad_shapes(brand_dir, bad, key):
+    _write(brand_dir, bad)
+    with pytest.raises(BrandKitError, match=key):
+        config.load_config(brand_dir)
