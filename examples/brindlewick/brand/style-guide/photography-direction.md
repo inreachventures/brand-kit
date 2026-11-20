@@ -31,7 +31,7 @@ Both are proposed defaults.
 [Open: whether Brindlewick uses illustration or icons, and in what style. Maya has not been asked.]
 
 ## What we avoid
-- Beige or grey software screenshots without context (Workshop Pro's look, from the research).
+- Beige or grey software screenshots without context (Spannerlog Classic's look, from the research).
 - Anything purple or corporate blue in the frame where it can be avoided (ruled out by Maya).
 
 ## AI-generated images

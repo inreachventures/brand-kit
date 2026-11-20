@@ -13,7 +13,7 @@ market, and check it against the competitors' own sites before relying on any de
   it for the till may never look further.
 - **SpokeDesk** (direct): a US repair-booking app. Same job as Brindlewick's bookings, in a
   different market.
-- **Workshop Pro** (direct, older generation): desktop workshop software that some shops already
+- **Spannerlog Classic** (direct, older generation): desktop workshop software that some shops already
   run, with loyal older users.
 - **Paper diary and WhatsApp** (status quo): what most shops use, and what most Brindlewick
   customers switched from.
@@ -44,7 +44,7 @@ No admired brand is in the set; Maya did not name one.
 - **Type and imagery:** not known.
 - **Words they repeat:** "seamless", "lots of" it (Maya).
 
-### Workshop Pro
+### Spannerlog Classic
 - **Website:** not checked (no web access).
 - **Positioning line:** [Open: their headline; no copy available.]
 - **Audience:** established shops; Maya says its older users are loyal.
@@ -69,7 +69,7 @@ No admired brand is in the set; Maya did not name one.
 |------------|----------------------------|---------------|------|--------------|
 | ShopLedger | all-in-one retail till with repairs added | retail shops | corporate | blue |
 | SpokeDesk | seamless repair booking | US repair shops | slick | purple |
-| Workshop Pro | established desktop workshop software | older, established shops | not known | beige |
+| Spannerlog Classic | established desktop workshop software | older, established shops | not known | beige |
 | Paper diary and WhatsApp | the default | every small shop | none | none |
 
 ## Category clichés
@@ -78,7 +78,7 @@ No admired brand is in the set; Maya did not name one.
 - **"All-in-one"**: ShopLedger, and Brindlewick's own homepage today.
 - **"Seamless"**: SpokeDesk, and Brindlewick's own homepage today.
 - **"Modern"** (as in "modern bike shops"): Brindlewick's own homepage. Treat it as a cliché
-  because it defines the customer by contrast with Workshop Pro rather than by what they do.
+  because it defines the customer by contrast with Spannerlog Classic rather than by what they do.
 - **"Cutting-edge", "revolutionise", "leverage"**: Brindlewick's own sales line. Not seen in
   competitors only because their copy was not available; these are general software clichés.
 
@@ -89,7 +89,7 @@ With so little competitor copy, these counts are thin. The two words Maya named,
 - **Blue** (ShopLedger): reads as retail and finance software. Maya rules out anything that looks
   like a bank.
 - **Purple** (SpokeDesk): the startup software colour. Ruled out by Maya.
-- **Beige and grey screenshots** (Workshop Pro): reads as old desktop software.
+- **Beige and grey screenshots** (Spannerlog Classic): reads as old desktop software.
 - **Product screenshots** as the main image: likely across all three software competitors, not
   confirmed.
 

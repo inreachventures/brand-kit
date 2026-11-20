@@ -32,7 +32,7 @@ at nine at night (Maya, intake). Maya was one of them, in Leeds, for six years.
   fix (Maya).
 - From SpokeDesk: a US product that, as Maya describes it, sounds slick rather than like a
   workshop.
-- From Workshop Pro: desktop software that looks dated.
+- From Spannerlog Classic: desktop software that looks dated.
 - Nobody in the set talks like someone who has worked at the stand (competitor analysis, gaps).
 
 ## What we do not know yet

@@ -1,7 +1,7 @@
 # Stage 6: Assets
 
 This stage generates the files the company uses every day: logo variants, favicons, social
-images, the Open Graph image and email signatures. Then it writes the instructions that let
+images for LinkedIn and X, the Open Graph image and email signatures. Then it writes the instructions that let
 Claude use the brand in later work, and hands everything over.
 
 The commands below write `<cli>` for `python3 <skill folder>/scripts/brandkit/cli.py` and `brand`
@@ -56,7 +56,7 @@ image (see "Generate").
   `assets` uses it; leave the key out for an image with the logo only.
 - **banner_pattern** (optional): `true` adds a light pattern of circles, in tints of the primary
   colour, behind the logo on the banners, the call background and the Open Graph image. Leave it
-  out for a plain brand-colour field, which is the default and suits most brands. Offer it only if
+  out for a plain brand-colour field, which is the default. Offer it only if
   they find the plain banners too bare, and show both.
 - **people**: everyone who needs an email signature, from the intake notes. Confirm each name,
   title and address with the person you are working with. `name` and `email` must not be empty; `title` may be an empty
@@ -172,7 +172,7 @@ first, then everything that uses them, so the files never fall out of step.
 
 The banners and images are a plain brand-colour field with the logo placed clear of each
 platform's overlaps, plus the optional pattern (`banner_pattern`) and the Open Graph line. Those
-are the only choices. If they want a different layout, extra text or a photograph, say
+are the only choices, and the plain layout is a limit of the scripts, not a recommendation. If they want a different layout, extra text or a photograph, say
 plainly that the scripts do not do that, and suggest a designer or a design tool using the files
 and colours from the brand folder.
 
@@ -218,7 +218,9 @@ Leave out the `favicon.svg` line if the logo was a PNG. The `og:image` address m
 address of the image on the live site.
 
 **Social profiles.** Say which file goes where, using the table in
-`style-guide/social-branding.md`.
+`style-guide/social-branding.md`. The generated set covers LinkedIn and X only. That document lists
+only the platforms the company actually uses; for any other (Instagram, Facebook, YouTube, TikTok
+and so on) it records the sizes to make by hand or to brief to a designer.
 
 **Write it into the README.** These steps are needed long after the session, often by someone
 else. Fill in the "Using the files" section of `brand/README.md` (the template is in

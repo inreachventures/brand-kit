@@ -17,7 +17,7 @@
       "600": "Inter/Inter-SemiBold.ttf",
       "700": "Inter/Inter-Bold.ttf"
     },
-    "notes": "Neutral and highly legible; the safe, modern default for product and web."
+    "notes": "Neutral and highly legible; clean, even and modern."
   },
   {
     "family": "DM Sans",
@@ -35,7 +35,7 @@
       "600": "DMSans/DMSans-SemiBold.ttf",
       "700": "DMSans/DMSans-Bold.ttf"
     },
-    "notes": "Geometric and friendly with low contrast; approachable consumer and SaaS feel."
+    "notes": "Geometric and friendly with low contrast; approachable and open."
   },
   {
     "family": "Manrope",
@@ -75,7 +75,7 @@
       "600": "IBMPlexSans/IBMPlexSans-SemiBold.ttf",
       "700": "IBMPlexSans/IBMPlexSans-Bold.ttf"
     },
-    "notes": "Corporate-grotesque with a humanist edge; serious, precise, infrastructure-ready."
+    "notes": "Grotesque with a humanist edge; serious and precise."
   },
   {
     "family": "Lora",
@@ -132,7 +132,7 @@
       "600": "IBMPlexMono/IBMPlexMono-SemiBold.ttf",
       "700": "IBMPlexMono/IBMPlexMono-Bold.ttf"
     },
-    "notes": "Friendly monospace with real personality; good for code, data and a technical voice."
+    "notes": "Friendly monospace with real personality; good for code, figures and a technical voice."
   },
   {
     "family": "Playfair Display",
@@ -168,6 +168,6 @@
       "400": "Unbounded/Unbounded-Regular.ttf",
       "700": "Unbounded/Unbounded-Bold.ttf"
     },
-    "notes": "Wide, rounded and bold; loud, playful headlines for consumer or crypto-flavoured brands."
+    "notes": "Wide, rounded and bold; loud, playful headlines."
   }
 ]

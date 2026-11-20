@@ -24,7 +24,7 @@ Brindlewick is compared with the paper diary, not with other software.
 - The feature-list fight with ShopLedger and SpokeDesk.
 - Any claim to be the most advanced, the cheapest or the biggest.
 - Leading with parts ordering. It is a reason to stay, not the headline.
-- Speaking first to shops switching from Workshop Pro or ShopLedger. They are welcome but not who
+- Speaking first to shops switching from Spannerlog Classic or ShopLedger. They are welcome but not who
   the copy addresses.
 
 ### Proof we have

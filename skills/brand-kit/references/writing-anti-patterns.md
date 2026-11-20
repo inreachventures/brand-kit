@@ -34,8 +34,8 @@ say here which, and that the rhythm checks apply to them while the word lists do
 
 Readers have become good at spotting writing produced on autopilot, whether by a person in a hurry
 or by an AI model. Once they spot it they skim, and they trust the rest of the piece less. For a
-young company that is expensive: its writing is often the first evidence a reader has of how the
-company thinks.
+company whose reader does not know it yet, that is expensive: its writing is often the first
+evidence a reader has of how the company thinks.
 
 When you find one of these habits in a draft, do not just delete it. It usually marks a spot where
 the writer had nothing specific to say. Find the specific thing (the number, the name, the
@@ -44,6 +44,10 @@ example, the actual reason) and write that, or cut the sentence.
 Judge each case from the reader's side: does this sentence tell them something they did not know a
 line earlier? A habit that passes that test can stay. Most of the time the sentence carrying it
 fails, and the fix is new material rather than new wording.
+
+If the company chose a deliberately exuberant or playful voice at stage 3, that choice overrides
+the word lists below: words and habits the voice calls for are allowed. The checks on specificity
+still apply.
 
 ## Rhythm and structure
 

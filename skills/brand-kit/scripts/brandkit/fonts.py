@@ -123,6 +123,28 @@ def pil_font(spec: FontSpec, brand_dir: Path, size: int) -> ImageFont.FreeTypeFo
     return ImageFont.truetype(str(resolve(spec, brand_dir)), size)
 
 
+_UNSUPPORTED_SCRIPTS = (
+    "ARABIC", "HEBREW", "SYRIAC", "THAANA", "DEVANAGARI", "BENGALI", "GURMUKHI", "GUJARATI",
+    "ORIYA", "TAMIL", "TELUGU", "KANNADA", "MALAYALAM", "SINHALA", "THAI", "LAO", "TIBETAN",
+    "MYANMAR", "KHMER", "CJK", "HANGUL", "HIRAGANA", "KATAKANA", "BOPOMOFO",
+)
+
+
+def unsupported_script(text: str) -> str | None:
+    """The first script in text that the generated wordmark cannot draw, or None.
+
+    Right-to-left and complex scripts need shaping, which the outline drawing here does not do.
+    """
+    for ch in text:
+        name = unicodedata.name(ch, "")
+        for script in _UNSUPPORTED_SCRIPTS:
+            if script in name:
+                return script.title() if script != "CJK" else "Chinese/Japanese/Korean"
+        if unicodedata.bidirectional(ch) in ("R", "AL"):
+            return "right-to-left"
+    return None
+
+
 def missing_glyphs(text: str, font_path: Path) -> list[str]:
     """Distinct characters in text (in order of first appearance) that the font cannot draw."""
     text = unicodedata.normalize("NFC", text)

@@ -149,6 +149,12 @@ it has none, stop at intake: explain that the brand is built around the name, su
 they come back once they have one (a working name is fine and can change later), and do not start
 the stages. Naming is outside this skill.
 
+**Scripts for generated wordmarks.** A generated wordmark supports Latin (including accented
+letters), Greek and Cyrillic. Greek needs Inter, Manrope or IBM Plex Sans; Cyrillic works with every
+bundled family except DM Sans. For other scripts (Arabic, Hebrew, Indic, Chinese, Japanese,
+Korean and so on) the scripts stop with an error: ask the person to upload a logo, or brief a
+designer.
+
 **Never draw a logo symbol.** You can produce the variants of a logo the company already has, or
 a wordmark (the name set in the brand font) with a monogram tile. You never draw, sketch or
 generate a symbol, icon or illustrated mark, in SVG or any other way, even if asked. A symbol is

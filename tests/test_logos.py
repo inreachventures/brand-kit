@@ -483,3 +483,21 @@ def test_missing_glyphs_leave_logos_intact(brand_dir):
     with pytest.raises(BrandKitError, match="no glyphs"):
         _build(brand_dir)
     assert {p.name: p.read_bytes() for p in _logos(brand_dir).iterdir()} == before
+
+
+def test_unsupported_script_name_raises_clear_error(brand_dir):
+    _set_name(brand_dir, "مكتب")
+    with pytest.raises(BrandKitError, match="Upload a logo"):
+        _build(brand_dir)
+
+
+def test_dark_paper_wordmark_variants_follow_contrast(brand_dir):
+    path = brand_dir / "style-guide" / "tokens.json"
+    tok = json.loads(path.read_text())
+    tok["colors"]["paper"], tok["colors"]["ink"] = "#101418", "#F4F1EA"
+    path.write_text(json.dumps(tok))
+    _build(brand_dir)
+    light = (_logos(brand_dir) / "logo-on-light.svg").read_text().upper()
+    dark = (_logos(brand_dir) / "logo-on-dark.svg").read_text().upper()
+    assert "#101418" in light
+    assert "#F4F1EA" in dark

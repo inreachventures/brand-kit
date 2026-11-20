@@ -51,7 +51,7 @@ Claude asks about the company first. The skill needs a company name before it go
 
 ## Logos
 
-The skill does not draw logos. If you have one, upload it as SVG (preferred) or PNG and the skill produces the variants from it. A badge logo, such as a white letter on a coloured disc, keeps its letter as a cut-out in the one-colour versions, and a logo that only works in colour can keep its colours on the tile and banners. If you do not have a logo, it generates a typographic wordmark from your chosen fonts and colours, with a monogram tile, which is always built. Commission a designer for anything more.
+The skill does not draw logos. If you have one, upload it as SVG (preferred) or PNG and the skill produces the variants from it. A badge logo, such as a white letter on a coloured disc, keeps its letter as a cut-out in the one-colour versions, and a logo that only works in colour can keep its colours on the tile and banners. If you do not have a logo, it generates a typographic wordmark from your chosen fonts and colours, with a monogram tile, which is always built. Commission a designer for anything more. The generated wordmark supports Latin (including accented letters), Greek (Inter, Manrope, IBM Plex Sans) and Cyrillic (every bundled family except DM Sans). For other scripts, such as Arabic, Hebrew, Indic or Chinese, Japanese and Korean, upload a logo or brief a designer; the scripts stop with a clear message rather than draw it wrongly.
 
 ## Resuming work
 

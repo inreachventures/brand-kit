@@ -97,7 +97,9 @@ Each option has these colours:
 - **accent**: used sparingly for highlights, links on dark, charts, the rule in the email
   signature. It should differ clearly from the primary.
 - **ink**: the text colour. Near black, often tinted towards the primary.
-- **paper**: the background. White or an off-white.
+- **paper**: the background. White or an off-white, or a dark colour for a brand that is dark first,
+  in which case ink is the light text colour. The scripts choose between paper and ink by contrast,
+  so a dark paper works.
 - **neutrals**: four steps from light (`100`) to dark (`700`), usually tinted. `100` for subtle
   backgrounds, `300` for borders and rules, `500` for secondary text, `700` for strong secondary
   text.
@@ -437,6 +439,9 @@ proposed default.]
 ## Template: `brand/style-guide/social-branding.md`
 
 The sizes and file names below are the ones the stage 6 build produces. Keep them as they are.
+The generated set covers LinkedIn and X only. List only the platforms the company actually uses.
+For any other platform (Instagram, Facebook, YouTube, TikTok and so on) add rows with the sizes
+to make by hand or to brief to a designer, and mark them as not generated.
 
 ```
 # Social branding

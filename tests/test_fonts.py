@@ -176,3 +176,13 @@ def test_reserved_font_name_families_are_unmodified(entry):
     if rfn:
         assert {f["method"] for f in source["fetched"]} == {"unmodified"}
         assert not any(f.get("instanced_weights") for f in source["fetched"])
+
+
+@pytest.mark.parametrize("text", ["مكتب", "שלום", "देवनागरी", "東京", "한국", "ไทย"])
+def test_unsupported_script_detected(text):
+    assert fonts.unsupported_script(text) is not None
+
+
+@pytest.mark.parametrize("text", ["Brindlewick", "Café Zoë", "Ζωή", "Привет"])
+def test_supported_script_not_flagged(text):
+    assert fonts.unsupported_script(text) is None

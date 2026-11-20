@@ -36,7 +36,7 @@ customer when the bike's ready, and reorder parts from distributors in one place
 - **ShopLedger:** generic retail till software with a repairs add-on. Corporate, blue, says
   "all-in-one".
 - **SpokeDesk:** US repair-booking app. Slick, startup purple, says "seamless" a lot.
-- **Workshop Pro:** old desktop software with beige screenshots and loyal older users.
+- **Spannerlog Classic:** old desktop software with beige screenshots and loyal older users.
 - **Paper diary and WhatsApp:** what most shops actually use.
 - **Admired:** no brand named. Maya likes old workshop materials: steel, enamel paint, chalk on a
   blackboard.

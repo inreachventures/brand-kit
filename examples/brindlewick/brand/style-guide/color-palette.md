@@ -50,7 +50,7 @@ Maya accepted these as proposed defaults (see `decisions.md`).
 - **Blue**, especially corporate blue: ShopLedger's colour, and it looks like a bank, which Maya
   ruled out. This is why the cobalt accent was turned down.
 - **Purple**: SpokeDesk's "startup purple", ruled out by Maya.
-- **Beige** as a main colour: it reads as Workshop Pro and old desktop software.
+- **Beige** as a main colour: it reads as Spannerlog Classic and old desktop software.
 - **Green**: the first palette's enamel green was replaced after Maya came back to her worry that
   it was "a bit bank-ish".
 

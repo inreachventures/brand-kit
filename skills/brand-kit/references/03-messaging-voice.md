@@ -36,7 +36,7 @@ what the company does, a promise, a short description of the customer's outcome,
 the team's or a customer's own words. Strike any that use a category cliché from the research.
 Show the shortlist with a line on each, let them choose or ask for more, and record
 the choice. A plain descriptive line that says what the company does is often the better choice
-for an early company, and that is a fine outcome.
+for a company still finding its position, and that is a fine outcome.
 
 **Messages per audience.** For each audience: the headline message, two to four supporting
 messages, and the proof for each, drawn from the value propositions.

@@ -15,7 +15,7 @@ will publish, and the channels they already use.
 One cluster at a time, as always.
 
 **Goals.** What should communication achieve in the next six to twelve months? Tie it to the
-milestones from the intake: customers for a launch, credibility before a fundraise, applicants for
+milestones from the intake: customers or users for a launch, credibility ahead of a funding decision, applicants for
 key hires. Ask which goal comes first if they conflict.
 
 **Channels.** Where do the audiences actually look? Which channels does the company use today,

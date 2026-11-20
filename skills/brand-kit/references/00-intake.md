@@ -33,7 +33,7 @@ not a script.
 - What is the company called? Is the name settled or a working name?
 - Which language should the brand documents be written in?
 - What does the company do, in one plain sentence a customer would understand?
-- How does it make money, and where does it operate (countries, languages)?
+- How is it funded or how does it make money, and where does it operate (countries, languages)?
 - When did it start, and how many people work on it?
 - Who has the final say on brand decisions (positioning, voice, palette, logo)? If it is someone
   other than the person you are talking to, note who, and agree how their sign-off will reach you
@@ -46,17 +46,17 @@ clusters or create any files.
 
 ### 2. Customers and other audiences
 
-- Who pays? Who uses the product, if that is someone else?
+- Who pays, or who does the work serve? Who uses the product or service, if that is someone else?
 - Describe your best customer: who they are, what they were doing before, why they chose you.
 - When you lose a deal or a user leaves, what is the usual reason?
-- Who else does the brand need to win over: investors, future hires, partners, regulators,
+- Who else does the brand need to win over: funders, future hires, partners, regulators,
   communities?
 - How would you like a customer to describe you to a friend?
 
 ### 3. Stage and the next year
 
-- Where are you now: pre-launch, first customers, growing revenue, scaling?
-- What has to happen in the next twelve months (a launch, a fundraise, key hires, a new market)?
+- Where are you now: pre-launch, first customers or users, growing, established?
+- What has to happen in the next twelve months (a launch, a funding round or grant, key hires, a new market)?
 - Which of those does the brand need to help with first?
 
 ### 4. Competitors and alternatives
@@ -83,7 +83,7 @@ clusters or create any files.
 ### 7. Constraints
 
 - Budget, especially for a designer if they want a logo symbol later.
-- Deadlines: a launch, an event, a fundraise.
+- Deadlines: a launch, an event, a funding deadline.
 - Claims you must not make: regulated sectors (health, finance, children, legal) or legal advice
   already received.
 - Languages and scripts the brand must work in, beyond the document language (for example a

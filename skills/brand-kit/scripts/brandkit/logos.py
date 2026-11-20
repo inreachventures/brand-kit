@@ -81,6 +81,13 @@ def _path_bounds(d: str) -> tuple[float, float, float, float]:
 
 
 def _check_glyphs(text: str, font_path: Path, family: str) -> None:
+    script = fonts.unsupported_script(text)
+    if script:
+        raise BrandKitError(
+            f"The generated wordmark cannot draw {script} text ({text!r}): it supports Latin "
+            "(including accented letters), Greek and Cyrillic only. Upload a logo "
+            "(brand/assets/logo-source/) or brief a designer instead."
+        )
     missing = fonts.missing_glyphs(text, font_path)
     if not missing:
         return
@@ -206,9 +213,12 @@ def _build_wordmark(brand_dir: Path, tokens: Tokens, cfg: AssetsConfig) -> Outpu
     x0, y0, x1, y1 = _path_bounds(d)
     pad = (y1 - y0) * _PAD
     view = (x0 - pad, y0 - pad, (x1 - x0) + 2 * pad, (y1 - y0) + 2 * pad)
+    # Dark-first brands have a dark paper and a light ink: pick by contrast, not by role name.
+    on_light = max((tokens.ink, tokens.paper), key=lambda c: contrast_ratio("#FFFFFF", c))
+    on_dark = max((tokens.ink, tokens.paper), key=lambda c: contrast_ratio("#000000", c))
     variants = {
-        "logo-on-light": tokens.ink,
-        "logo-on-dark": tokens.paper,
+        "logo-on-light": on_light,
+        "logo-on-dark": on_dark,
         "logo-mono-black": "#000000",
         "logo-mono-white": "#FFFFFF",
     }

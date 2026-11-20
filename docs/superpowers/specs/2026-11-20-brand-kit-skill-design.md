@@ -1,7 +1,6 @@
 # Brand Kit Skill: Design
 
 **Date:** 2026-11-20
-**Status:** Draft for review
 
 ## Intent
 
@@ -21,7 +20,7 @@ reproduces the *structure and the process*, never that workspace's content.
 - One skill that takes a company from a first interview to a finished brand folder, in stages, over
   as many sessions as it needs.
 - The same deliverables the reference brand produced for itself (listed below), adapted so they make sense for
-  any early-stage company rather than a venture fund.
+  any company.
 - Works in **Claude Code** and on **claude.ai** (uploaded as a zip). Nothing depends on Claude
   Code-only features.
 - Easy to get: one public link, an installable zip, and a Claude Code plugin install.
@@ -32,8 +31,7 @@ reproduces the *structure and the process*, never that workspace's content.
 - Designing a logo symbol from scratch (see Logos).
 - Running the company's content calendar after the strategy is written.
 - **Naming.** The skill assumes the company has a name, even a working one. If it has none, the
-  skill stops at intake and asks them to come back with one; the README says so (author's
-  call, to keep the skill simple).
+  skill stops at intake and asks them to come back with one; the README says so, to keep the skill simple.
 
 ## Anti-goals (failure even if it technically works)
 
@@ -53,14 +51,14 @@ reproduces the *structure and the process*, never that workspace's content.
 - **Runtimes.** Claude Code (local files, shell) and claude.ai (code execution sandbox, files
   downloaded by the user). In Claude Code, work persists in the `brand/` folder. On claude.ai,
   Claude cannot write to a Project's knowledge and scripts may not be able to read it, so the
-  carrier is a zip (builder check; settled as the author's call): at the end of every stage the
+  carrier is a zip: at the end of every stage the
   skill hands back `brand.zip`; at the start of any new chat the person running it uploads the latest
   `brand.zip` and the skill unzips it before doing anything else. Adding the markdown files to a
   Project's knowledge is recommended as a convenience for later writing, not relied on for state.
 - **Language.** Documents are written in whichever language the company chooses. Bundled fonts
   must cover Latin Extended (all EU languages with Latin script); Greek and Cyrillic coverage is
   preferred where a family offers it. Wordmark outlining must handle accented characters. The
-  anti-patterns guide is written for English and says so (author's call).
+  anti-patterns guide is written for English and says so.
 - **Asset generation** must run with Python, Pillow and fontTools only. Pillow is present in both
   environments; fontTools is pure Python and is vendored into the skill if the sandbox lacks it. No
   Node, no headless browser, no paid image APIs. Network access may be off on claude.ai, so the skill
@@ -139,8 +137,7 @@ investors, hires, partners: whichever the company names), and value propositions
 **Stage 4, Visual identity.**
 - *Colour:* two or three palette options derived from the positioning and the category research
   (avoiding the colours competitors overuse), each shown as swatches with hex values and contrast
-  ratios. The decider picks. The doc records primary, accent and neutral colours, what each colour is
-  allowed to mean, and WCAG contrast pairs. Tokens are written to `tokens.css` and `tokens.json`.
+  ratios. The decider picks. The doc records primary, accent and neutral colours, where each colour is used, and WCAG contrast pairs. Tokens are written to `tokens.css` and `tokens.json`.
 - *Typography:* two or three pairings from free, openly licensed fonts (see Fonts), a type scale and
   usage rules.
 - *Logo usage:* variants, clear space, minimum sizes, do and don't, which file to use where.
@@ -212,7 +209,7 @@ read the tone of voice, writing anti-patterns and messaging framework before dra
 the company's name, and to run the listening pass before showing a draft. The company pastes it
 into a claude.ai Project's instructions or a repo's `CLAUDE.md`. This is how the brand gets applied
 day to day. The skill itself only triggers for building or updating the brand, not for everyday
-writing (author's call).
+writing.
 
 ### Fonts
 
@@ -269,10 +266,8 @@ brand-kit/
 - **Asset scripts** run in a clean Python environment with only Pillow installed, and the generated
   images are checked by eye.
 - **claude.ai check:** upload the zip to claude.ai and run at least stages 0 and 6 there, to confirm
-  the skill loads, the scripts run in the sandbox, and the zip hand-back and resume work. Run by
-  the builder through the browser extension in the author's own claude.ai account, with the
-  author's go-ahead at that point. This is a release gate.
-- **Leakage review:** a fresh reviewer, given the reference brand's documents and the skill, checks that
+  the skill loads, the scripts run in the sandbox, and the zip hand-back and resume work. This is a release gate.
+- **Content review:** a fresh reviewer, given the reference brand's documents and the skill, checks that
   nothing in the skill or the example reflects the reference brand's content. Plus a search for terms specific to it,
   colours and font names.
 

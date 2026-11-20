@@ -45,7 +45,7 @@ call-centre script, a brochure or a bank.
 
 ## The category
 Competitors, as the founder describes them: ShopLedger is corporate and blue; SpokeDesk is slick
-startup purple; Workshop Pro looks like old beige desktop software. Their logos were not reviewed
+startup purple; Spannerlog Classic looks like old beige desktop software. Their logos were not reviewed
 for this brief. Avoid blue, purple and beige; avoid anything that looks like a bank or a generic
 app icon. Avoid the obvious bicycle clichés too (a wheel, a chainring, a bike silhouette), unless
 the designer can make one that no other bike business already has.
