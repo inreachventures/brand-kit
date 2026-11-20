@@ -1,0 +1,264 @@
+{
+  "repo": "https://github.com/google/fonts",
+  "commit": "869789e84da92782c144d83d69b64cec54905b5f",
+  "families": [
+    {
+      "family": "Inter",
+      "license_url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/inter/OFL.txt",
+      "fetched": [
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf",
+          "instanced_weights": [
+            400,
+            600,
+            700
+          ],
+          "outputs": [
+            {
+              "file": "Inter/Inter-Regular.ttf",
+              "sha256": "24c9bc629f2391f258bcfee93140c5ab9a5aa660a43bd5ddac0a91a39cac7557"
+            },
+            {
+              "file": "Inter/Inter-SemiBold.ttf",
+              "sha256": "ac045e63dae78c7458e8471ff3c965a48c6dd499b05853d403652d0d83c01050"
+            },
+            {
+              "file": "Inter/Inter-Bold.ttf",
+              "sha256": "4917fc1014a00c77599c460965dc03e3c3925a65f2eb987c4b4565f7e42ea18f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "family": "DM Sans",
+      "license_url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/dmsans/OFL.txt",
+      "fetched": [
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/dmsans/DMSans%5Bopsz%2Cwght%5D.ttf",
+          "instanced_weights": [
+            400,
+            600,
+            700
+          ],
+          "outputs": [
+            {
+              "file": "DMSans/DMSans-Regular.ttf",
+              "sha256": "628ea93dcfdd1cb1f4f2c9c19cd89b05122c2861b6ba37c1f89e953fdda58221"
+            },
+            {
+              "file": "DMSans/DMSans-SemiBold.ttf",
+              "sha256": "05b5b9c0fe972e2415d9b411627e02c44cbde6172ecc42d262d31e72b69b2f8f"
+            },
+            {
+              "file": "DMSans/DMSans-Bold.ttf",
+              "sha256": "78e1736ca8d2d946a08bee1564e2e4c87b7c457361acb46e6695dce256e9eae4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "family": "Manrope",
+      "license_url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/manrope/OFL.txt",
+      "fetched": [
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/manrope/Manrope%5Bwght%5D.ttf",
+          "instanced_weights": [
+            400,
+            600,
+            700
+          ],
+          "outputs": [
+            {
+              "file": "Manrope/Manrope-Regular.ttf",
+              "sha256": "6e7b36c4e1f8746f035d3337898426b3673f725bfaf9496e7a8b77b63829786a"
+            },
+            {
+              "file": "Manrope/Manrope-SemiBold.ttf",
+              "sha256": "447211925866638dd6794198ea098c7376f9081be096dad1a7c8c5aefbcb0a1b"
+            },
+            {
+              "file": "Manrope/Manrope-Bold.ttf",
+              "sha256": "0c65db5be5eb3283634843a9789ceeaae97b32920f5067f6aac9463ee97d0cbd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "family": "IBM Plex Sans",
+      "license_url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/ibmplexsans/OFL.txt",
+      "fetched": [
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/ibmplexsans/IBMPlexSans%5Bwdth%2Cwght%5D.ttf",
+          "instanced_weights": [
+            400,
+            600,
+            700
+          ],
+          "outputs": [
+            {
+              "file": "IBMPlexSans/IBMPlexSans-Regular.ttf",
+              "sha256": "cf70ff0e7b31c14146e048756c87b22ceb189d72381f3d11ae7ada383421a73c"
+            },
+            {
+              "file": "IBMPlexSans/IBMPlexSans-SemiBold.ttf",
+              "sha256": "41a53b0dc7edeea8a5b2ca9deaf35f29eba9c00d13d871e798b14476cb7921e9"
+            },
+            {
+              "file": "IBMPlexSans/IBMPlexSans-Bold.ttf",
+              "sha256": "80f3dc3f9a6638841ad265ffae8c8f7f45ecc32fde15ff3e9670e24540b36b7b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "family": "Lora",
+      "license_url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/lora/OFL.txt",
+      "fetched": [
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/lora/Lora%5Bwght%5D.ttf",
+          "instanced_weights": [
+            400,
+            600,
+            700
+          ],
+          "outputs": [
+            {
+              "file": "Lora/Lora-Regular.ttf",
+              "sha256": "df345075cc0ab0df300c9787cc0e196aa002e2ccb30d8324ad679cd7b873b924"
+            },
+            {
+              "file": "Lora/Lora-SemiBold.ttf",
+              "sha256": "688b183285f261260889e11e07b798e14a4c71467bd6568ced91dd8fe9b435a2"
+            },
+            {
+              "file": "Lora/Lora-Bold.ttf",
+              "sha256": "a3438b620eed30731f3c618ab1b07e4548b7529c5cd1c90e81c579724c852262"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "family": "IBM Plex Serif",
+      "license_url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/ibmplexserif/OFL.txt",
+      "fetched": [
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/ibmplexserif/IBMPlexSerif-Regular.ttf",
+          "instanced_weights": [],
+          "outputs": [
+            {
+              "file": "IBMPlexSerif/IBMPlexSerif-Regular.ttf",
+              "sha256": "e882efa9c41949a528ac2369079ec5ef050c1c996bbd0bacce3c3326d44cf80d"
+            }
+          ]
+        },
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/ibmplexserif/IBMPlexSerif-SemiBold.ttf",
+          "instanced_weights": [],
+          "outputs": [
+            {
+              "file": "IBMPlexSerif/IBMPlexSerif-SemiBold.ttf",
+              "sha256": "27ce4d105591b48f666b228e1e399838a704594efea22b730000951bea700a60"
+            }
+          ]
+        },
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/ibmplexserif/IBMPlexSerif-Bold.ttf",
+          "instanced_weights": [],
+          "outputs": [
+            {
+              "file": "IBMPlexSerif/IBMPlexSerif-Bold.ttf",
+              "sha256": "534c02c295999dd86e770457ece1d43db0de9256dd98bf741426f63ae904209e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "family": "IBM Plex Mono",
+      "license_url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/ibmplexmono/OFL.txt",
+      "fetched": [
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/ibmplexmono/IBMPlexMono-Regular.ttf",
+          "instanced_weights": [],
+          "outputs": [
+            {
+              "file": "IBMPlexMono/IBMPlexMono-Regular.ttf",
+              "sha256": "6a3412f058c7d8dfd9170c41e85ade48e5156ecb89356110ca57a0a27734af46"
+            }
+          ]
+        },
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/ibmplexmono/IBMPlexMono-SemiBold.ttf",
+          "instanced_weights": [],
+          "outputs": [
+            {
+              "file": "IBMPlexMono/IBMPlexMono-SemiBold.ttf",
+              "sha256": "d3c38e55c78f5b0f28009fddba4834ec503278936a5986032424c9bd2d23aa46"
+            }
+          ]
+        },
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/ibmplexmono/IBMPlexMono-Bold.ttf",
+          "instanced_weights": [],
+          "outputs": [
+            {
+              "file": "IBMPlexMono/IBMPlexMono-Bold.ttf",
+              "sha256": "ac27abd6450a64dd94467580a02fe6235156d5b92f2926ebbc8e7489df64e0be"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "family": "Playfair Display",
+      "license_url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/playfairdisplay/OFL.txt",
+      "fetched": [
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/playfairdisplay/PlayfairDisplay%5Bwght%5D.ttf",
+          "instanced_weights": [
+            400,
+            700
+          ],
+          "outputs": [
+            {
+              "file": "PlayfairDisplay/PlayfairDisplay-Regular.ttf",
+              "sha256": "830b9251d67ad0b49fc98e2313910331b3e54a694342f38d10334dbf82f5b357"
+            },
+            {
+              "file": "PlayfairDisplay/PlayfairDisplay-Bold.ttf",
+              "sha256": "da8f7848d2426f7ad2e40c4c14729222b4984ef9da9ce4d7cd1e22b685061cfd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "family": "Unbounded",
+      "license_url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/unbounded/OFL.txt",
+      "fetched": [
+        {
+          "url": "https://raw.githubusercontent.com/google/fonts/869789e84da92782c144d83d69b64cec54905b5f/ofl/unbounded/Unbounded%5Bwght%5D.ttf",
+          "instanced_weights": [
+            400,
+            700
+          ],
+          "outputs": [
+            {
+              "file": "Unbounded/Unbounded-Regular.ttf",
+              "sha256": "0d04572091415602cf9113f6565f01fb784b15575929f9ab1018be7c5d00e0dd"
+            },
+            {
+              "file": "Unbounded/Unbounded-Bold.ttf",
+              "sha256": "6d92cd41ff4a0f38d6e97da9d66d8e836b4c3f35503337c8f81d91cfe80f18d7"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

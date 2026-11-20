@@ -12,9 +12,9 @@ TOKENS = {
         "neutrals": {"100": "#F1EFEB", "300": "#CFCBC4", "500": "#8A857D", "700": "#4A4640"},
     },
     "fonts": {
-        "heading": {"family": "Acme Sans", "weight": 700},
-        "body": {"family": "Acme Sans", "weight": 400},
-        "mono": {"family": "Acme Mono", "weight": 400},
+        "heading": {"family": "Inter", "weight": 700},
+        "body": {"family": "Inter", "weight": 400},
+        "mono": {"family": "IBM Plex Mono", "weight": 400},
     },
 }
 CONFIG = {
