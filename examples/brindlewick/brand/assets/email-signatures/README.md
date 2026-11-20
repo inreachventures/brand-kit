@@ -11,12 +11,22 @@ styles, which is the only kind of HTML that mail apps reliably keep.
 ## Host the logo image first
 
 Mail apps load the small logo from a web address, so the image has to be online before the signature
-will show it. The file is `brand/assets/logos/mark-tile-160.png`.
+will show it. The file is `brand/assets/logos/mark-tile-160.png`. These signatures currently load it
+from:
 
-- Upload it to your website so it is available at `<your website>/brand/mark-tile-160.png`. The
-  signatures are already written to use that address when your config has a website.
-- If your config has no website, the signatures contain `[LOGO_URL]` instead. Upload the image
-  anywhere public (your website, a public file store, a CDN) and replace `[LOGO_URL]` in each file with its full address.
+    https://brindlewick.example/brand/mark-tile-160.png
+
+The address comes from `brand/assets/config.json`:
+
+- If the config has a `logo_url`, the signatures use it as it is.
+- Otherwise, if it has a `website`, they use `<website>/brand/mark-tile-160.png`. Use this only if you
+  can put a file at exactly that address. Site builders such as Squarespace, Wix, Webflow and Framer
+  usually cannot serve a file at a path you choose.
+- With neither, the signatures contain `[LOGO_URL]`.
+
+If you cannot use the website address, upload the PNG anywhere public (your site builder's image or
+file upload, a public file store, a CDN), copy the address it gives you, set `logo_url` to it in
+`config.json` and build the signatures again. You can also replace `[LOGO_URL]` by hand in each file.
 
 Open the address in a private browser window to check that it loads without signing in.
 

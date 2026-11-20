@@ -31,19 +31,12 @@ A 1.25 ratio from a 16 px base, for a mix of website pages and product screens.
 | Part number | 15 px | Plex Mono 400 | 1.5 | Part numbers and codes, inline or in tables |
 
 ## Rules
-- **Line length:** 60 to 75 characters for running text.
-- **Alignment:** left-aligned, ragged right. No justified text.
-- **Capitals:** sentence case for headings and buttons ("Book a repair", not "Book A Repair"). No
-  all-capital headings; short labels in capitals are fine in Plex Sans 600 with a little extra
-  letter spacing.
-- **Emphasis:** Plex Sans 600, sparingly. No underlines except links. No italics for emphasis in
-  headings.
-- **Numbers:** figures for every number ("140 shops", "6 years" in tables; "six years" in prose is
-  fine). Part numbers always in Plex Mono, exactly as the manufacturer writes them.
-- **Combining:** serif for headings, sans for everything else. Never set body text in the serif
-  or headings in the mono.
-- **Do not:** stretch, outline or shadow type; use more than these three families; set the
-  wordmark in any other font.
+- **Part numbers:** in Plex Mono, exactly as the manufacturer writes them. Maya chose the mono
+  "for part numbers".
+- **Combining:** serif for headings, sans for everything else, as in the chosen pairing.
+- **Capitals:** sentence case for headings and buttons ("Book a repair", not "Book A Repair").
+  A proposed default Maya accepted (see `decisions.md`).
+- **Line length:** 60 to 75 characters for running text. A proposed default Maya accepted.
 
 ## Fallbacks
 - **Email and office documents:** Georgia for headings, Arial for body text, Courier New for part

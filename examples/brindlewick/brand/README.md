@@ -74,18 +74,19 @@ Audiences and value propositions
   where applicants come from (strategy/audience-hires.md).
 - Honest setup time for a new shop (strategy/value-propositions.md, shop owners).
 - Whether to publish the price (strategy/value-propositions.md, shop owners).
-- Distributor and hire objections are assumed; replace them with real ones
+- Objections from distributors and from candidates, not heard yet
   (strategy/value-propositions.md, two markers).
-- Whether any order figures can be shared with distributors (strategy/value-propositions.md).
-- What Maya will say about funding to candidates (strategy/value-propositions.md, hires).
 
 Messaging and voice
+- Maya's agreement or edits to the core message (strategy/messaging-framework.md, core message;
+  decisions.md, core message entry).
 - What comes next for the product, in a form that can be said in public
   (strategy/messaging-framework.md, product story).
 - Tom's voice note rests on one sample: words he would never use and habits to watch need two or
   three more posts (strategy/writing-anti-patterns.md, research/source/voices/tom-reyes.md).
 
 Style guide
+- Whether Brindlewick uses illustration or icons (style-guide/photography-direction.md).
 - Where approved photos are kept and who looks after them (style-guide/photography-direction.md).
 - Designer budget, timeline and number of concepts (style-guide/designer-brief.md, three markers).
 

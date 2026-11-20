@@ -38,16 +38,16 @@ The core message, the messages for each audience and the phrases are in
 | Website (brindlewick.example) | Shop owners, hires | Where every post and recommendation sends people | Maya | Homepage, features, jobs page |
 | Instagram | Shop owners | Shop stories, when a shop sends a photo and agrees | Whoever is free | One photograph, one to three sentences |
 
-## Cadence: the committed minimum
+## Cadence: what we keep up in a bad month
 
 ### By channel
 
-| Channel | Minimum | Fixed day or time | Owner |
+| Channel | Cadence | Fixed day or time | Owner |
 |---------|---------|-------------------|-------|
 | Maya's LinkedIn | Two posts a month (weekly when possible) | none | Maya |
 | Tom's LinkedIn | Two posts a month (weekly when possible) | none | Tom |
 | Monthly email to shops | One a month | First Tuesday of the month | Maya |
-| Instagram | No minimum: a bonus | none | Whoever is free |
+| Instagram | None fixed: a bonus | none | Whoever is free |
 | Website | Updated when the product or the numbers change | none | Maya |
 
 ### By person
@@ -57,8 +57,8 @@ The core message, the messages for each audience and the phrases are in
 | Maya Okafor | Two LinkedIn posts a month at least; the monthly email | LinkedIn, email, website | About 1, plus 2 hours a month for the email |
 | Tom Reyes | Two LinkedIn posts a month at least; reviews the monthly email | LinkedIn | About 2 |
 
-The aim of a post a week each is what Maya called realistic. The minimum is what survives a bad
-month. Anything above it is a bonus, not a missed target.
+The aim of a post a week each is what Maya called realistic. Two a month each is what she agreed
+would still happen in a bad month, and the plan counts only on that.
 
 ## Where topics come from
 - **Maya:** repairs and customers she hears about from shops; questions shops ask in onboarding
@@ -98,7 +98,7 @@ Maya does the adapting; it is part of her two hours a month on the email.
 - The number of distributors, until Tom confirms it.
 - A shop's name, photo or words without that shop's permission.
 - Any number of hours or calls saved: none has been measured.
-See the channel calibration in `strategy/messaging-framework.md`.
+See "What we can say where" in `strategy/messaging-framework.md`.
 
 ### Replies and difficult moments
 - Maya answers comments on her posts, Tom on his. [Open: how quickly.]
@@ -115,12 +115,12 @@ See the channel calibration in `strategy/messaging-framework.md`.
 | Win shops | Replies to the monthly email | the email inbox | monthly |
 | Win shops | Shops that recommend Brindlewick to another shop | signup question, support notes | quarterly |
 | Help hiring | Applicants who found Brindlewick through Tom's or Maya's posts | "Where did you see this job?" on applications (to be added) | per role |
-| Both | Posts published against the minimum | the team's own count | monthly |
+| Both | Posts published each month, set against two each | the team's own count | monthly |
 
 Early signals: email replies, posts published, comments from shop owners. Results: signups and
 applicants who name a post or another shop.
 
 ## Review
-On 20 February 2027, Maya and Tom review the first 90 days: posts against the minimum, what the
+On 20 February 2027, Maya and Tom review the first 90 days: posts published against two a month each, what the
 signup and application questions show, and whether Instagram earns a fixed cadence or is dropped.
-They set the minimums for the next period from what actually happened.
+They set the cadence for the next period from what actually happened.

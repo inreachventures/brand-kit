@@ -1,62 +1,58 @@
 # Colour palette
 
-Workshop colours: a bottle-green enamel like an old painted shop sign, a signal orange for small
-highlights, on warm off-white paper. It follows from a brand built on someone who has worked in a
-shop, and keeps clear of the blue, purple and beige the category uses.
+Workshop colours: steel for the brand colour, an enamel red for small highlights, on chalk-white
+paper. They come from the materials Maya named at intake ("steel, enamel paint, chalk on a
+blackboard") and keep clear of the blue, purple and beige the category uses.
 
 ## Colours
 
-| Role | Name | Hex | Used for | Never used for |
-|------|------|-----|----------|----------------|
-| Primary | Enamel green | #2B5A36 | Banners, the logo tile, the Open Graph image, buttons, links, headings on paper where colour helps | Body text; large areas behind small grey text |
-| Accent | Signal orange | #E0662B | Small highlights on dark: a rule, a tag, a chart line, a "new" label; text on ink | Text on paper or on green (too little contrast); errors or warnings in the product |
-| Ink | Workshop black | #1A2119 | Body text, headings, the wordmark on light backgrounds | Large filled areas where green is meant |
-| Paper | Chalk white | #F7F4EC | Page backgrounds, the wordmark on green | Text on white or on light neutrals |
-| Neutral 100 | Dust | #ECE8DE | Subtle panels, table stripes, cards | Text |
-| Neutral 300 | Steel grey | #CFC9BA | Borders, rules, dividers | Text of any size |
-| Neutral 500 | Oil grey | #6B675C | Secondary text, captions, signature details | Text smaller than 14 px on neutral 100 |
-| Neutral 700 | Iron | #45423B | Strong secondary text, footers | Large backgrounds behind ink |
+| Role | Name | Hex | Used for | Not used for |
+|------|------|-----|----------|--------------|
+| Primary | Workshop steel | #434D55 | Banners, the logo tile, the Open Graph image, buttons, links | Body text |
+| Accent | Enamel red | #C8392B | Small highlights: a rule, a tag, a chart line | Errors or warnings in the product |
+| Ink | Blackboard | #1A1D20 | Body text, headings, the wordmark on light backgrounds | |
+| Paper | Chalk | #F3F3EF | Page backgrounds, the wordmark on steel | |
+| Neutral 100 | Dust | #E6E6E1 | Subtle panels, table stripes, cards | Text |
+| Neutral 300 | Bare metal | #C6C7C2 | Borders, rules, dividers | Text |
+| Neutral 500 | Graphite | #60656A | Secondary text, captions, signature details | |
+| Neutral 700 | Iron | #3E4348 | Strong secondary text, footers | |
 
-## What the colours mean
-- **Enamel green** is the brand. It can mean "Brindlewick" and "go ahead" (a primary button). It
-  should cover a large share of a banner or the top of a page, and little of a text page.
-- **Signal orange** draws the eye. Keep it to under a tenth of any page. In the product it must
-  not stand for an error, a warning or "overdue", because next to green it would make a red and
-  green pair; anything that matters needs a word or an icon too.
+## Roles
+Maya accepted these as proposed defaults (see `decisions.md`).
+- **Workshop steel** is the brand colour: banners, the tile and the top of a page, and little of a
+  text page.
+- **Enamel red** is for small highlights only. In the product it does not mark an error or a
+  warning; the product's status colours are its own and are not part of the brand.
 - **Ink and paper** carry the reading. Most pages are mostly paper.
-- **Neutrals** are warm greys, like steel and oil, so they sit with the paper rather than looking
-  blue-grey and corporate.
-- The product will need red for errors and a status palette of its own. Those colours are not part
-  of the brand and should not appear in marketing.
 
 ## Contrast pairs
 
 | Text or element | Background | Ratio | Allowed for |
 |-----------------|------------|-------|-------------|
-| Ink #1A2119 | Paper #F7F4EC | 15.0:1 | body text |
-| Ink #1A2119 | White | 16.5:1 | body text |
-| Ink #1A2119 | Neutral 100 #ECE8DE | 13.5:1 | body text |
-| Paper #F7F4EC | Enamel green #2B5A36 | 7.3:1 | body text |
-| White | Enamel green #2B5A36 | 8.0:1 | body text |
-| Enamel green #2B5A36 | White | 8.0:1 | body text, links |
-| Enamel green #2B5A36 | Paper #F7F4EC | 7.3:1 | body text, links |
-| Neutral 500 #6B675C | White | 5.7:1 | body text |
-| Neutral 500 #6B675C | Paper #F7F4EC | 5.1:1 | body text |
-| Neutral 700 #45423B | Paper #F7F4EC | 9.1:1 | body text |
-| Signal orange #E0662B | Ink #1A2119 | 4.8:1 | body text (on ink only) |
-| Signal orange #E0662B | Paper #F7F4EC | 3.1:1 | large text and interface elements only |
-| Signal orange #E0662B | Enamel green #2B5A36 | 2.3:1 | decorative only |
-| Ink #1A2119 | Enamel green #2B5A36 | 2.1:1 | decorative only: never put ink text on green |
-| Neutral 300 #CFC9BA | Paper #F7F4EC | 1.5:1 | decorative only (rules and borders) |
+| Ink #1A1D20 | Paper #F3F3EF | 15.2:1 | body text |
+| Ink #1A1D20 | White | 16.9:1 | body text |
+| Ink #1A1D20 | Neutral 100 #E6E6E1 | 13.5:1 | body text |
+| Paper #F3F3EF | Workshop steel #434D55 | 7.8:1 | body text |
+| White | Workshop steel #434D55 | 8.6:1 | body text |
+| Workshop steel #434D55 | White | 8.6:1 | body text, links |
+| Workshop steel #434D55 | Paper #F3F3EF | 7.8:1 | body text, links |
+| Neutral 500 #60656A | White | 5.9:1 | body text |
+| Neutral 500 #60656A | Paper #F3F3EF | 5.3:1 | body text |
+| Neutral 700 #3E4348 | Paper #F3F3EF | 9.0:1 | body text |
+| Enamel red #C8392B | White | 5.1:1 | body text |
+| Enamel red #C8392B | Paper #F3F3EF | 4.6:1 | body text |
+| Enamel red #C8392B | Ink #1A1D20 | 3.3:1 | large text and interface elements only |
+| Enamel red #C8392B | Workshop steel #434D55 | 1.7:1 | decorative only |
+| Ink #1A1D20 | Workshop steel #434D55 | 2.0:1 | decorative only: never put ink text on steel |
+| Neutral 300 #C6C7C2 | Paper #F3F3EF | 1.5:1 | decorative only (rules and borders) |
 
 ## Colours we avoid
 - **Blue**, especially corporate blue: ShopLedger's colour, and it looks like a bank, which Maya
-  ruled out.
+  ruled out. This is why the cobalt accent was turned down.
 - **Purple**: SpokeDesk's "startup purple", ruled out by Maya.
-- **Beige and flat grey** as a main colour: it reads as Workshop Pro and old desktop software. The
-  paper is warm off-white, kept light enough not to read as beige.
-- **A corporate green.** The first green proposed (#1F5240) was warmed to #2B5A36 because Maya
-  felt it looked "a bit bank-ish".
+- **Beige** as a main colour: it reads as Workshop Pro and old desktop software.
+- **Green**: the first palette's enamel green was replaced after Maya came back to her worry that
+  it was "a bit bank-ish".
 
 ## Files
 `style-guide/tokens.json` is the source of truth for every colour. `style-guide/tokens.css` is

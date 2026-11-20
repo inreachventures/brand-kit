@@ -8,13 +8,14 @@ software.
 Brindlewick is workshop software made by a mechanic. It takes the bookings, the "is it ready?"
 calls and the parts orders off the bench, so the paper diary can go.
 
+[Open: Maya's agreement or edits. She saw this draft alongside the tagline candidates and
+commented only on the tagline.]
+
 ## Tagline
 **Workshop software, made by a mechanic.**
 
-Maya chose it because it says what Brindlewick is and the one thing no competitor can say, and it
-will still be true when the company is three times the size. It is plain on purpose: for a
-company that most shops hear about from another shop, a line that explains itself does more than a
-clever one.
+Maya chose it on the recommendation that it says what Brindlewick is and the one thing no
+competitor can say.
 
 ### Candidates considered
 - "Booking and parts software for independent bike shops": accurate, but any competitor could use
@@ -67,8 +68,8 @@ diary, write it in, and go back to the bike. The parts for tomorrow's jobs still
 from two distributors whose websites call the same brake pad different things, so that waits until
 nine at night.
 
-Nothing about that is a disaster, which is why most shops still work this way. It just costs the
-mechanic the part of the day they are paid for.
+Most shops still work this way. The calls and the late ordering come out of the hours the
+mechanic would otherwise spend on paid repairs.
 
 With Brindlewick, customers book online, and the mechanic quotes the job against the booking.
 When the bike is ready, the customer gets a text. Parts for the job are ordered from the same
@@ -123,7 +124,7 @@ Ireland use it, and about 20 in the Netherlands since spring.
 - "Workshop management": say what the mechanic does: books, quotes, texts, orders.
 - Any number of hours or calls saved: none has been measured.
 
-## Channel calibration
+## What we can say where
 
 | Fact or number | Public | Private only | Not yet | Notes |
 |----------------|--------|--------------|---------|-------|

@@ -1,7 +1,7 @@
 # Social branding
 
 On social platforms Brindlewick is mostly two people: Maya and Tom on LinkedIn, with their own
-photos and the brand in the banners. The company accounts carry the green tile, and Instagram
+photos and the brand in the banners. The company accounts carry the steel tile, and Instagram
 carries shop stories in photographs.
 
 ## Profile and cover images
@@ -21,17 +21,12 @@ photographs on their personal accounts, ideally taken in a workshop, with the Br
 behind them.
 
 ## Posts
-- **Images:** a real photograph from a shop (see `photography-direction.md`) for most posts.
-  Text-only posts are fine for Maya's short ones.
-- **Text on images:** only for a number or a short quote, set in IBM Plex Serif Bold on enamel
-  green or paper, with the wordmark small in a corner. No more than ten words.
-- **Numbers:** one number per image, large, with one line of context under it in Plex Sans
-  ("140 shops in the UK and Ireland").
-- **Quotes from shops:** only with the shop's permission, with the shop's name and town.
-- **Announcements:** a plain sentence of what changed and why it matters to a shop, in the post
-  text, not on the image.
-- **Colours:** enamel green and paper; signal orange only as a small highlight.
-- **Alt text:** on every image, in plain words.
+- **Shops:** name, quote or show a shop only with that shop's agreement (Maya's approval rule).
+- **Images:** a real photograph from a shop (see `photography-direction.md`), never an
+  AI-generated one. Text-only posts are fine for Maya's short ones.
+- **Text on images:** only for a number or a short quote, in IBM Plex Serif Bold on workshop steel
+  or paper. A proposed default Maya accepted (see `decisions.md`).
+- **Alt text:** on every image, in plain words. A proposed default Maya accepted.
 
 ## Voice on social
 See the channel table in `strategy/tone-of-voice.md` (LinkedIn for Maya and Tom, Instagram), and

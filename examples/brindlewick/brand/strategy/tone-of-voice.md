@@ -19,8 +19,8 @@ procurement across suppliers."
 
 ### Plain, but warm
 Short words and short sentences, but written by a person, to a person. Contractions are fine. No
-exclamation marks, no "thrilled", and no forced jokes. Warmth comes from noticing what the
-reader's day is like, not from adjectives.
+exclamation marks, no "thrilled", and no forced jokes. Show warmth by noticing what the reader's
+day is like.
 
 **Like this:** "You're set up. Customers can book repairs with you online from today, at the
 link below."
@@ -29,8 +29,8 @@ link below."
 
 ### Start at the bench
 Open with a bike, a customer or a moment in the shop, not with Brindlewick. The reader should
-recognise their own day before they hear about the product. Keep it to a line or two; this is a
-way in, not a story for its own sake.
+recognise their own day before they hear about the product. Keep it to a line or two, then get
+to what Brindlewick does.
 
 **Like this:** "The phone rings with your hands in a bottom bracket. With Brindlewick, that
 customer books online and gets a text when the bike's ready."
@@ -62,13 +62,15 @@ experience in mind to ensure optimal engagement."
 
 | We sound like | We do not sound like |
 |---------------|----------------------|
-| A mechanic at the counter | A software salesperson |
+| A mechanic at the counter | A call-centre script |
 | The note on the job card: what was done, what is next | A brochure |
 | Someone who has been there at nine at night | Someone who has read about it |
 | Warm | Twee or matey |
 | Sure of the facts we have | Excited |
 
 ## By channel
+
+Maya accepted this table as a proposed default (see `decisions.md`).
 
 | Channel | How the voice adapts | Length and format |
 |---------|----------------------|-------------------|
@@ -79,7 +81,6 @@ experience in mind to ensure optimal engagement."
 | Monthly email to shops | What changed in the product, one tip, one story from a shop. | Under 300 words. One subject per section. |
 | Sales messages | Start with their shop, not with us. One question, one fact. | Under 120 words. |
 | Support replies | Answer first, then the why. Never blame the shop. | As short as the answer allows. |
-| Investor updates | Plainest of all. Numbers, what happened, what is next. | Bullet points are fine here. |
 | Job adverts | What the work is and who the shops are. Riding helps; say so. | Under 400 words. No "rockstars", no "fast-paced". |
 
 ## Before and after
@@ -113,6 +114,6 @@ says what it does and the one fact no competitor has.
 
 ## See also
 - `writing-anti-patterns.md`: the habits to avoid, a voice note each for Maya and Tom, and the
-  read-aloud check.
+  listening pass.
 - `messaging-framework.md`: what to say to each audience, the phrases to use and avoid, and which
   numbers can be said in public.

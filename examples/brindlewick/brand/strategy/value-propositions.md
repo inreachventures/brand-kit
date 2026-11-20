@@ -41,13 +41,8 @@ matched on manufacturer part number whatever you call them.**
 | 140 shops in the UK and Ireland and about 20 in the Netherlands | Company records |
 
 ### Objections and answers
-[Open: assumed objections; the founders have not heard these yet. Replace them
-with real ones as they come up.]
-
-- **"How many orders will we get?":** [Open: whether any order figures can be shared, and with
-  whom. Never in public.]
-- **"We already sell online":** shops still have to search each distributor's site separately.
-  In Brindlewick they search once.
+[Open: objections from distributors. Maya has not heard any yet; ask the next three distributors
+who decline to be listed.]
 
 ### What we do not claim
 - Order volumes or the value of orders.
@@ -66,11 +61,8 @@ engineer run the show.**
 | A small team: nine people | Company records |
 
 ### Objections and answers
-[Open: assumed objections; the founders have not heard these yet. Replace them
-with real ones as they come up.]
-
-- **"Is a seed company stable?":** [Open: what Maya is willing to say about funding.]
-- **"Do I need to be a mechanic?":** no. Liking bikes helps.
+[Open: objections from candidates. Maya has not heard any yet; ask the next three candidates who
+turn down an offer or drop out.]
 
 ### What we do not claim
 - Growth rates, revenue or funding amounts.

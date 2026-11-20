@@ -31,11 +31,11 @@ never loud; explain the why, in a sentence. For a designer that means: made, not
 sturdy rather than sleek; warm, not twee.
 
 It looks like a mechanic at the counter, a job card, an old enamel sign. It does not look like a
-software salesperson, a brochure or a bank.
+call-centre script, a brochure or a bank.
 
 ## Existing identity
-- Colours: enamel green #2B5A36 (primary), signal orange #E0662B (accent), workshop black
-  #1A2119 (ink), chalk white #F7F4EC (paper); warm greys #ECE8DE, #CFC9BA, #6B675C, #45423B.
+- Colours: workshop steel #434D55 (primary), enamel red #C8392B (accent), blackboard #1A1D20
+  (ink), chalk #F3F3EF (paper); greys #E6E6E1, #C6C7C2, #60656A, #3E4348.
 - Fonts: IBM Plex Serif Bold for headings and the current wordmark; IBM Plex Sans for text; IBM
   Plex Mono for part numbers.
 - The current wordmark (the name in Plex Serif Bold) and the "B" tile in `assets/logos/`. The
@@ -56,7 +56,7 @@ the designer can make one that no other bike business already has.
 - Full colour, black and white versions.
 - A square version legible at 16 px, for the favicon and app icon.
 - SVG and PNG files, and the source files.
-- Backgrounds for the social banners and the video-call background, in place of the plain green
+- Backgrounds for the social banners and the video-call background, in place of the plain steel
   field the build produces. Maya turned down the generated circle pattern as "like bubbles, not a
   workshop". Something closer to steel or enamel, or plain.
 

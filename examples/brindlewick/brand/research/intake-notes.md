@@ -63,7 +63,7 @@ customer when the bike's ready, and reorder parts from distributors in one place
 | 140 paying shops in the UK and Ireland | company records | Maya, interview | yes |
 | About 20 shops in the Netherlands, since spring 2026 | company records | Maya, interview | yes |
 | Nine people, fourteen months old | company records | Maya, interview | yes |
-| Maya ran a bike shop in Leeds for six years | her own history | founder brief, Maya | yes |
+| Maya ran a bike shop in Leeds for six years | her own history | Maya, interview | yes |
 | Parts search matches on manufacturer part number first | product | Tom's post | yes |
 | Named customers | none yet | Maya would need to ask shops | not until permission |
 | Individual shop revenue | | | never |

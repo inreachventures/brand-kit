@@ -25,7 +25,8 @@ entry is last.
 - **Stage:** 0 Intake
 - **Decision:** Never say in public what an individual shop earns, or any distributor's margins.
 - **Alternatives considered:** none.
-- **Why:** Both are the shops' and distributors' business, not Brindlewick's to share.
+- **Why:** Maya: "Never say an individual shop's revenue or distributor margins." She gave no
+  further reason.
 - **Replaces:** nothing
 
 ## 2026-11-20 Current website copy and placeholder logo dropped
@@ -72,7 +73,8 @@ entry is last.
 - **Decision:** "Brindlewick is workshop software made by a mechanic. It takes the bookings, the
   'is it ready?' calls and the parts orders off the bench, so the paper diary can go."
 - **Alternatives considered:** none drafted separately; it follows the chosen positioning.
-- **Why:** It carries both halves of the position Maya chose: who made it, and what it replaces.
+- **Why:** [Open: Maya's agreement or edits. She saw the draft alongside the tagline candidates
+  and commented only on the tagline.]
 - **Replaces:** nothing
 
 ## 2026-11-20 Tagline: "Workshop software, made by a mechanic."
@@ -168,7 +170,7 @@ entry is last.
 - **Why:** Instagram had no owner and no hours. Maya: "Fine, Instagram's a bonus."
 - **Replaces:** nothing
 
-## 2026-11-20 Committed minimum: two posts a month each, one email a month
+## 2026-11-20 Cadence: two posts a month each at least, one email a month
 
 - **Stage:** 5 Communication strategy
 - **Decision:** At least two LinkedIn posts a month each from Maya and Tom, weekly when they can.
@@ -213,8 +215,7 @@ entry is last.
 - **Stage:** 6 Assets
 - **Decision:** Keep the generated circle pattern on the banners, the video-call background and
   the link preview until a designer replaces it. Added to the designer brief.
-- **Alternatives considered:** removing the pattern or using a steel texture. The asset build
-  cannot do either.
+- **Alternatives considered:** removing the pattern now, or a steel texture behind the wordmark.
 - **Why:** Maya: the circles "look like bubbles, not a workshop", but "keep them for now and put it
   in the designer brief."
 - **Replaces:** nothing
@@ -226,6 +227,73 @@ entry is last.
   green field with the wordmark, with no pattern (`banner_pattern` is left out of
   `assets/config.json`). A designer's background stays in the designer brief.
 - **Alternatives considered:** keeping the generated circle pattern until a designer replaces it.
-- **Why:** Maya turned the circles down as "bubbles, not a workshop", and the asset build can now
-  leave them out.
+- **Why:** Maya turned the circles down as "bubbles, not a workshop" and asked first whether they
+  could go.
 - **Replaces:** 2026-11-20 Banner pattern kept for now
+
+## 2026-11-20 Palette: workshop steel and enamel red on chalk
+
+- **Stage:** 4 Visual identity
+- **Decision:** Primary #434D55 (workshop steel), accent #C8392B (enamel red), ink #1A1D20, paper
+  #F3F3EF, neutrals #E6E6E1, #C6C7C2, #60656A, #3E4348. Shown as the third round,
+  `style-guide/previews/palette-options-round3.png`. Tokens, the style guide and the assets were
+  rebuilt with it.
+- **Alternatives considered:** keeping enamel green #2B5A36 with signal orange #E0662B; workshop
+  steel with a cobalt enamel accent #2F5DB0; charcoal #33373B with enamel red #D2442F.
+- **Why:** Seeing the green on every banner brought back Maya's question whether it was "a bit
+  bank-ish", and she asked to see the steel and enamel she named at intake. She turned down the
+  cobalt accent as too near ShopLedger's blue and the bank look she ruled out, and chose steel
+  over charcoal because the charcoal banners read as black, as the blackboard option did in the
+  first round.
+- **Replaces:** 2026-11-20 Palette: enamel green and signal orange on chalk white
+
+## 2026-11-20 Stage 3 proposed defaults: the voice by channel
+
+- **Stage:** 3 Messaging and voice
+- **Decision:** Maya accepted these proposed defaults for the "By channel" table in
+  `strategy/tone-of-voice.md`, as shown:
+  1. Website: the plainest voice; headlines under ten words, short paragraphs, at most one bench
+     moment per page.
+  2. Maya's LinkedIn: first person, a specific repair or customer, three to six short sentences,
+     one or two hashtags at most.
+  3. Tom's LinkedIn: one problem, how it was solved and why, in two to five paragraphs.
+  4. Instagram: one to three sentences under a photo; name the shop only with permission.
+  5. Monthly email to shops: what changed, one tip, one shop story, under 300 words.
+  6. Sales messages: start with their shop; one question, one fact, under 120 words.
+  7. Support replies: answer first, then the why; never blame the shop.
+  8. Job adverts: what the work is and who the shops are, say that riding helps, under 400 words,
+     no "rockstars" or "fast-paced".
+  An investor-updates row was taken out before the list was shown, because Maya left investors
+  out at stage 2.
+- **Alternatives considered:** leaving the channel table out until each channel had been tried.
+- **Why:** Maya accepted all eight without changes.
+- **Replaces:** nothing
+
+## 2026-11-20 Stage 4 proposed defaults: colour roles, type, logo, photography, posts
+
+- **Stage:** 4 Visual identity
+- **Decision:** Maya accepted these proposed defaults, as shown:
+  1. Colour roles: workshop steel for banners, the tile and the top of a page, and little of a
+     text page.
+  2. Colour roles: enamel red for small highlights only, and never for an error or a warning in
+     the product.
+  3. Colour roles: ink and paper carry the reading; most pages are mostly paper.
+  4. Type: sentence case for headings and buttons.
+  5. Type: running text 60 to 75 characters a line.
+  6. Logo clear space: the height of the capital "B" around the wordmark, a quarter of the tile's
+     width around the tile.
+  7. Logo minimum sizes: wordmark 100 px on screen and 25 mm in print; tile 16 px and 8 mm; the
+     tile instead of the wordmark below these.
+  8. Logo: never stretch, squash or rotate the wordmark, or retype the name.
+  9. Photography: start at the bench, with hands, tools and bikes at work.
+  10. Photography: natural workshop light, no vintage filters, no props, no heavy grading or
+      tinting; close and mid shots more than wide ones.
+  11. Photography: never show customer data on a screen.
+  12. Photography: only photos Brindlewick took or has a written licence for, with the shop's
+      permission recorded with the file.
+  13. Posts: text on an image only for a number or a short quote, in IBM Plex Serif Bold on steel
+      or paper.
+  14. Alt text on every image, in plain words.
+- **Alternatives considered:** leaving each of these sections as an open item.
+- **Why:** Maya accepted all fourteen without changes.
+- **Replaces:** nothing
