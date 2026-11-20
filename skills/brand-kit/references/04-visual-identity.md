@@ -12,10 +12,11 @@ path to the brand folder.
 ## Order of work
 
 1. Settle the logo route, because it affects the font choice.
-2. Palette: options, preview, choice.
+2. Palette: options, preview, choice. Write the chosen colours into `tokens.json` straight away,
+   so the type preview shows the fonts on them.
 3. Typography: pairings, preview, choice.
-4. Write `tokens.json` and run `tokens-css`.
-5. Write the five style-guide documents.
+4. Add the fonts to `tokens.json` and run `tokens-css`.
+5. Ask the photography questions, then write the five style-guide documents.
 6. Write the designer brief, if the founder wants a symbol.
 
 Keep the option files and preview images in `brand/style-guide/previews/`, so the record of what
@@ -123,16 +124,23 @@ Fix an option that fails before you show it.
 ### Preview and choose
 
 Write the options as a JSON list, each shaped like the `colors` object in `tokens.json`, to
-`brand/style-guide/previews/palette-options.json`. Then:
+`brand/style-guide/previews/palette-options.json`. Give each option a `"name"`, a few words for the
+idea behind it, such as `"name": "Enamel green"`; the image uses it as the row label. Without a
+name the rows are labelled Option A, B, C, and a second round would reuse the same letters for
+different colours. Then:
 
 ```
 <cli> preview-palette brand/style-guide/previews/palette-options.json brand/style-guide/previews/palette-options.png
 ```
 
-The image shows each option as a row (Option A, B, C) of swatches with hex values and contrast
-ratios. Show it to the founder with one line on the idea behind each option and your
+The image shows each option as a row of swatches, labelled with its name, with hex values and
+contrast ratios. Show it to the founder with one line on the idea behind each option and your
 recommendation. Let them pick, combine or adjust hex values, and re-render until they are happy.
-Record the choice.
+Save each new round under a new file name (`palette-options-round2.json`, and so on) with new
+names for the options. Record the choice.
+
+Then write `brand/style-guide/tokens.json` with the chosen colours and no `fonts` key yet (the
+shape is under "Write the tokens" below). The type preview reads the colours from it.
 
 ## Typography
 
@@ -181,11 +189,16 @@ Write the pairings to `brand/style-guide/previews/type-pairings.json` as a list 
 `{"heading": {"family": "...", "weight": 700}, "body": {"family": "...", "weight": 400}}`, then:
 
 ```
-<cli> preview-type brand brand/style-guide/previews/type-pairings.json brand/style-guide/previews/type-pairings.png
+<cli> preview-type brand brand/style-guide/previews/type-pairings.json brand/style-guide/previews/type-pairings.png --sample "[the tagline, then a sentence or two of their real copy]"
 ```
 
-The image shows each pairing as a heading and a paragraph in the real fonts. The command prints a
-warning when a font lacks a character in the sample. Show the founder, recommend one, record the
+A founder judges type on their own words, so pass `--sample` with the tagline from stage 3
+followed by a sentence or two of their copy, such as the core message; without it the preview
+uses a pangram. Each pairing shows the company name in the heading font at logo size on the
+primary colour, then the first sentence of the sample as a heading and the whole sample as a
+paragraph in the body font, all in ink on paper. Without `tokens.json` the preview is black on
+white, and without `assets/config.json` it has no company name. The command prints a warning when
+a font lacks a character in the name or the sample. Show the founder, recommend one, record the
 choice.
 
 ### Type scale
@@ -195,8 +208,8 @@ Propose a scale from a base size of 16 px and a ratio: about 1.2 for dense produ
 
 ## Write the tokens
 
-Write `brand/style-guide/tokens.json` in exactly this shape. `mono` is optional; every other key is
-required. Colours are six-digit hex values.
+Add the chosen fonts to `brand/style-guide/tokens.json`, so that it has exactly this shape. `mono`
+is optional; every other key is required. Colours are six-digit hex values.
 
 ```json
 {
@@ -219,7 +232,26 @@ Then write `tokens.css` from it:
 <cli> tokens-css brand
 ```
 
-Run `tokens-css` again after every change to `tokens.json`.
+Each font variable in `tokens.css` carries a fallback stack for its kind of font (serif, sans or
+mono), so text stays in the right style where the brand font is not loaded. Run `tokens-css` again
+after every change to `tokens.json`.
+
+## Photography and imagery: ask first
+
+`photography-direction.md` needs answers only the founder can give. Before writing it, ask one
+cluster:
+
+- **Subjects:** what should the images show: the product in use, customers and their places, the
+  team, the work itself? What should they never show?
+- **Consent:** whose photos would you use (customers, staff, the public), and how do you get and
+  record their permission today?
+- **AI-generated images:** are they allowed anywhere (illustrations, backgrounds, mock-ups), never,
+  or only when labelled?
+- **Existing photos:** what do you already have, who took it, and do you hold the rights? Where
+  are approved images kept, and who looks after them?
+
+Write what they answer. Anything they cannot answer yet becomes `[Open: ...]` in the document and
+an open item in the README.
 
 ## Template: `brand/style-guide/color-palette.md`
 

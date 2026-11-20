@@ -89,8 +89,8 @@ length, formality and humour move.
 **Before and after.** Take three to five real passages from the founder's existing copy, saved
 in `brand/research/source/`, and rewrite each in the new voice, with a line on what changed and
 why. If nothing was saved there, ask for some copy (an email, a product description, a post) and
-save it there first. If there is none at all, leave the section with a note to fill it after the
-first new pieces are written.
+save it there first. If there is none at all, write `[Open: before and after rewrites, once the
+first new pieces are written]` in the section and list it in the README's open items.
 
 ## Writing anti-patterns and voice notes
 
@@ -101,6 +101,13 @@ template in that file. Base each note on the samples of that person's writing in
 `brand/research/source/voices/<person>.md`. If that file is missing or thin, ask for two or three
 samples (a post, a long email, a talk transcript) and save them there first; a voice note written
 without samples will describe someone else.
+
+If the founder cannot supply more (a co-founder who has written one short post, say), write only
+what the samples support, and say how many samples the note rests on. Mark each part of the note
+the samples cannot show as `[Open: ...]`, for example `[Open: how Tom writes at length; needs a
+long email or a post of more than a paragraph]`, and list it in the README's open items so the note
+is finished once more writing exists. Do not fill the gaps from the person's role or from how
+founders usually write.
 
 ## Template: `brand/strategy/messaging-framework.md`
 

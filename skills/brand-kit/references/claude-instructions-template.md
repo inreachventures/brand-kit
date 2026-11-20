@@ -3,7 +3,8 @@
 At the end of stage 6, copy the block below into `brand/CLAUDE-INSTRUCTIONS.md` and fill it in:
 
 - replace `[Company]` with the company's name and `[language]` with the language of the documents
-- in "Where the files are", keep the line for where the founder will use it and delete the other
+- in "Where the files are", keep the line for the runtime the team uses and delete the other; if
+  some of the team use claude.ai and others Claude Code, keep both lines with their labels
 - list each person who has a voice note in `writing-anti-patterns.md`
 - translate the block if the documents are in another language, keeping the file names as they are
 

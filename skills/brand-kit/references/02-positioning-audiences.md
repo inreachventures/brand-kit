@@ -62,14 +62,30 @@ founder named at intake. Write one file per audience, in `strategy/audience-<nam
 `audience-operations-leads.md`).
 
 Build each profile from what the founder and the material say about real people. Where the
-founder is guessing, mark it as an assumption and add how they could check it. An audience
-profile full of invented detail is worse than a short one that is true.
+founder is guessing, follow the guess with a marker saying how to check it, such as
+`[Open: assumption; check by asking three shop owners]`. An audience profile full of invented
+detail is worse than a short one that is true.
+
+For each audience, ask a short cluster before you write the profile, skipping what the intake
+already answers:
+
+- Who is a real person in this audience you have talked to recently? What were they doing before
+  they found you?
+- What sets off their search for something like this?
+- What objections do you hear from them? What makes them hesitate, delay or say no?
+- Who else has a say in their decision?
+
+The objections feed the value propositions below. If the founder has never heard objections
+from an audience (often investors or hires early on), write `[Open: objections from this
+audience]` and add how to find out, such as asking the next three people who say no; do not
+supply objections yourself.
 
 ## Value propositions
 
 For each audience, the value they get, the points that support it, and the proof. Keep the
 supporting points to the ones that matter to this audience; two or four is as normal as three.
-Include the objections this audience raises and the honest answer to each.
+Include the objections this audience raises, from the founder's answers above, and the honest
+answer to each.
 
 ## Template: `brand/strategy/positioning.md`
 
@@ -88,7 +104,7 @@ Include the objections this audience raises and the honest answer to each.
 [Customers, claims and directions this rules out.]
 
 ### Proof we have
-[Evidence, with sources. Mark anything that still needs proving.]
+[Evidence, with sources. Mark anything that still needs proving as `[Open: ...]`.]
 
 ## Options considered
 
@@ -127,7 +143,7 @@ in the decision.]
 nothing, linked to the gaps in the competitor analysis.]
 
 ## What we do not know yet
-[Assumptions and open questions, each with how to check it.]
+[Assumptions and unknown facts, each as `[Open: ...]` with how to check it.]
 
 ## Key insight
 [One or two sentences: the thing about this audience that should change how we talk to them.]
@@ -149,7 +165,7 @@ nothing, linked to the gaps in the competitor analysis.]
 | [point] | [evidence and source] |
 
 ### Objections and answers
-- **[Objection, in their words]:** [an honest answer]
+- **[Objection, in their words, as the founder has heard it]:** [an honest answer]
 
 ### What we do not claim
 [Things this audience might expect us to say that we cannot back up.]

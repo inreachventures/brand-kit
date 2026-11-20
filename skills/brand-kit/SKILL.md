@@ -17,18 +17,22 @@ the ones before it.
 
 ```
 brand/
-  README.md              progress checklist and how to resume
+  README.md              progress checklist, the next step, open items, using the files
   decisions.md           every choice, with the alternatives and the reason
   CLAUDE-INSTRUCTIONS.md paste-in instructions for using the brand day to day
-  research/              intake-notes.md, competitor-analysis.md,
-                         source/ (the founder's material, voices/ for writing samples)
+  research/              intake-notes.md, competitor-analysis.md
+    source/              the founder's material: existing copy, notes, documents
+      voices/            writing samples, one file per person who publishes
   strategy/              positioning.md, audience-<name>.md, value-propositions.md,
                          messaging-framework.md, tone-of-voice.md, writing-anti-patterns.md
   style-guide/           color-palette.md, typography.md, logo-usage.md,
-                         photography-direction.md, social-branding.md, tokens.json, tokens.css
+                         photography-direction.md, social-branding.md, tokens.json, tokens.css,
+                         designer-brief.md (only if the founder wants a symbol)
+    previews/            the palette and type options shown to the founder, JSON and PNG
   communications/        communication-strategy.md
-  assets/                config.json, source/ (an uploaded logo), logos/, fonts/, favicons/,
-                         social/, og-image.png, email-signatures/
+  assets/                config.json, logos/, fonts/, favicons/, social/, og-image.png,
+                         email-signatures/
+    source/              the founder's own logo file, if they are keeping it
 ```
 
 File and folder names stay exactly as above, in English, whatever language the documents are
@@ -41,8 +45,10 @@ written in. The scripts and later sessions rely on them.
    `brand/` lives, how to run the scripts and how work moves between chats.
 2. On claude.ai, before anything else, ask the founder to upload their latest `brand.zip` and
    unpack it. If they have none, this is a new brand.
-3. If a `brand/` folder exists, read `brand/decisions.md` and `brand/README.md` first. Tell the
-   founder in a few lines where things stand and which stage comes next, then follow their lead.
+3. If a `brand/` folder exists, read `brand/decisions.md` and `brand/README.md` first. The
+   README's "Next:" line says what was agreed to come next, including which of stages 4 and 5 the
+   founder chose to do first. Tell the founder in a few lines where things stand and what comes
+   next, then follow their lead.
 4. If there is no `brand/` folder, start at stage 0.
 
 ## Stages
@@ -63,7 +69,8 @@ you write.
 | 5 | Communication strategy | 2, 3 | `communications/communication-strategy.md` | [05-communication-strategy](references/05-communication-strategy.md) |
 | 6 | Assets | 4 | `assets/...`, `CLAUDE-INSTRUCTIONS.md` | [06-assets](references/06-assets.md), [claude-instructions-template](references/claude-instructions-template.md) |
 
-Stages 4 and 5 can run in either order. The decision log format is in
+Stages 4 and 5 can run in either order; ask the founder which they want first and record it in
+the README's "Next:" line. The decision log format is in
 [references/decision-log.md](references/decision-log.md).
 
 ### Jumping ahead
@@ -98,9 +105,11 @@ length and out of order; take what is useful and come back for gaps later.
 
 **Never fill a section without the founder's input.** Every document is built from their answers,
 their material and the research. If a section has no input behind it, ask. If they want to skip
-it, write `[Not decided yet: what is needed]` in its place and list it under open items in the
-README. A marked gap tells the next reader what is missing, where invented content would mislead
-them.
+it, or nobody knows the answer yet, write `[Open: what is needed]` in its place, for example
+`[Open: how shops first hear about us]` or `[Open: the monthly price]`. Use this one marker for
+every gap, whether it is a choice not yet made or a fact nobody has, so that
+`grep -rn "\[Open:" brand` finds them all. List every marker under open items in the README. A
+marked gap tells the next reader what is missing, where invented content would mislead them.
 
 **Apply the swap test to everything you write.** If you could put a competitor's name in place of
 the company's and the sentence would still be true, it is filler. Rewrite it around something
@@ -145,13 +154,15 @@ Every stage ends the same way, before you move on or the session stops:
 
 1. Write or update the stage's files in `brand/`.
 2. Append each decision made in the stage to `brand/decisions.md`.
-3. Tick the stage in the `brand/README.md` checklist and update its open items.
+3. Tick the stage in the `brand/README.md` checklist, update its open items so they list every
+   `[Open: ...]` marker in the folder, and update the "Next:" line to the stage or task agreed
+   with the founder.
 4. On claude.ai, run `pack` and offer the founder `brand.zip` to download. Remind them that the
    next chat starts by uploading this zip, and that older zips should be thrown away.
 5. Tell the founder what you wrote, what is still open, and what the next stage involves.
 
-If a session is ending mid-stage, save what exists, mark the stage as in progress in the README
-with a line on where you stopped, and still pack on claude.ai.
+If a session is ending mid-stage, save what exists, mark the stage as in progress in the README,
+set the "Next:" line to where you stopped, and still pack on claude.ai.
 
 ## The scripts
 
@@ -162,13 +173,13 @@ commands are:
 | Command | Used in | What it does |
 |---------|---------|--------------|
 | `fonts-list` | 4 | lists the bundled font families, weights and scripts |
-| `preview-palette` | 4 | renders palette options as swatches with contrast ratios |
-| `preview-type` | 4 | renders font pairings, with the company name when `assets/config.json` exists |
+| `preview-palette` | 4 | renders palette options as swatches with contrast ratios, labelled by name |
+| `preview-type` | 4 | renders font pairings on the brand colours, with the company name and your sample text |
 | `tokens-css` | 4 | writes `style-guide/tokens.css` from `tokens.json` |
 | `fonts-copy` | 6 | copies the chosen fonts and their licences into `assets/fonts/` |
 | `assets` | 6 | builds logos, favicons, social images, the Open Graph image and email signatures |
 | `pack` | every stage on claude.ai | zips `brand/` into `brand.zip` |
-| `unpack` | start of a claude.ai chat | restores `brand/` from an uploaded `brand.zip` |
+| `unpack` | start of a claude.ai chat | restores `brand/` from an uploaded `brand.zip`, into an empty folder only |
 
 Errors print one line starting `error:` and say what to fix. Read it and act on it, or explain it
 to the founder; do not work around a script by hand-drawing its output.

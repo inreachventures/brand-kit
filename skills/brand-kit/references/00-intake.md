@@ -14,6 +14,11 @@ Ask them to share anything that already exists: website text, a pitch deck, past
 product pages, customer emails, reviews, an existing logo. Material they already have is the
 best evidence of how they sound and what customers respond to.
 
+If they give a website address and you cannot fetch pages in this runtime, say so and ask them
+to paste the key passages into the chat: the homepage headline and the paragraph under it, the
+product or pricing page, the about page. This is the same approach as stage 1 uses for
+competitors (see "Without web access" in [01-research.md](01-research.md)).
+
 ## The interview
 
 Ask one cluster at a time, three to five questions, and wait for the answers. After each
@@ -137,6 +142,9 @@ claude.ai: start a new chat, upload the latest brand.zip and ask Claude to conti
 - Language of the documents: [language]
 - Logo: [existing logo to upload / wordmark / undecided]
 
+Next: [the stage or task agreed with the founder, for example "1 Research" or "5 Communication
+strategy (the founder chose it before 4)"]
+
 ## Progress
 - [ ] 0 Intake: research/intake-notes.md, decisions.md
 - [ ] 1 Research: research/competitor-analysis.md
@@ -146,12 +154,26 @@ claude.ai: start a new chat, upload the latest brand.zip and ask Claude to conti
 - [ ] 5 Communication strategy: communications/communication-strategy.md
 - [ ] 6 Assets: assets/, CLAUDE-INSTRUCTIONS.md
 
+## Using the files
+[Fill in at stage 6, from "Putting the files to use" in 06-assets.md.]
+- **Where the files are:** logos in `assets/logos/`, favicons and the web manifest in
+  `assets/favicons/`, profile and banner images in `assets/social/`, the link preview at
+  `assets/og-image.png`, signatures in `assets/email-signatures/`, fonts in `assets/fonts/`.
+- **Email signatures:** [where `mark-tile-160.png` is hosted so mail apps can load it, and how to
+  check it], then follow `assets/email-signatures/README.md`.
+- **Website:** [put the files from `assets/favicons/` and `assets/og-image.png` in the site's root
+  and the lines for the page head, copied from 06-assets.md with the website address filled in]
+- **Social profiles:** see the table in `style-guide/social-branding.md`.
+- **Writing with Claude:** [where to paste `CLAUDE-INSTRUCTIONS.md` for the runtime they use]
+
 ## Open items
-[Anything marked "Not decided yet" in a document, with the file it sits in.]
+[Every `[Open: ...]` marker in the folder, one line each with the file it sits in, plus anything
+else still to do. Find the markers with `grep -rn "\[Open:" brand`.]
 ```
 
 Tick a stage only when its files are written and the founder has seen them. Mark a stage that is
-under way as `[~]` with a line saying where it stopped.
+under way as `[~]` with a line saying where it stopped. Update the "Next:" line at the end of every
+stage, and whenever the founder changes the plan.
 
 ### `brand/decisions.md`
 
@@ -204,7 +226,7 @@ holds their writing samples.]
 [Verbatim phrases from the founder, customers or existing material.]
 
 ## Open questions
-[What still needs an answer, and who can give it.]
+[What still needs an answer, each as `[Open: ...]`, and who can give it.]
 ```
 
 Then end the stage as SKILL.md describes and tell the founder that stage 1 looks at competitors.

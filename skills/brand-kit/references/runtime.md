@@ -90,7 +90,10 @@ python3 <skill folder>/scripts/brandkit/cli.py unpack <path to uploaded brand.zi
 ```
 
 This creates `<empty folder>/brand/`. Unpacking over an existing `brand/` would mix old and new
-files, so always use an empty folder. Read `brand/decisions.md` and `brand/README.md` next. If
+files, so `unpack` refuses when `<empty folder>/brand/` already has files in it. If that happens,
+unpack into a new empty folder, or remove the old `brand/` once you are sure nothing in it is newer
+than the zip. Read `brand/decisions.md` and `brand/README.md` next; the README's "Next:" line says
+where to pick up. If
 the decision log stops earlier than the founder remembers, they may have uploaded an older zip;
 ask before carrying on.
 

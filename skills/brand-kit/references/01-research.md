@@ -69,7 +69,12 @@ If you cannot search or fetch pages in this runtime:
    screenshots if they can. Screenshots let you note colours and type.
 3. You may add what you already know about well-known companies, marked as background knowledge
    that may be out of date. Never invent a quote, a colour or a claim.
-4. Put the limitation at the top of the document, so later readers know the evidence is thinner.
+4. Without competitor copy you cannot count how many in the set use a phrase, so widen what
+   counts as evidence for the clichés: the founder's own existing copy (it usually borrows the
+   category's language), their descriptions of how competitors talk, and the words customers
+   repeat back from competitors. Give each cliché its source, for example "our old homepage",
+   "Maya's description of two competitors" or "pasted copy from [competitor]", instead of a count.
+5. Put the limitation at the top of the document, so later readers know the evidence is thinner.
 
 ## Present and confirm
 
@@ -112,7 +117,8 @@ direct, adjacent, status quo, admired.]
 ## Category clichés
 
 ### Words and claims
-[The overused words and claims, with how many competitors use each.]
+[The overused words and claims, with how many competitors use each, or, without web access, the
+source of each one.]
 
 ### Colours and imagery
 [The overused colours, with hex values where known, and the imagery styles everyone uses.]
