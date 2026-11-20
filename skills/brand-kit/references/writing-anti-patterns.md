@@ -37,14 +37,13 @@ or by an AI model. Once they spot it they skim, and they trust the rest of the p
 young company that is expensive: its writing is often the first evidence a reader has of how the
 company thinks.
 
-None of the habits below is a mistake in itself. Each is a device good writers use, which is why
-models and tired writers reach for them. The problem is frequency. One closing reversal in an
-essay can land well; one in every paragraph makes the whole piece sound like a template. Use
-each of them rarely, and only when it does real work in that sentence.
-
 When you find one of these habits in a draft, do not just delete it. It usually marks a spot where
 the writer had nothing specific to say. Find the specific thing (the number, the name, the
 example, the actual reason) and write that, or cut the sentence.
+
+Judge each case from the reader's side: does this sentence tell them something they did not know a
+line earlier? A habit that passes that test can stay. Most of the time the sentence carrying it
+fails, and the fix is new material rather than new wording.
 
 ## Rhythm and structure
 
@@ -58,9 +57,11 @@ Three adjectives, three benefits, three parallel clauses, by default. Real mater
 in threes. Count what you actually have. Two good reasons are stronger than two good reasons and
 a filler.
 
-### One-line dramatic paragraphs
-A single short sentence set apart for effect: "Then everything changed." Used once in a long piece
-it can mark a real turning point. Used often, it reads as manufactured suspense.
+### Sentences set apart for effect
+A short sentence given a paragraph of its own so that it lands harder: "Then everything changed."
+The white space asks the reader to stop and take note, and most of these sentences do not repay
+the stop. Put the sentence back into the paragraph it belongs to unless what it reports really is
+the turn the whole piece depends on.
 
 ### Paragraphs all the same length
 Every paragraph three or four sentences, built the same way: claim, explanation, example, wrap.
@@ -103,9 +104,10 @@ common that they carry no meaning. Use the plain word, or the specific one.
 [Add the company's category clichés from the competitor analysis and the "avoid" phrases from the
 messaging framework here.]
 
-### Labelled honesty
-"Honestly,", "To be clear,", "Let's be real", "The truth is". Labelling one sentence as honest
-suggests the others were not. Cut the label.
+### Sincerity markers
+"Honestly,", "To be clear,", "Let's be real", "The truth is". They are padding that signals
+effort: the sentence after them is no more true or more important for having them. Cut the marker
+and check that the sentence still says something.
 
 ### Intensifiers and stacked hedges
 "Incredibly", "truly", "genuinely", "really", and hedges piled up: "this may potentially help to
@@ -147,7 +149,7 @@ person keeps drafts written for them sounding like them.
 
 [Repeat for each person.]
 
-## Read-aloud check
+## Listening pass
 
 Run this on every draft before anyone else sees it.
 
@@ -164,7 +166,7 @@ Run this on every draft before anyone else sees it.
 8. Search for the words in the lists above and in the messaging framework's "avoid" list.
 9. Apply the swap test: put a competitor's name in place of [Company]. If a sentence is still
    true, make it specific or cut it.
-10. Check the channel calibration in the messaging framework. Is any number here meant to stay
+10. Check "What we can say where" in the messaging framework. Is any number here meant to stay
     private?
 11. If the piece is written for a named person, read their voice note. Would they say this out
     loud, in these words?

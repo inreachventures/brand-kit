@@ -159,10 +159,13 @@ strategy (the founder chose it before 4)"]
 - **Where the files are:** logos in `assets/logos/`, favicons and the web manifest in
   `assets/favicons/`, profile and banner images in `assets/social/`, the link preview at
   `assets/og-image.png`, signatures in `assets/email-signatures/`, fonts in `assets/fonts/`.
-- **Email signatures:** [where `mark-tile-160.png` is hosted so mail apps can load it, and how to
-  check it], then follow `assets/email-signatures/README.md`.
-- **Website:** [put the files from `assets/favicons/` and `assets/og-image.png` in the site's root
-  and the lines for the page head, copied from 06-assets.md with the website address filled in]
+- **Email signatures:** [the address `mark-tile-160.png` is hosted at so mail apps can load it
+  (the website path, or the `logo_url` in `assets/config.json`), and how to check it], then follow
+  `assets/email-signatures/README.md`.
+- **Website:** [for a site builder, where its favicon and sharing-image settings are and which
+  files to upload; for a coded site, put the files from `assets/favicons/` and `assets/og-image.png`
+  in the site's root and add the lines for the page head, copied from 06-assets.md with the website
+  address filled in]
 - **Social profiles:** see the table in `style-guide/social-branding.md`.
 - **Writing with Claude:** [where to paste `CLAUDE-INSTRUCTIONS.md` for the runtime they use]
 

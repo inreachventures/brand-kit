@@ -26,8 +26,8 @@ For each option write:
   [reason to believe]." Fill it with specifics from the intake, not adjectives.
 - **In plain words**: the same idea as a customer would say it to a friend, in one sentence.
 - **What it emphasises**: the one or two things this option puts first.
-- **What it gives up**: the customers, claims or directions it rules out. An option that gives up
-  nothing is not a position.
+- **What it gives up**: the customers, claims or directions it rules out. If you cannot name any,
+  the option is still too broad; narrow it before you show it.
 - **Proof the company has today**: evidence from the intake notes, with the source. If an option
   needs proof the company does not have, say so; it may still be the right bet, but the founder
   should know.
@@ -63,8 +63,8 @@ founder named at intake. Write one file per audience, in `strategy/audience-<nam
 
 Build each profile from what the founder and the material say about real people. Where the
 founder is guessing, follow the guess with a marker saying how to check it, such as
-`[Open: assumption; check by asking three shop owners]`. An audience profile full of invented
-detail is worse than a short one that is true.
+`[Open: assumption; check by asking three shop owners]`. Keep the profile short where the
+founder knows little; the team will act on whatever it says.
 
 For each audience, ask a short cluster before you write the profile, skipping what the intake
 already answers:

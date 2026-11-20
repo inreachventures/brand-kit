@@ -31,9 +31,14 @@ image (see "Generate").
 ```
 
 - **company_name**: exactly as it should appear in the wordmark, including capitals and accents.
-- **website**: the public address of their website, starting `https://`. The email signatures
-  load the logo from `<website>/brand/mark-tile-160.png`. Leave the key out if they have no website
-  yet; the signatures then contain `[LOGO_URL]` to fill in later.
+- **website**: the public address of their website, starting `https://`. Unless `logo_url` is
+  set, the email signatures load the logo from `<website>/brand/mark-tile-160.png`. Leave the key
+  out if they have no website yet; with no `logo_url` either, the signatures then contain
+  `[LOGO_URL]` to fill in later.
+- **logo_url** (optional): the full public address of `mark-tile-160.png` wherever the founder
+  has put it, starting `https://`. The signatures use it in place of the website address. Set it
+  when they cannot put a file at exactly `<website>/brand/mark-tile-160.png` (see "Putting the
+  files to use").
 - **logo.mode**: `"wordmark"` to generate a wordmark and monogram tile, or `"upload"` to use the
   founder's logo. With `"upload"`, add `"source": "assets/source/logo.svg"` (or `logo.png`); the
   path is relative to `brand/`.
@@ -142,6 +147,7 @@ first, then everything that uses them, so the files never fall out of step.
 | A different Open Graph line | Try wordings with `--descriptor`, change `og_descriptor` in `config.json`, log it, re-run `assets` |
 | A pattern behind the logo, or none | Set `banner_pattern` to `true` or `false` in `config.json`, log it, re-run `assets brand --only social` |
 | A new or changed person | Edit `people` in `config.json`, run `assets brand --only signatures` |
+| The signature logo hosted somewhere else | Set `logo_url` in `config.json`, log it, run `assets brand --only signatures` |
 
 `--only` takes any of `logos`, `favicons`, `social` and `signatures`, comma-separated.
 
@@ -157,15 +163,29 @@ in `decisions.md`.
 ## Putting the files to use
 
 **Email signature logo.** The signatures load the tile from the web, because mail apps do not
-reliably show embedded images. The founder (or whoever runs the website) uploads
-`brand/assets/logos/mark-tile-160.png` so that it is reachable at
-`<website>/brand/mark-tile-160.png`. Ask them to open that address in a private browser window to
-check it loads. With no website yet, each signature contains `[LOGO_URL]`; they upload the image
-anywhere public and replace the placeholder with its full address. Installation steps for Gmail,
-Apple Mail and Outlook are in `brand/assets/email-signatures/README.md`.
+reliably show embedded images. Ask the founder whether they (or whoever runs the website) can put
+a file at exactly `<website>/brand/mark-tile-160.png`. That works when the site is code they
+control. Site builders such as Squarespace, Wix, Webflow and Framer usually cannot serve a file at
+a path you choose. In that case they upload `brand/assets/logos/mark-tile-160.png` anywhere public,
+usually the site builder's own image or file upload, and copy the address it gives. Set that
+address as `logo_url` in `config.json`, run `assets brand --only signatures`, and log where the
+logo is hosted. Either way, ask them to open the address in a private browser window to check it
+loads without signing in. With neither a website nor a `logo_url`, each signature contains
+`[LOGO_URL]` to replace later. Installation steps for Gmail, Apple Mail and Outlook are in
+`brand/assets/email-signatures/README.md`.
 
-**Website.** Whoever builds the website needs everything in `assets/favicons/` and the Open Graph
-image in its root, and these lines in the page head:
+**Website.** Ask how the site is built, because that decides how the favicons and the Open Graph
+image get onto it.
+
+- **Site builders** (Squarespace, Wix, Webflow, Framer and similar) usually do not let you put
+  files in the site's root. Each has a favicon or site icon setting, and most have a social sharing
+  image setting, usually under the site's general or SEO settings. Upload `favicons/icon-512.png`
+  as the favicon, or the size the builder asks for (`favicon-32.png` and `apple-touch-icon.png`
+  cover the common requests), and `og-image.png` as the sharing image. The builder writes the head
+  lines itself; skip the block below and `site.webmanifest`.
+- **A site the team codes or hosts itself.** Whoever builds it puts everything in
+  `assets/favicons/` and the Open Graph image in the site's root, and adds these lines to the page
+  head:
 
 ```html
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -175,7 +195,8 @@ image in its root, and these lines in the page head:
 <meta property="og:image" content="https://[their website]/og-image.png">
 ```
 
-Leave out the `favicon.svg` line if the logo was a PNG.
+Leave out the `favicon.svg` line if the logo was a PNG. The `og:image` address must be the full
+address of the image on the live site.
 
 **Social profiles.** Tell the founder which file goes where, using the table in
 `style-guide/social-branding.md`.

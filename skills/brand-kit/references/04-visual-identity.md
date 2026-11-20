@@ -18,6 +18,7 @@ path to the brand folder.
 4. Add the fonts to `tokens.json` and run `tokens-css`.
 5. Ask the photography questions, then write the five style-guide documents.
 6. Write the designer brief, if the founder wants a symbol.
+7. Show the founder the proposed defaults (see below) and keep only what they accept or change.
 
 Keep the option files and preview images in `brand/style-guide/previews/`, so the record of what
 was shown travels with the brand.
@@ -58,11 +59,10 @@ Ask which letters the tile should show. The default is the first letter of the n
 
 ### 3. The founder wants a symbol
 
-You do not draw symbols, icons or illustrated marks, in SVG or in any other way, however simple
-the request seems. Say so plainly: a symbol is design work, and a weak one does more harm than
-none. Offer the designer brief below, written from their strategy documents, and use route 2 in
-the meantime so the assets exist. When the designer delivers, the founder uploads the new logo
-(route 1) and re-runs stage 6.
+You do not draw symbols, icons or illustrated marks, in SVG or in any other way, however simple the
+request seems. Say so plainly: a symbol is design work for a designer. Offer the designer brief
+below, written from their strategy documents, and use route 2 in the meantime so the assets exist.
+When the designer delivers, the founder uploads the new logo (route 1) and re-runs stage 6.
 
 ## Palette
 
@@ -90,9 +90,9 @@ Each option has these colours:
   backgrounds, `300` for borders and rules, `500` for secondary text, `700` for strong secondary
   text.
 
-Note what each colour may and may not mean. A red accent will read as "error" in a product
-interface; green reads as "success". Never rely on a red and green difference alone to carry
-meaning, since many people cannot see it.
+Say where each colour is used. Watch for colours that software has already given a job: in a
+product interface a red accent will be read as an error and a green one as a success. Never rely
+on a red and green difference alone to tell two things apart, since many people cannot see it.
 
 ### Check contrast
 
@@ -125,7 +125,7 @@ Fix an option that fails before you show it.
 
 Write the options as a JSON list, each shaped like the `colors` object in `tokens.json`, to
 `brand/style-guide/previews/palette-options.json`. Give each option a `"name"`, a few words for the
-idea behind it, such as `"name": "Enamel green"`; the image uses it as the row label. Without a
+idea behind it, such as `"name": "Workshop steel"`; the image uses it as the row label. Without a
 name the rows are labelled Option A, B, C, and a second round would reuse the same letters for
 different colours. Then:
 
@@ -253,6 +253,18 @@ cluster:
 Write what they answer. Anything they cannot answer yet becomes `[Open: ...]` in the document and
 an open item in the README.
 
+## Proposed defaults
+
+Parts of the style guide are rules you write rather than options the founder picks by looking:
+the type scale and the typography rules, the logo's clear space, minimum sizes and do-nots, the
+colour roles (what each colour is used for and kept off), the photography principles, style and
+illustration, and the rules for social posts. Before you end the stage, gather every such rule
+that did not come from the founder into one short numbered list, one line each, and show it to
+them as proposed defaults. They accept, change or strike each line. Keep what they accept or
+change, and delete what they strike along with anything you did not show them; a section left
+empty becomes `[Open: ...]`. Log the result as one entry in `decisions.md` that lists every
+default and what happened to it.
+
 ## Template: `brand/style-guide/color-palette.md`
 
 ```
@@ -262,7 +274,7 @@ an open item in the README.
 
 ## Colours
 
-| Role | Name | Hex | Used for | Never used for |
+| Role | Name | Hex | Used for | Not used for |
 |------|------|-----|----------|----------------|
 | Primary | [name] | [hex] | [uses] | [misuses] |
 | Accent | [name] | [hex] | [uses] | [misuses] |
@@ -273,9 +285,10 @@ an open item in the README.
 | Neutral 500 | [name] | [hex] | [uses] | [misuses] |
 | Neutral 700 | [name] | [hex] | [uses] | [misuses] |
 
-## What the colours mean
-[What each colour may signal, what it must not be used to signal, and how much of a page each
-should cover.]
+## Roles
+[Which colour does which job: large fills, links, highlights, text, borders. Note any colour a
+reader could take as a status, such as red for an error. Only roles the founder gave or accepted
+as proposed defaults.]
 
 ## Contrast pairs
 
@@ -312,7 +325,8 @@ should cover.]
 | [level] | [px] | [weight] | [value] | [uses] |
 
 ## Rules
-[Line length, alignment, capitals, emphasis, numbers, how headings and body combine, what not to do.]
+[Only rules the founder gave or accepted as proposed defaults, for example line length, capitals,
+emphasis or numbers.]
 
 ## Fallbacks
 [What to use where the brand fonts are not available, such as email and office documents.]
@@ -351,17 +365,18 @@ with a monogram tile) and where its source is.]
 
 ## Clear space
 [The space to keep empty around the logo, expressed as a part of the logo itself, such as the
-height of a capital letter in the name.]
+height of a capital letter in the name. A proposed default until the founder accepts it.]
 
 ## Minimum sizes
-[The smallest width for the full logo on screen (in px) and in print (in mm), and for the tile.]
+[The smallest width for the full logo on screen (in px) and in print (in mm), and for the tile.
+A proposed default until the founder accepts it.]
 
 ## Do
-[Correct uses: which variant on which background.]
+[Which variant goes on which background.]
 
 ## Do not
-[Stretching, recolouring outside the palette, effects, rotation, busy backgrounds, resetting the
-name in another font.]
+[Only what the founder ruled out or accepted as a proposed default, for example stretching,
+effects, rotation or setting the name in another font.]
 
 ## Which file where
 
@@ -378,19 +393,21 @@ name in another font.]
 [One or two sentences on the role imagery plays for this brand, from the positioning.]
 
 ## Principles
-[What images must show and how they should feel, tied to the voice principles.]
+[What images must show and how they should feel, from the founder's answers. Anything you add is
+a proposed default.]
 
 ## Subjects
 [What and who to photograph: product in use, customers, team, places. What not to show.]
 
 ## Style
-[Light, colour treatment, composition, cropping, how the palette appears in images.]
+[Light, colour treatment, composition, cropping: only what the founder said or accepted as a
+proposed default.]
 
 ## People
 [How people are shown, consent, representation.]
 
 ## Illustration and icons
-[Whether the brand uses them, in what style, and where.]
+[Whether the brand uses them, in what style, and where. Ask, or mark it `[Open: ...]`.]
 
 ## What we avoid
 [The category's stock-image clichés from the research, and anything else ruled out.]
@@ -427,8 +444,8 @@ The sizes and file names below are the ones the stage 6 build produces. Keep the
 banner carrying the brand.]
 
 ## Posts
-[How posts look: when to use images, text on images, colours, the fonts, how quotes, numbers and
-announcements are laid out, alt text.]
+[How posts look, only from the founder's answers or accepted proposed defaults: images, text on
+images, how quotes, numbers and announcements are laid out, alt text.]
 
 ## Voice on social
 [Point to the channel section of tone-of-voice.md.]

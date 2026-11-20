@@ -110,13 +110,15 @@ it, or nobody knows the answer yet, write `[Open: what is needed]` in its place,
 every gap, whether it is a choice not yet made or a fact nobody has, so that
 `grep -rn "\[Open:" brand` finds them all. List every marker under open items in the README. A
 marked gap tells the next reader what is missing, where invented content would mislead them.
+Rules you draft yourself, such as a type rule or a logo's minimum size, stay only if the founder
+accepts them: stages 3 and 4 end by showing them as a list of proposed defaults.
 
 **Apply the swap test to everything you write.** If you could put a competitor's name in place of
 the company's and the sentence would still be true, it is filler. Rewrite it around something
 only this company can say, or ask the founder for the fact that would make it specific.
 
 **Propose options, then record the choice.** Positioning, palette, typography and voice are the
-founder's decisions. For each, offer two or three options that genuinely differ, say what each
+founder's decisions. For each, offer two or three options that differ in substance, say what each
 gives up, give your recommendation and the reason, and let them choose or combine. Record the
 result in `decisions.md` with the alternatives and their reasoning, in their words where possible.
 Never make one of these choices silently, even a small one.
@@ -192,7 +194,7 @@ to the founder; do not work around a script by hand-drawing its output.
 - [references/01-research.md](references/01-research.md): competitor method and template
 - [references/02-positioning-audiences.md](references/02-positioning-audiences.md): positioning options, audiences, value propositions
 - [references/03-messaging-voice.md](references/03-messaging-voice.md): messaging framework and tone of voice
-- [references/writing-anti-patterns.md](references/writing-anti-patterns.md): the anti-patterns guide, voice notes and read-aloud check
+- [references/writing-anti-patterns.md](references/writing-anti-patterns.md): the anti-patterns guide, voice notes and listening pass
 - [references/04-visual-identity.md](references/04-visual-identity.md): palette, type, tokens, logo routes, designer brief, style-guide templates
 - [references/05-communication-strategy.md](references/05-communication-strategy.md): channels, cadence, approvals, measurement
 - [references/06-assets.md](references/06-assets.md): config, logo upload, generating and reviewing assets, hosting, hand-over

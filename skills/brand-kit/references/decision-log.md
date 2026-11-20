@@ -12,13 +12,14 @@ Append an entry whenever the founder makes a choice, at the moment they make it:
   (a name that is only a working name, a colour they will not use, a claim they cannot make).
 - **Stage 2**: the positioning direction, which audiences get a profile, and any audience
   deliberately left out.
-- **Stage 3**: the core message, the tagline, the voice principles, and anything the founder
-  rejects from the drafts.
+- **Stage 3**: the core message (agreed or edited by the founder), the tagline, the voice
+  principles, anything the founder rejects from the drafts, and the proposed defaults with what
+  happened to each.
 - **Stage 4**: the palette, the font pairing, the logo route (their logo, a wordmark, or a
-  designer brief), and the monogram letters.
-- **Stage 5**: the channels, the committed cadence, and the approval rules.
-- **Stage 6**: the website used for hosting the signature logo, the Open Graph line, and any
-  change requested after reviewing the images.
+  designer brief), the monogram letters, and the proposed defaults with what happened to each.
+- **Stage 5**: the channels, the cadence for each channel and person, and the approval rules.
+- **Stage 6**: where the signature logo is hosted (the website, or a `logo_url`), the Open Graph
+  line, and any change requested after reviewing the images.
 
 Also log a decision to defer something ("tagline left open until after launch"), so nobody
 mistakes a gap for an oversight.

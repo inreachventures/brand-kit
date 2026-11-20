@@ -6,8 +6,8 @@ one. A plan for five channels that is abandoned in a month does more harm than a
 channel that runs for a year: an empty blog or a feed that stopped in spring tells visitors the
 company stalled.
 
-Read the positioning, the audience files, the messaging framework (especially channel
-calibration), the tone of voice, and from the intake notes the milestones ahead, the people who
+Read the positioning, the audience files, the messaging framework (especially "What we can say
+where"), the tone of voice, and from the intake notes the milestones ahead, the people who
 will publish, and the channels they already use.
 
 ## The interview
@@ -38,17 +38,18 @@ Steer the plan towards what a small team can keep up:
 
 - **Fewer channels, done properly.** One or two owned channels where the audience already is,
   plus the website. Add more only after the first ones have run for a few months.
-- **A committed minimum, not an ambition.** For each channel and each person, set the cadence
-  they would still hit in a bad month. Anything above it is a bonus. A plan that needs a good
-  month every month will fail in the first busy one.
+- **The cadence you would still keep in a bad month.** For each channel and each person, agree
+  the pace they could hold in a month when a customer problem or a hire takes over their week.
+  Anything above it is a bonus, and the plan does not count on it.
 - **Topics from real work.** The best material comes from what the company already does:
   questions customers ask, objections in sales calls, product changes, numbers the company can
-  share, things the founders disagree with. A topic bank fed from these never runs dry.
+  share, things the founders disagree with. Keep a running list of these, and say who adds to it.
 - **Write once, use several times.** A long piece becomes a few posts, a newsletter section and
   a paragraph for sales emails.
 - **Approval that does not block.** Agree which content needs sign-off and which does not, with a
-  turnaround time. A post that waits a week for approval is usually dead.
-- **Review after ninety days.** Keep what works, drop what does not, and adjust the minimums to
+  turnaround time. Most posts are about something current, and a week's wait for sign-off
+  usually means they are not published.
+- **Review after ninety days.** Keep what works, drop what does not, and reset each cadence to
   what actually happened.
 
 Push back gently if the founder commits to more than their hours allow. Show the arithmetic.
@@ -76,11 +77,11 @@ phrases. Add only the themes to prioritise in this period; do not repeat the fra
 |---------|----------|---------|-------|---------|
 | [channel] | [audience] | [what it is for] | [person] | [formats] |
 
-## Cadence: the committed minimum
+## Cadence: what we keep up in a bad month
 
 ### By channel
 
-| Channel | Minimum | Fixed day or time | Owner |
+| Channel | Cadence | Fixed day or time | Owner |
 |---------|---------|-------------------|-------|
 | [channel] | [for example, one post a fortnight] | [if any] | [person] |
 
@@ -88,7 +89,7 @@ phrases. Add only the themes to prioritise in this period; do not repeat the fra
 
 | Person | Commitment | Channels | Hours per week |
 |--------|------------|----------|----------------|
-| [name] | [minimum] | [channels] | [hours] |
+| [name] | [cadence] | [channels] | [hours] |
 
 ## Where topics come from
 [The sources the team will draw on, who collects them, and where the topic bank lives.]
@@ -105,7 +106,7 @@ phrases. Add only the themes to prioritise in this period; do not repeat the fra
 | [type of content] | [person] | [person, or "no approval needed"] | [time] |
 
 ### Never say in public
-[From the channel calibration in the messaging framework, plus anything else agreed: named
+[From "What we can say where" in the messaging framework, plus anything else agreed: named
 customers without permission, unreleased product, regulated claims, fundraising details.]
 
 ### Replies and difficult moments
