@@ -141,3 +141,13 @@ def test_copy_to_brand_returns_founder_files(tmp_path):
     fonts._font_info.cache_clear()
     out = fonts.copy_to_brand(FontSpec("Mine Sans", 400), tmp_path)
     assert out == [dest / "Mine-Regular.ttf"]
+
+
+def test_resolve_lists_families_found_in_brand_fonts(tmp_path):
+    e = CATALOGUE[0]
+    dest = tmp_path / "assets" / "fonts"
+    dest.mkdir(parents=True)
+    shutil.copy(FONTS_DIR / e["files"]["400"], dest / "own.ttf")
+    with pytest.raises(BrandKitError) as exc:
+        fonts.resolve(FontSpec("Nonexistent Face", 400), tmp_path)
+    assert "brand/assets/fonts/ are for" in str(exc.value) and e["family"] in str(exc.value)

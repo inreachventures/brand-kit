@@ -5,3 +5,4 @@ __pycache__/
 dist/
 docs/superpowers/plans/
 .superpowers/
+.DS_Store

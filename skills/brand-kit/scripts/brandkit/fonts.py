@@ -82,6 +82,21 @@ def _brand_fonts(brand_dir: Path, family: str) -> list[tuple[int, Path]]:
     return found
 
 
+def _brand_family_names(brand_dir: Path) -> list[str]:
+    """Family names (name ID 1) of the founder-supplied fonts, sorted and without duplicates."""
+    root = Path(brand_dir) / "assets" / "fonts"
+    names: set[str] = set()
+    if root.is_dir():
+        for p in root.rglob("*"):
+            if p.suffix.lower() in (".ttf", ".otf"):
+                try:
+                    with TTFont(p, lazy=True) as f:
+                        names |= {r.toUnicode() for r in f["name"].names if r.nameID == 1}
+                except Exception:
+                    continue
+    return sorted(names)
+
+
 def _nearest(options: list[tuple[int, Path]], weight: int) -> Path:
     return min(options, key=lambda o: (abs(o[0] - weight), o[0]))[1]
 
@@ -96,8 +111,10 @@ def resolve(spec: FontSpec, brand_dir: Path) -> Path:
             options = [(int(w), BUNDLED_DIR / rel) for w, rel in entry["files"].items()]
             return _nearest(options, spec.weight)
     available = ", ".join(e["family"] for e in catalogue())
+    found = _brand_family_names(brand_dir)
+    here = f" Fonts in brand/assets/fonts/ are for: {', '.join(found)}." if found else ""
     raise BrandKitError(
-        f"font family {spec.family!r} not found. Bundled families: {available}. "
+        f"font family {spec.family!r} not found.{here} Bundled families: {available}. "
         f"Or put the font files in brand/assets/fonts/."
     )
 

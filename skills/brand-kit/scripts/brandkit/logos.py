@@ -274,10 +274,15 @@ def _rasterise_svg(svg: str, source: Path) -> Image.Image:
 
 
 def _build_upload(brand_dir: Path, tokens: Tokens, cfg: AssetsConfig) -> list[Path]:
-    out_dir = _logos_dir(brand_dir)
     source = cfg.logo_source
     if source is None or not source.is_file():
         raise BrandKitError(f"logo.source: {source} not found")
+    try:
+        with source.open("rb") as fh:
+            fh.read(1)
+    except OSError as e:
+        raise BrandKitError(f"logo.source: {source} is not readable ({e})") from None
+    out_dir = _logos_dir(brand_dir)
     is_svg = source.suffix.lower() == ".svg"
     written: list[Path] = []
     original = out_dir / f"logo-original{source.suffix.lower()}"

@@ -111,15 +111,29 @@ def _og(logo: Image.Image, tokens: Tokens, brand_dir: Path, name: str, descripto
     font = fonts.pil_font(tokens.fonts["body"], brand_dir, 36)
     lines: list[str] = []
     if descriptor:
-        words, cur = descriptor.split(), ""
-        for word in words:
+        max_w = w - 2 * 90
+        missing = fonts.missing_glyphs(descriptor, fonts.resolve(tokens.fonts["body"], brand_dir))
+        if missing:
+            print(f"warning: {tokens.fonts['body'].family} has no glyphs for: {' '.join(missing)} (OG descriptor)")
+        cur = ""
+        for word in descriptor.split():
+            while font.getlength(word) > max_w:  # a single word too wide for the image: break by characters
+                if cur:
+                    lines.append(cur)
+                    cur = ""
+                n = 1
+                while n < len(word) and font.getlength(word[: n + 1]) <= max_w:
+                    n += 1
+                lines.append(word[:n])
+                word = word[n:]
             trial = f"{cur} {word}".strip()
-            if cur and font.getlength(trial) > w - 2 * 90:
+            if cur and font.getlength(trial) > max_w:
                 lines.append(cur)
                 cur = word
             else:
                 cur = trial
-        lines.append(cur)
+        if cur:
+            lines.append(cur)
         if len(lines) > OG_MAX_LINES:
             lines = lines[:OG_MAX_LINES]
             last = lines[-1].rstrip(".,;:")

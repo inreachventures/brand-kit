@@ -109,8 +109,10 @@ The pairs that must pass at 4.5:1, because the generated assets use them:
   of paper and ink contrasts more with the primary. A generated monogram tile uses paper if it
   reaches at least 3:1 on the primary, otherwise whichever of paper and ink contrasts more. The
   tile for an uploaded logo draws it in pure white or pure black, whichever contrasts more.
-- primary on white and on paper, if the primary is used for links (the email signatures use it)
-- neutral `500` on white and on paper (secondary text in the email signatures)
+
+The email signatures choose a readable colour for links and secondary text on their own (the primary
+or a neutral if it passes 4.5:1 on white, otherwise the ink), so they add no requirement here. If you
+use the primary for links elsewhere, check it on white and on paper.
 
 The palette preview prints each colour's ratio against that option's paper and ink. For any other
 pair:

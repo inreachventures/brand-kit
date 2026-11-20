@@ -7,7 +7,7 @@ import unicodedata
 from pathlib import Path
 
 from .config import AssetsConfig
-from .tokens import Tokens
+from .tokens import Tokens, contrast_ratio
 
 LOGO_PLACEHOLDER = "[LOGO_URL]"
 MARK_FILE = "mark-tile-160.png"
@@ -96,12 +96,22 @@ def _esc(value: str) -> str:
     return html.escape(value, quote=True)
 
 
+def _readable_neutral(tokens: Tokens) -> str:
+    """Secondary text colour: neutral 500, then 700, whichever first reaches 4.5:1 on white, else ink."""
+    for key in ("500", "700"):
+        colour = tokens.neutrals.get(key)
+        if colour and contrast_ratio(colour, "#FFFFFF") >= 4.5:
+            return colour
+    return tokens.ink
+
+
 def _render(tokens: Tokens, logo_src: str, company: str, name: str, title: str, email: str,
-            email_href: str, escape: bool = True) -> str:
-    e = _esc if escape else (lambda s: s)
+            email_href: str) -> str:
+    e = ec = _esc
     stack = f"'{tokens.fonts['body'].family}', {FALLBACK_STACK}"
-    role = f"{e(title)}, {e(company)}" if title.strip() else e(company)
-    muted, line = tokens.neutrals.get("500", tokens.ink), tokens.neutrals.get("300", tokens.ink)
+    role = f"{e(title)}, {ec(company)}" if title.strip() else ec(company)
+    muted = _readable_neutral(tokens)
+    link = tokens.primary if contrast_ratio(tokens.primary, "#FFFFFF") >= 4.5 else tokens.ink
     return (
         f'<table cellpadding="0" cellspacing="0" border="0" role="presentation" '
         f'style="font-family:{stack};font-size:14px;line-height:20px;color:{tokens.ink};">\n'
@@ -114,7 +124,7 @@ def _render(tokens: Tokens, logo_src: str, company: str, name: str, title: str, 
         f'      <div style="font-size:16px;line-height:22px;font-weight:bold;color:{tokens.ink};">{e(name)}</div>\n'
         f'      <div style="color:{muted};">{role}</div>\n'
         f'      <div style="padding-top:6px;"><a href="mailto:{_esc(email_href)}" '
-        f'style="color:{tokens.primary};text-decoration:none;">{e(email)}</a></div>\n'
+        f'style="color:{link};text-decoration:none;">{e(email)}</a></div>\n'
         f'    </td>\n'
         f'  </tr>\n'
         f'</table>\n'
@@ -128,8 +138,10 @@ def build_signatures(brand_dir: Path, tokens: Tokens, cfg: AssetsConfig) -> list
     logo_src = logo_address(cfg)
     company = cfg.company_name.strip()
     written: list[Path] = []
+    for old in out_dir.glob("*.html"):
+        old.unlink()
     template = out_dir / "_template.html"
-    template.write_text(_render(tokens, logo_src, company, "[NAME]", "[TITLE]", "[EMAIL]", "[EMAIL]", escape=False))
+    template.write_text(_render(tokens, logo_src, company, "[NAME]", "[TITLE]", "[EMAIL]", "[EMAIL]"))
     written.append(template)
     used: set[str] = set()
     for i, person in enumerate(cfg.people, 1):

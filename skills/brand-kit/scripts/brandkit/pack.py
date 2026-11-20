@@ -16,7 +16,7 @@ def pack(brand_dir: Path, out: Path) -> Path:
     if not brand_dir.is_dir():
         raise BrandKitError(f"{brand_dir}: not a folder")
     out.parent.mkdir(parents=True, exist_ok=True)
-    with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as zf:
+    with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED, strict_timestamps=False) as zf:
         for p in sorted(brand_dir.rglob("*")):
             rel = p.relative_to(brand_dir)
             if not p.is_file() or p.name in _SKIP_NAMES or _SKIP_DIRS & set(rel.parts):

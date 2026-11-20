@@ -271,3 +271,13 @@ def test_svg_tile_strips_xml_header(brand_dir, monkeypatch):
     _build(brand_dir)
     tile = (_logos(brand_dir) / "mark-tile.svg").read_text()
     assert "<?xml" not in tile and "<!DOCTYPE" not in tile
+
+
+def test_bad_upload_source_leaves_existing_logos_intact(brand_dir):
+    _build(brand_dir)
+    before = {p.name: p.read_bytes() for p in _logos(brand_dir).iterdir()}
+    assert before
+    _set_config(brand_dir, mode="upload", source="assets/missing.svg", monogram="A")
+    with pytest.raises(BrandKitError):
+        _build(brand_dir)
+    assert {p.name: p.read_bytes() for p in _logos(brand_dir).iterdir()} == before

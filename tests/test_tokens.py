@@ -94,3 +94,9 @@ def test_load_colours_without_fonts(brand_dir):
     assert c.primary == "#1B3A6B" and c.neutrals["500"] == "#8A857D"
     with pytest.raises(BrandKitError, match="fonts"):
         tokens.load_tokens(p)
+
+
+def test_load_tokens_rejects_apostrophe_in_family(brand_dir):
+    p = _edit(brand_dir, lambda d: d["fonts"]["body"].update(family="Bad'; x"))
+    with pytest.raises(BrandKitError, match=r"fonts\.body\.family"):
+        tokens.load_tokens(p)

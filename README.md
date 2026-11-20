@@ -51,7 +51,7 @@ Claude asks about the company first. The skill needs a company name before it go
 
 ## Logos
 
-The skill does not draw logos. If you have one, upload it as SVG (preferred) or PNG and the skill produces the variants from it. If you do not, it generates a typographic wordmark from your chosen fonts and colours, with an optional monogram. Commission a designer for anything more.
+The skill does not draw logos. If you have one, upload it as SVG (preferred) or PNG and the skill produces the variants from it. If you do not, it generates a typographic wordmark from your chosen fonts and colours, with a monogram tile, which is always built. Commission a designer for anything more.
 
 ## Resuming work
 

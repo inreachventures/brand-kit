@@ -17,5 +17,5 @@ jobs:
       - run: pytest -q
       - name: No em-dashes
         run: |
-          ! grep -rn $'\xe2\x80\x94' --exclude-dir=.git --exclude-dir=.venv .
+          ! grep -rnI $'\xe2\x80\x94' --exclude-dir=.git --exclude-dir=.venv .
       - run: python tools/build_zip.py dist/brand-kit.zip

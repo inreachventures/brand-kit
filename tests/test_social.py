@@ -209,3 +209,24 @@ def test_web_manifest(brand_dir):
     for i in m["icons"]:
         assert i["type"] == "image/png"
         assert (brand_dir / "assets" / "favicons" / i["src"].lstrip("/")).is_file()
+
+
+def test_og_long_word_breaks_inside_image(brand_dir):
+    tokens, cfg = _load(brand_dir)
+    word = "Supercalifragilistic" * 8
+    social.build_social(brand_dir, tokens, cfg, descriptor=word, pattern=False)
+    img = Image.open(brand_dir / "assets" / "og-image.png").convert("RGB")
+    bg = social._rgb(tokens.primary)
+    # nothing drawn in the right-hand margin or beyond
+    margin = img.crop((1200 - 90 + 2, 0, 1200, 630))
+    assert set(_pixels(margin)) == {bg}
+    # and the text is present
+    low = img.crop((0, 400, 1200, 630))
+    assert len(set(_pixels(low))) > 1
+
+
+def test_og_descriptor_missing_glyph_warns(brand_dir, capsys):
+    tokens, cfg = _load(brand_dir)
+    social.build_social(brand_dir, tokens, cfg, descriptor="Tools 中 for makers", pattern=False)
+    out = capsys.readouterr().out
+    assert "warning:" in out and "中" in out

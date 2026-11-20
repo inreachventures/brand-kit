@@ -75,3 +75,13 @@ def test_unpack_into_empty_brand_folder_is_fine(brand_dir, tmp_path_factory):
     dest = tmp_path / "dest"
     (dest / "brand").mkdir(parents=True)
     assert (pack.unpack(z, dest) / "style-guide" / "tokens.json").is_file()
+
+
+def test_pack_handles_pre_1980_mtime(brand_dir, tmp_path):
+    import os
+    f = brand_dir / "assets" / "old.txt"
+    f.write_text("x")
+    os.utime(f, (0, 0))
+    z = pack.pack(brand_dir, tmp_path / "out.zip")
+    with zipfile.ZipFile(z) as zf:
+        assert "brand/assets/old.txt" in zf.namelist()

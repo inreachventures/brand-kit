@@ -50,7 +50,7 @@ def _font(d: dict, name: str) -> FontSpec:
     weight = _require(spec, "weight", f"fonts.{name}")
     if not isinstance(family, str) or not family.strip():
         raise BrandKitError(f"fonts.{name}.family: expected a font family name")
-    if '"' in family or "\n" in family or "\r" in family:
+    if '"' in family or "'" in family or "\n" in family or "\r" in family:
         raise BrandKitError(f"fonts.{name}.family: must not contain quotes or newlines")
     if isinstance(weight, bool) or not isinstance(weight, int):
         raise BrandKitError(f"fonts.{name}.weight: expected an integer such as 400")

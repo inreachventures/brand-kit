@@ -9,15 +9,15 @@ A Claude skill that a startup founder runs to build their company's brand: strat
 voice, communication strategy, visual identity and the everyday brand assets. It is released as
 open source by InReach Ventures so portfolio companies (and anyone else) can use it.
 
-It is modelled on the brand workspace InReach built for itself. The founder ends up with the same
+It is modelled on an existing brand workspace. The founder ends up with the same
 set of documents and assets, but every word, colour and choice in them is theirs. The skill
-reproduces the *structure and the process*, never InReach's content.
+reproduces the *structure and the process*, never that workspace's content.
 
 ## Goals
 
 - One skill that takes a founder from a first interview to a finished brand folder, in stages, over
   as many sessions as they need.
-- The same deliverables InReach produced for itself (listed below), adapted so they make sense for
+- The same deliverables the reference brand produced for itself (listed below), adapted so they make sense for
   any startup rather than a venture fund.
 - Works in **Claude Code** and on **claude.ai** (uploaded as a zip). Nothing depends on Claude
   Code-only features.
@@ -34,7 +34,7 @@ reproduces the *structure and the process*, never InReach's content.
 
 ## Anti-goals (failure even if it technically works)
 
-- **Any trace of InReach's brand** in the skill or its examples: no InReach colours, fonts,
+- **Any trace of the reference brand** in the skill or its examples: no colours, fonts,
   positioning, taglines, product names, people, or phrasing lifted from its documents. Worked
   examples use a fictional company.
 - **Generic filler.** A document that would read the same for any startup is a failure. Every
@@ -65,7 +65,7 @@ reproduces the *structure and the process*, never InReach's content.
   Pillow), and an uploaded SVG logo is rasterised with `cairosvg` only if the environment has it;
   otherwise the skill asks the founder for a large PNG alongside the SVG.
 - **Writing style of the skill itself:** plain, direct, no em-dashes.
-- **Public repo:** no InReach internal material, no real portfolio-company data, no secrets.
+- **Public repo:** no internal material from the reference brand, no real portfolio-company data, no secrets.
 
 ## Approaches considered
 
@@ -128,7 +128,7 @@ investors, hires, partners: whichever the founder names), and value propositions
   (closing reversals, everything in threes, sentences set apart for effect, throat-clearing, abstract
   nouns, uniform paragraph length, dash-heavy rhythm), plus a **voice note for each person who will
   publish** for the company, and a listening-pass checklist. The generic part ships as a reference file
-  in the skill and is written fresh, not copied from InReach's version.
+  in the skill and is written fresh, not copied from the reference brand's version.
 
 **Stage 4, Visual identity.**
 - *Colour:* two or three palette options derived from the positioning and the category research
@@ -206,7 +206,7 @@ writing (author's call).
 The skill bundles a small curated set of open-licence (SIL OFL) font families covering the usual
 choices (a few sans, a serif, a mono, one or two display faces) so stage 4 and 6 work without
 network access. A founder can also supply their own font files. The set must not be chosen to echo
-InReach's typography.
+the typography of the brand it was modelled on.
 
 ### Output folder
 
@@ -254,9 +254,9 @@ brand-kit/
   the skill loads, the scripts run in the sandbox, and the zip hand-back and resume work. Run by
   the builder through the browser extension in the author's own claude.ai account, with the
   author's go-ahead at that point. This is a release gate.
-- **Leakage review:** a fresh reviewer, given InReach's brand documents and the skill, checks that
-  nothing in the skill or the example reflects InReach's content. Plus a search for InReach-specific
-  terms, colours and font names.
+- **Leakage review:** a fresh reviewer, given the reference brand's documents and the skill, checks that
+  nothing in the skill or the example reflects the reference brand's content. Plus a search for terms specific to it,
+  colours and font names.
 
 ## Left to the builder
 
