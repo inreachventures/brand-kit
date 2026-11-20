@@ -1,0 +1,188 @@
+# Stage 0: Intake
+
+The intake gives every later stage its raw material. A brand built on thin intake turns generic,
+because the gaps get filled with what any company would say. Take the time here.
+
+## Before the first question
+
+Tell the founder briefly how this works: a short interview now, then research, positioning,
+messaging and voice, visual identity, a communication plan and the asset files, over as many
+sessions as they like. Everything ends up in a `brand/` folder they own. They make the decisions;
+you propose options and write things down.
+
+Ask them to share anything that already exists: website text, a pitch deck, past posts,
+product pages, customer emails, reviews, an existing logo. Material they already have is the
+best evidence of how they sound and what customers respond to.
+
+## The interview
+
+Ask one cluster at a time, three to five questions, and wait for the answers. After each
+cluster, play back what you heard in a few lines and ask if anything is wrong or missing. Skip
+questions the material they shared already answers, and say what you took from it instead.
+
+Adapt the wording to the founder. The clusters below are what you need to cover, not a script.
+
+### 1. The company
+
+- What is the company called? Is the name settled or a working name?
+- Which language should the brand documents be written in?
+- What does the company do, in one plain sentence a customer would understand?
+- How does it make money, and where does it operate (countries, languages)?
+- When did it start, and how many people work on it?
+
+**If there is no name, stop here.** Explain that every part of the brand is built around the name,
+from the positioning line to the wordmark, and that naming is outside this skill. Suggest they
+come back with a name, even a working one that may change. Do not continue to the other
+clusters or create any files.
+
+### 2. Customers and other audiences
+
+- Who pays? Who uses the product, if that is someone else?
+- Describe your best customer: who they are, what they were doing before, why they chose you.
+- When you lose a deal or a user leaves, what is the usual reason?
+- Who else does the brand need to win over: investors, future hires, partners, regulators,
+  communities?
+- How would you like a customer to describe you to a friend?
+
+### 3. Stage and the next year
+
+- Where are you now: pre-launch, first customers, growing revenue, scaling?
+- What has to happen in the next twelve months (a launch, a fundraise, key hires, a new market)?
+- Which of those does the brand need to help with first?
+
+### 4. Competitors and alternatives
+
+- Who do customers compare you with? Name four to eight if you can.
+- What do people do instead of buying anything (a spreadsheet, an agency, doing nothing)?
+- Who do you admire, in or outside your category, and why?
+- What do competitors say that you find annoying or untrue?
+
+### 5. What already exists
+
+- Is there a logo? If so, ask for the file (SVG preferred, a large PNG otherwise) and whether
+  it stays as it is.
+- A website, decks, product copy, social profiles, past newsletters or posts?
+- Any colours, fonts or phrases the founder is attached to, or wants to drop?
+- Proof points: numbers, named customers, results, awards, press. Which can be said in public?
+
+### 6. Who speaks for the company
+
+- Who will write or speak in the company's name: posts, newsletters, talks, sales emails?
+- For each: name, role, the channels they use, and links to or samples of their writing.
+- Who needs an email signature? Name, job title and email address for each.
+
+### 7. Constraints
+
+- Budget, especially for a designer if they want a logo symbol later.
+- Deadlines: a launch, an event, a fundraise.
+- Claims you must not make: regulated sectors (health, finance, children, legal) or legal advice
+  already received.
+- Languages and scripts the brand must work in, beyond the document language (for example a
+  name or market that needs Greek or Cyrillic letters).
+- Anything the founder already knows they dislike in brands.
+
+## Reading uploaded material
+
+Read everything the founder shares before asking about what it covers. As you read, note:
+
+- **Claims and proof**: what the company says about itself, and which claims have evidence
+  (numbers, customers, results). Mark where each came from.
+- **Their words**: phrases the founder or customers use repeatedly. Copy them verbatim; they feed
+  the messaging and the voice.
+- **How they sound now**: sentence length, formality, humour, jargon. Keep short quotes as
+  evidence. Existing copy also gives the before-and-after rewrites in stage 3.
+- **Visual elements**: colours (exact hex values where the file has them), fonts, the logo, the
+  imagery style.
+- **What to keep and what to drop**: ask the founder about anything you are unsure of. Marketing
+  copy is not always true; treat a claim as a fact only once the founder confirms it.
+
+## What to write
+
+At the end of the stage, create these three files.
+
+### `brand/README.md`
+
+```
+# [Company name]: brand
+
+[One or two sentences: what this folder holds and who it is for.]
+
+## How to continue
+[Claude Code: open the folder that contains brand/ and ask Claude to continue building the brand.
+claude.ai: start a new chat, upload the latest brand.zip and ask Claude to continue.]
+
+## Settings
+- Company name: [name, and whether it is a working name]
+- Language of the documents: [language]
+- Logo: [existing logo to upload / wordmark / undecided]
+
+## Progress
+- [ ] 0 Intake: research/intake-notes.md, decisions.md
+- [ ] 1 Research: research/competitor-analysis.md
+- [ ] 2 Positioning and audiences: strategy/positioning.md, strategy/audience-*.md, strategy/value-propositions.md
+- [ ] 3 Messaging and voice: strategy/messaging-framework.md, strategy/tone-of-voice.md, strategy/writing-anti-patterns.md
+- [ ] 4 Visual identity: style-guide/color-palette.md, typography.md, logo-usage.md, photography-direction.md, social-branding.md, tokens.json, tokens.css
+- [ ] 5 Communication strategy: communications/communication-strategy.md
+- [ ] 6 Assets: assets/, CLAUDE-INSTRUCTIONS.md
+
+## Open items
+[Anything marked "Not decided yet" in a document, with the file it sits in.]
+```
+
+Tick a stage only when its files are written and the founder has seen them. Mark a stage that is
+under way as `[~]` with a line saying where it stopped.
+
+### `brand/decisions.md`
+
+Start it as described in [decision-log.md](decision-log.md), with the first entries: the
+language of the documents, and anything the founder ruled out.
+
+### `brand/research/intake-notes.md`
+
+```
+# Intake notes
+
+[Date of the interview. Who took part.]
+
+## The company
+[What it does in one plain sentence, in the founder's words. Business model, markets, size, age.]
+
+## Customers and other audiences
+[Who pays, who uses, the best-customer story, why deals are lost, the other audiences named.]
+
+## Stage and the next twelve months
+[Where the company is, the milestones ahead, what the brand must help with first.]
+
+## Competitors and alternatives
+[The names given, the do-nothing alternatives, who the founder admires and why.]
+
+## Existing material
+[What was shared, with file names or links.]
+
+### Keep
+[Elements the founder wants to keep, and why.]
+
+### Change or drop
+[Elements to change or drop, and why.]
+
+### Proof points
+[Each claim with its evidence and source, and whether it can be said in public.]
+
+## Who speaks for the company
+[One line per person: name, role, channels, where to find samples of their writing.]
+
+## Email signatures
+[Name, job title and email for each person who needs one.]
+
+## Constraints
+[Budget, deadlines, claims that must not be made, languages and scripts, known dislikes.]
+
+## Words worth keeping
+[Verbatim phrases from the founder, customers or existing material.]
+
+## Open questions
+[What still needs an answer, and who can give it.]
+```
+
+Then end the stage as SKILL.md describes and tell the founder that stage 1 looks at competitors.
+Ask whether they can add any competitor links before you start.
