@@ -18,6 +18,7 @@ AVATAR_ZONE = 0.25  # left share of LinkedIn and X banners the profile photo ove
 SIDE_SAFE = 0.06  # right share of a banner that mobile apps may crop from the side
 OG_MAX_LINES = 3
 SS = 2  # pattern supersampling factor
+PANEL_PAD = 0.22  # padding of the paper panel behind a full-colour logo, as a fraction of the logo height
 
 # name, width, height, logo width fraction, max logo height fraction, bottom-left avatar zone
 BANNERS = (
@@ -47,6 +48,19 @@ def _recolour(img: Image.Image, colour: str) -> Image.Image:
 def _fit(logo: Image.Image, max_w: int, max_h: int) -> Image.Image:
     s = min(max_w / logo.width, max_h / logo.height, 1.0)
     return logo.resize((max(1, round(logo.width * s)), max(1, round(logo.height * s))), Image.LANCZOS)
+
+
+def _place(logo: Image.Image, tokens: Tokens, original: bool, max_w: int, max_h: int) -> Image.Image:
+    """The logo ready to composite: one colour on the primary, or full colour on a paper panel."""
+    if not original:
+        return _fit(_recolour(logo, best_on(tokens.primary, [tokens.paper, tokens.ink])), max_w, max_h)
+    # panel = logo + 2 * pad, with pad = PANEL_PAD * logo height
+    s = min(max_w / (logo.width + 2 * PANEL_PAD * logo.height), max_h / (logo.height * (1 + 2 * PANEL_PAD)), 1.0)
+    lg = logo.resize((max(1, round(logo.width * s)), max(1, round(logo.height * s))), Image.LANCZOS)
+    pad = max(1, round(lg.height * PANEL_PAD))
+    panel = Image.new("RGBA", (lg.width + 2 * pad, lg.height + 2 * pad), _rgb(tokens.paper) + (255,))
+    panel.alpha_composite(lg, (pad, pad))
+    return panel
 
 
 def _pattern(size: tuple[int, int], tokens: Tokens, seed: str, keep_out: tuple[int, int, int, int]) -> Image.Image:
@@ -85,16 +99,15 @@ def _pattern(size: tuple[int, int], tokens: Tokens, seed: str, keep_out: tuple[i
 
 def _banner(
     size: tuple[int, int], logo: Image.Image, tokens: Tokens, name: str, pattern: bool,
-    width_frac: float, height_frac: float,
+    width_frac: float, height_frac: float, original: bool,
 ) -> Image.Image:
     w, h = size
-    colour = best_on(tokens.primary, [tokens.paper, tokens.ink])
     bottom = min(h - MARGIN, int(h * (1 - MOBILE_CROP)))
     max_h = min(round(h * height_frac), bottom - MARGIN)
     right = max(MARGIN, math.ceil(w * SIDE_SAFE))
     # leave the avatar column free of the logo on every banner, whatever the width cap says
     max_w = min(round(w * width_frac), w - right - MARGIN - round(w * AVATAR_ZONE))
-    lg = _fit(_recolour(logo, colour), max_w, max_h)
+    lg = _place(logo, tokens, original, max_w, max_h)
     x, y = w - right - lg.width, bottom - lg.height
     img = Image.new("RGBA", size, _rgb(tokens.primary) + (255,))
     if pattern:
@@ -103,10 +116,13 @@ def _banner(
     return img.convert("RGB")
 
 
-def _og(logo: Image.Image, tokens: Tokens, brand_dir: Path, name: str, descriptor: str | None, pattern: bool) -> Image.Image:
+def _og(
+    logo: Image.Image, tokens: Tokens, brand_dir: Path, name: str, descriptor: str | None, pattern: bool,
+    original: bool,
+) -> Image.Image:
     w, h = 1200, 630
     colour = best_on(tokens.primary, [tokens.paper, tokens.ink])
-    lg = _fit(_recolour(logo, colour), 480, 150)
+    lg = _place(logo, tokens, original, 480, 150 if not original else 190)
     gap, text_h = 36, 0
     font = fonts.pil_font(tokens.fonts["body"], brand_dir, 36)
     lines: list[str] = []
@@ -159,23 +175,25 @@ def build_social(
     """Write brand/assets/social/* and brand/assets/og-image.png. Builds the logos first if missing.
 
     pattern adds low-contrast circles in tints of the primary colour; plain is the default in
-    assets/config.json (banner_pattern).
+    assets/config.json (banner_pattern). The logo is one colour, with any inner detail cut out,
+    unless logo.tile_style is "original": then the full-colour upload sits on a paper panel.
     """
     brand_dir = Path(brand_dir)
     logos.ensure_logos(brand_dir, tokens, cfg)
-    logo = logos.load_logo(brand_dir, "light")
+    original = cfg.tile_style == "original"
+    logo = logos.load_logo(brand_dir, "light") if original else logos.load_silhouette(brand_dir)
     out_dir = brand_dir / "assets" / "social"
     out_dir.mkdir(parents=True, exist_ok=True)
     name = cfg.company_name.strip()
     written: list[Path] = []
     for fname, w, h, wf, hf, _avatar in BANNERS:
         path = out_dir / fname
-        _banner((w, h), logo, tokens, name, pattern, wf, hf).save(path)
+        _banner((w, h), logo, tokens, name, pattern, wf, hf, original).save(path)
         written.append(path)
     avatar = out_dir / "avatar-400x400.png"
     logos.load_mark(brand_dir).resize((400, 400), Image.LANCZOS).save(avatar)
     written.append(avatar)
     og = brand_dir / "assets" / "og-image.png"
-    _og(logo, tokens, brand_dir, name, descriptor, pattern).save(og)
+    _og(logo, tokens, brand_dir, name, descriptor, pattern, original).save(og)
     written.append(og)
     return written
