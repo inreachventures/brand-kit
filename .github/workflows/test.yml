@@ -4,15 +4,17 @@ on:
   pull_request:
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os || 'ubuntu-latest' }}
     strategy:
       matrix:
         include:
           - python-version: "3.10"
           - python-version: "3.12"
-          # the oldest Pillow the scripts support (rounded_rectangle needs 8.2); it has wheels up to 3.9
+          # the oldest Pillow the scripts support (rounded_rectangle needs 8.2); it has wheels up to
+          # Python 3.9, which actions/python-versions builds for Ubuntu 24.04 but not 26.04
           - python-version: "3.9"
             pillow: "8.2.0"
+            os: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
