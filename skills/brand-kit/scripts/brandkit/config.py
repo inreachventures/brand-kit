@@ -18,6 +18,7 @@ class Person:
 class AssetsConfig:
     company_name: str
     website: str | None
+    logo_url: str | None
     logo_mode: str
     logo_source: Path | None
     monogram: str
@@ -43,6 +44,13 @@ def load_config(brand_dir: Path) -> AssetsConfig:
     website = data.get("website")
     if website is not None and not isinstance(website, str):
         raise BrandKitError("website: expected a string")
+    logo_url = data.get("logo_url")
+    if logo_url is not None:
+        if not isinstance(logo_url, str) or not logo_url.strip():
+            raise BrandKitError("logo_url: expected a non-empty string")
+        logo_url = logo_url.strip()
+        if not logo_url.lower().startswith(("https://", "http://")):
+            raise BrandKitError("logo_url: expected a full address starting with https://")
     og_descriptor = data.get("og_descriptor")
     if og_descriptor is not None and not isinstance(og_descriptor, str):
         raise BrandKitError("og_descriptor: expected a string")
@@ -86,4 +94,4 @@ def load_config(brand_dir: Path) -> AssetsConfig:
                 raise BrandKitError(f"people[{i}].{k}: must not be empty")
         people.append(Person(p["name"], p["title"], p["email"]))
     monogram = monogram_raw or name.strip()[0].upper()
-    return AssetsConfig(name, website, mode, source, monogram, og_descriptor, banner_pattern, people)
+    return AssetsConfig(name, website, logo_url, mode, source, monogram, og_descriptor, banner_pattern, people)

@@ -22,6 +22,7 @@ def test_config_defaults(brand_dir):
     assert c.monogram == "A"
     assert c.people == []
     assert c.website is None
+    assert c.logo_url is None
     assert c.og_descriptor is None
     assert c.banner_pattern is False
 
@@ -29,6 +30,23 @@ def test_config_defaults(brand_dir):
 def test_config_og_descriptor(brand_dir):
     _write(brand_dir, {"company_name": "Acme", "logo": {"mode": "wordmark"}, "og_descriptor": "Calm tools for small teams"})
     assert config.load_config(brand_dir).og_descriptor == "Calm tools for small teams"
+
+
+def test_config_logo_url(brand_dir):
+    _write(brand_dir, {"company_name": "Acme", "logo": {"mode": "wordmark"},
+                       "logo_url": " https://images.example/acme/tile.png "})
+    assert config.load_config(brand_dir).logo_url == "https://images.example/acme/tile.png"
+
+
+@pytest.mark.parametrize("value,match", [
+    (42, "logo_url: expected a non-empty string"),
+    ("  ", "logo_url: expected a non-empty string"),
+    ("images.example/tile.png", "logo_url: expected a full address"),
+])
+def test_config_logo_url_invalid(brand_dir, value, match):
+    _write(brand_dir, {"company_name": "Acme", "logo": {"mode": "wordmark"}, "logo_url": value})
+    with pytest.raises(BrandKitError, match=match):
+        config.load_config(brand_dir)
 
 
 def test_config_banner_pattern(brand_dir):

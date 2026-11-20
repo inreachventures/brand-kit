@@ -1,5 +1,4 @@
 import json
-import re
 import shutil
 from pathlib import Path
 
@@ -29,9 +28,11 @@ def test_catalogue_budget():
     assert total <= 6 * 1024 * 1024
 
 
-def test_no_excluded_families():
-    for entry in CATALOGUE:
-        assert not re.search(r"geist|jetbrains|space mono", entry["family"], re.I)
+def test_catalogue_families():
+    assert [e["family"] for e in CATALOGUE] == [
+        "Inter", "DM Sans", "Manrope", "IBM Plex Sans", "Lora", "IBM Plex Serif", "IBM Plex Mono",
+        "Playfair Display", "Unbounded",
+    ]
 
 
 @pytest.mark.parametrize("family,path", FILES)

@@ -13,7 +13,7 @@ LOGO_PLACEHOLDER = "[LOGO_URL]"
 MARK_FILE = "mark-tile-160.png"
 FALLBACK_STACK = "Arial, Helvetica, sans-serif"
 
-README = """# Email signatures
+README_TEMPLATE = """# Email signatures
 
 These signatures use the brand colours and your monogram. They are plain HTML tables with inline
 styles, which is the only kind of HTML that mail apps reliably keep.
@@ -26,12 +26,22 @@ styles, which is the only kind of HTML that mail apps reliably keep.
 ## Host the logo image first
 
 Mail apps load the small logo from a web address, so the image has to be online before the signature
-will show it. The file is `brand/assets/logos/mark-tile-160.png`.
+will show it. The file is `brand/assets/logos/mark-tile-160.png`. These signatures currently load it
+from:
 
-- Upload it to your website so it is available at `<your website>/brand/mark-tile-160.png`. The
-  signatures are already written to use that address when your config has a website.
-- If your config has no website, the signatures contain `[LOGO_URL]` instead. Upload the image
-  anywhere public (your website, a public file store, a CDN) and replace `[LOGO_URL]` in each file with its full address.
+    {logo_src}
+
+The address comes from `brand/assets/config.json`:
+
+- If the config has a `logo_url`, the signatures use it as it is.
+- Otherwise, if it has a `website`, they use `<website>/brand/mark-tile-160.png`. Use this only if you
+  can put a file at exactly that address. Site builders such as Squarespace, Wix, Webflow and Framer
+  usually cannot serve a file at a path you choose.
+- With neither, the signatures contain `[LOGO_URL]`.
+
+If you cannot use the website address, upload the PNG anywhere public (your site builder's image or
+file upload, a public file store, a CDN), copy the address it gives you, set `logo_url` to it in
+`config.json` and build the signatures again. You can also replace `[LOGO_URL]` by hand in each file.
 
 Open the address in a private browser window to check that it loads without signing in.
 
@@ -66,6 +76,15 @@ copy it. Then:
   recipients will usually see Arial. The colours and layout still hold.
 - Send yourself a test and look at it on a phone and in dark mode before rolling it out.
 """
+
+
+def logo_address(cfg: AssetsConfig) -> str:
+    """The logo image address: logo_url, else <website>/brand/mark-tile-160.png, else [LOGO_URL]."""
+    if cfg.logo_url:
+        return cfg.logo_url
+    if cfg.website:
+        return f"{cfg.website.rstrip('/')}/brand/{MARK_FILE}"
+    return LOGO_PLACEHOLDER
 
 
 def slugify(name: str) -> str:
@@ -106,10 +125,7 @@ def build_signatures(brand_dir: Path, tokens: Tokens, cfg: AssetsConfig) -> list
     """Write brand/assets/email-signatures/: _template.html, one file per person and a README."""
     out_dir = Path(brand_dir) / "assets" / "email-signatures"
     out_dir.mkdir(parents=True, exist_ok=True)
-    if cfg.website:
-        logo_src = f"{cfg.website.rstrip('/')}/brand/{MARK_FILE}"
-    else:
-        logo_src = LOGO_PLACEHOLDER
+    logo_src = logo_address(cfg)
     company = cfg.company_name.strip()
     written: list[Path] = []
     template = out_dir / "_template.html"
@@ -126,6 +142,6 @@ def build_signatures(brand_dir: Path, tokens: Tokens, cfg: AssetsConfig) -> list
         path.write_text(_render(tokens, logo_src, company, person.name, person.title, person.email, person.email))
         written.append(path)
     readme = out_dir / "README.md"
-    readme.write_text(README)
+    readme.write_text(README_TEMPLATE.replace("{logo_src}", logo_src))
     written.append(readme)
     return written
