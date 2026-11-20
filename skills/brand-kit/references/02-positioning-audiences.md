@@ -2,8 +2,8 @@
 
 Positioning is the choice of what the company wants to be known for, by whom, and instead of
 what. Everything after this stage, from the tagline to the palette, follows from it. It is also
-the stage where founders most want to keep every option open, so the main job here is helping
-them choose.
+the stage where people most want to keep every option open, so the main job here is helping the
+company choose.
 
 Read `research/intake-notes.md` and `research/competitor-analysis.md` before you start.
 
@@ -29,7 +29,7 @@ For each option write:
 - **What it gives up**: the customers, claims or directions it rules out. If you cannot name any,
   the option is still too broad; narrow it before you show it.
 - **Proof the company has today**: evidence from the intake notes, with the source. If an option
-  needs proof the company does not have, say so; it may still be the right bet, but the founder
+  needs proof the company does not have, say so; it may still be the right bet, but the company
   should know.
 - **The gap it uses**: which finding in the competitor analysis it builds on.
 - **Risks**: what could make it wrong.
@@ -37,11 +37,11 @@ For each option write:
 ## Present the options
 
 Show the options side by side in chat, in a compact form: the plain-words line, the emphasis,
-what it gives up, the proof. Then give your recommendation and the reason, tied to the founder's
+what it gives up, the proof. Then give your recommendation and the reason, tied to the company's
 stage and goals from the intake. Ask which one feels most like the company they are building, and
 which one they would be proudest to defend to a sceptical customer.
 
-### When the founder wants to combine options
+### When they want to combine options
 
 Combining is fine, but it is also where positioning goes vague. A combined position still needs
 one lead idea. Help them pick which option leads, and turn what they like from the others into
@@ -56,15 +56,15 @@ entry to `decisions.md` (see [decision-log.md](decision-log.md)).
 ## Audiences
 
 Ask which audiences need a profile. Usually that means the customer, split into buyer and user
-where they are different people, plus whichever of investors, hires, partners or communities the
-founder named at intake. Write one file per audience, in `strategy/audience-<name>.md`, where
+where they are different people, plus whichever of investors, hires, partners or communities were
+named at intake. Write one file per audience, in `strategy/audience-<name>.md`, where
 `<name>` is a short lowercase slug in plain letters and hyphens (for example
 `audience-operations-leads.md`).
 
-Build each profile from what the founder and the material say about real people. Where the
-founder is guessing, follow the guess with a marker saying how to check it, such as
-`[Open: assumption; check by asking three shop owners]`. Keep the profile short where the
-founder knows little; the team will act on whatever it says.
+Build each profile from what the person you are working with and the material say about real
+people. Where they are guessing, follow the guess with a marker saying how to check it, such as
+`[Open: assumption; check by asking three shop owners]`. Keep the profile short where little is
+known; the team will act on whatever it says.
 
 For each audience, ask a short cluster before you write the profile, skipping what the intake
 already answers:
@@ -75,7 +75,7 @@ already answers:
 - What objections do you hear from them? What makes them hesitate, delay or say no?
 - Who else has a say in their decision?
 
-The objections feed the value propositions below. If the founder has never heard objections
+The objections feed the value propositions below. If the company has never heard objections
 from an audience (often investors or hires early on), write `[Open: objections from this
 audience]` and add how to find out, such as asking the next three people who say no; do not
 supply objections yourself.
@@ -84,7 +84,7 @@ supply objections yourself.
 
 For each audience, the value they get, the points that support it, and the proof. Keep the
 supporting points to the ones that matter to this audience; two or four is as normal as three.
-Include the objections this audience raises, from the founder's answers above, and the honest
+Include the objections this audience raises, from the answers above, and the honest
 answer to each.
 
 ## Template: `brand/strategy/positioning.md`
@@ -98,7 +98,7 @@ answer to each.
 [In plain words: one sentence a customer would say.]
 
 ### Why this direction
-[The founder's reasons, linked to the research and the company's goals.]
+[The decider's reasons, linked to the research and the company's goals.]
 
 ### What we give up
 [Customers, claims and directions this rules out.]
@@ -128,7 +128,7 @@ answer to each.
 
 ## Who they are
 [Role, situation, type and size of organisation, what their week looks like. Specific enough
-that the founder can name real people who fit.]
+that the team can name real people who fit.]
 
 ## What they need
 [The job they are trying to get done, what gets in the way, what triggers a search for a
@@ -165,7 +165,7 @@ nothing, linked to the gaps in the competitor analysis.]
 | [point] | [evidence and source] |
 
 ### Objections and answers
-- **[Objection, in their words, as the founder has heard it]:** [an honest answer]
+- **[Objection, in their words, as the company has heard it]:** [an honest answer]
 
 ### What we do not claim
 [Things this audience might expect us to say that we cannot back up.]

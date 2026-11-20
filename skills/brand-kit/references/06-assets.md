@@ -11,10 +11,9 @@ for the path to the brand folder; see [runtime.md](runtime.md).
 
 Check that:
 
-- `brand/style-guide/tokens.json` exists and the founder has approved the palette and fonts
-  (stage 4)
+- `brand/style-guide/tokens.json` exists and the palette and fonts are approved (stage 4)
 - the logo route is decided and recorded in `decisions.md`
-- if the founder is keeping their logo, the file is saved in `brand/assets/source/` (see below)
+- if the company is keeping its logo, the file is saved in `brand/assets/source/` (see below)
 
 ## Write `brand/assets/config.json`
 
@@ -31,19 +30,25 @@ image (see "Generate").
 ```
 
 - **company_name**: exactly as it should appear in the wordmark, including capitals and accents.
-- **website**: the public address of their website, starting `https://`. Unless `logo_url` is
+- **website**: the public address of their website, starting `https://` (or `http://`; anything
+  else is rejected). Unless `logo_url` is
   set, the email signatures load the logo from `<website>/brand/mark-tile-160.png`. Leave the key
   out if they have no website yet; with no `logo_url` either, the signatures then contain
   `[LOGO_URL]` to fill in later.
-- **logo_url** (optional): the full public address of `mark-tile-160.png` wherever the founder
-  has put it, starting `https://`. The signatures use it in place of the website address. Set it
+- **logo_url** (optional): the full public address of `mark-tile-160.png` wherever they have
+  put it, starting `https://`. The signatures use it in place of the website address. Set it
   when they cannot put a file at exactly `<website>/brand/mark-tile-160.png` (see "Putting the
   files to use").
 - **logo.mode**: `"wordmark"` to generate a wordmark and monogram tile, or `"upload"` to use the
-  founder's logo. With `"upload"`, add `"source": "assets/source/logo.svg"` (or `logo.png`); the
+  company's logo. With `"upload"`, add `"source": "assets/source/logo.svg"` (or `logo.png`); the
   path is relative to `brand/`.
-- **logo.monogram**: the letters on the tile in wordmark mode. Leave it out for the first letter of
-  the name.
+- **logo.monogram**: the letters on the tile in wordmark mode. Leave it out for the first letter or
+  digit of the name.
+- **logo.tile_style** (optional, upload mode only): `"mono"` (the default) shows the logo in one
+  colour on the primary colour, in the tile, favicons, avatar, banners and Open Graph image, with
+  any detail inside the shape cut out. `"original"` keeps the logo's own colours: the tile is the
+  logo on the paper colour, and the banners and Open Graph image put it on a paper panel. Use it
+  for a logo that only works in colour; see "The company's logo" below.
 - **og_descriptor** (added after the first build): the line printed under the logo on the Open
   Graph image, the preview shown when someone shares the website. Use the plain-words positioning
   line or the tagline, whichever reads better on its own. It fits up to three lines, about 140
@@ -52,15 +57,15 @@ image (see "Generate").
 - **banner_pattern** (optional): `true` adds a light pattern of circles, in tints of the primary
   colour, behind the logo on the banners, the call background and the Open Graph image. Leave it
   out for a plain brand-colour field, which is the default and suits most brands. Offer it only if
-  the founder finds the plain banners too bare, and show both.
+  they find the plain banners too bare, and show both.
 - **people**: everyone who needs an email signature, from the intake notes. Confirm each name,
-  title and address with the founder. `name` and `email` must not be empty; `title` may be an empty
+  title and address with the person you are working with. `name` and `email` must not be empty; `title` may be an empty
   string. Leave the list out if nobody needs a signature.
 
-## The founder's logo
+## The company's logo
 
 The logo is normally saved at intake as `brand/assets/source/logo.svg` or
-`brand/assets/source/logo.png`; check it is there. If the founder uploads it now, save it under
+`brand/assets/source/logo.png`; check it is there. If they upload it now, save it under
 the same name, never inside `brand/assets/logos/`, because every build clears its own files from
 that folder. On claude.ai, the uploaded file is usually in `/mnt/user-data/uploads/`; copy it
 across.
@@ -70,7 +75,17 @@ across.
   no SVG files and no `favicon.svg`.
 - An SVG needs `cairosvg` to be turned into PNGs (`python3 -c "import cairosvg"` to check). Without
   it, save a PNG of the same logo, at least 1200 px wide, as `brand/assets/source/logo.png` next to
-  the SVG. The SVG also needs a `viewBox` attribute.
+  the SVG. The SVG also needs a `viewBox` attribute (or plain `width` and `height`); the build
+  checks it, and the rest of the file, before it replaces any existing logo files.
+- **Badges.** In the single-colour versions, and so in the tile, favicons, avatar, banners and
+  Open Graph image, detail inside the logo's shape that is much lighter or darker than its main
+  colour is cut out: a white letter on an orange disc becomes a letter-shaped hole, not a solid
+  disc. The build prints a note when it does this. Detail that touches the outside of the shape
+  stays. For an SVG the cut-out is an SVG mask, built when the detail has its own fill colour;
+  browsers and design tools show it, but some converters ignore masks, and the build notes when it
+  could only cut the PNGs. If the one-colour logo still loses something that matters (two colours
+  of similar lightness, a gradient, fine detail), set `logo.tile_style` to `"original"` and show
+  them both versions.
 
 ## Generate
 
@@ -82,7 +97,7 @@ Copy the chosen fonts and their licences into the brand folder, then build every
 ```
 
 Then agree the Open Graph line. Propose two or three wordings, render each with the
-`--descriptor` option, which sets the line for one run, and show the founder the resulting
+`--descriptor` option, which sets the line for one run, and show the resulting
 `og-image.png`:
 
 ```
@@ -92,9 +107,10 @@ Then agree the Open Graph line. Propose two or three wordings, render each with 
 Once they pick one, add it to `config.json` as `og_descriptor`, so later runs keep it, re-run
 `assets brand --only social`, and record the line in the decision log.
 
-`fonts-copy` leaves fonts the founder supplied in `brand/assets/fonts/` where they are. If the
+`fonts-copy` leaves fonts the company supplied in `brand/assets/fonts/` where they are. If the
 build stops with a message that the heading font has no glyphs for some characters in the name,
-it lists the bundled families that do; go back to the typography choice with the founder.
+it lists the bundled families that do; go back to the typography choice with them. A build that
+stops with an error leaves the previous logo files as they were.
 
 The build writes:
 
@@ -116,21 +132,23 @@ In wordmark mode the logo files are `logo-on-light`, `logo-on-dark`, `logo-mono-
 `logo-mono-white`. In upload mode they are `logo-original` (a copy of the file as supplied, plus
 PNGs), `logo-mono-black` and `logo-mono-white`.
 
-## Review with the founder
+## Review together
 
-Look at every image yourself first, then show them to the founder (see "Showing images" in
+Look at every image yourself first, then show them (see "Showing images" in
 [runtime.md](runtime.md)). Go through:
 
 - **Wordmark**: is it legible, and is the letter spacing even? The generated wordmark has no
   kerning, so look at pairs such as "AV", "To" or "Wa".
 - **Tile and favicons**: is the tile readable at 32 px and 16 px? Does it survive a circle crop,
-  as most platforms show avatars as circles? A long uploaded logo can end up too small here.
+  as most platforms show avatars as circles? A long uploaded logo can end up too small here. For
+  an uploaded badge, check that the letters or detail inside it still read in one colour; if not,
+  try `logo.tile_style` `"original"`.
 - **Banners**: is the logo clear of the profile photo, which covers the lower left of the LinkedIn
   personal banner and the X header? Does it survive the mobile crops? The build keeps it above the
   bottom 12% and at least 6% of the width in from the right edge.
 - **Open Graph image**: does the descriptor read well, without being cut short?
-- **Call background**: the founder will see their own preview mirrored; others see it the right
-  way round.
+- **Call background**: people see their own preview mirrored; others see it the right way
+  round.
 - **Email signatures**: open each `.html` file in a browser and check names, titles and addresses.
 
 ### Making changes
@@ -138,11 +156,12 @@ Look at every image yourself first, then show them to the founder (see "Showing 
 Re-run `assets` after any change to the palette, fonts, name or logo. Every run rebuilds the logos
 first, then everything that uses them, so the files never fall out of step.
 
-| The founder wants | Do this |
+| They want | Do this |
 |-------------------|---------|
 | Different colours | Edit `tokens.json`, run `tokens-css`, update `color-palette.md`, log the decision, re-run `assets` |
-| A different font | Edit `tokens.json`, run `tokens-css`, delete the old bundled family's folder from `assets/fonts/` (never a font the founder supplied), run `fonts-copy`, update `typography.md`, log it, re-run `assets` |
+| A different font | Edit `tokens.json`, run `tokens-css`, delete the old bundled family's folder from `assets/fonts/` (never a font the company supplied), run `fonts-copy`, update `typography.md`, log it, re-run `assets` |
 | Different tile letters | Set `logo.monogram` in `config.json`, re-run `assets` |
+| An uploaded logo in its own colours on the tile and banners | Set `logo.tile_style` to `"original"` in `config.json`, log it, re-run `assets` |
 | A new logo file | Replace the file in `assets/source/`, re-run `assets` |
 | A different Open Graph line | Try wordings with `--descriptor`, change `og_descriptor` in `config.json`, log it, re-run `assets` |
 | A pattern behind the logo, or none | Set `banner_pattern` to `true` or `false` in `config.json`, log it, re-run `assets brand --only social` |
@@ -153,7 +172,7 @@ first, then everything that uses them, so the files never fall out of step.
 
 The banners and images are a plain brand-colour field with the logo placed clear of each
 platform's overlaps, plus the optional pattern (`banner_pattern`) and the Open Graph line. Those
-are the only choices. If the founder wants a different layout, extra text or a photograph, say
+are the only choices. If they want a different layout, extra text or a photograph, say
 plainly that the scripts do not do that, and suggest a designer or a design tool using the files
 and colours from the brand folder.
 
@@ -163,7 +182,7 @@ in `decisions.md`.
 ## Putting the files to use
 
 **Email signature logo.** The signatures load the tile from the web, because mail apps do not
-reliably show embedded images. Ask the founder whether they (or whoever runs the website) can put
+reliably show embedded images. Ask whether they (or whoever runs the website) can put
 a file at exactly `<website>/brand/mark-tile-160.png`. That works when the site is code they
 control. Site builders such as Squarespace, Wix, Webflow and Framer usually cannot serve a file at
 a path you choose. In that case they upload `brand/assets/logos/mark-tile-160.png` anywhere public,
@@ -198,7 +217,7 @@ image get onto it.
 Leave out the `favicon.svg` line if the logo was a PNG. The `og:image` address must be the full
 address of the image on the live site.
 
-**Social profiles.** Tell the founder which file goes where, using the table in
+**Social profiles.** Say which file goes where, using the table in
 `style-guide/social-branding.md`.
 
 **Write it into the README.** These steps are needed long after the session, often by someone
@@ -209,7 +228,7 @@ lines above with the real website address, and where `CLAUDE-INSTRUCTIONS.md` go
 ## Write `brand/CLAUDE-INSTRUCTIONS.md`
 
 Fill in the block from [claude-instructions-template.md](claude-instructions-template.md) and save
-it as `brand/CLAUDE-INSTRUCTIONS.md`. Then tell the founder where to paste it:
+it as `brand/CLAUDE-INSTRUCTIONS.md`. Then say where to paste it:
 
 - **claude.ai**: in a Project, paste it into the Project's instructions and add the markdown files
   from `brand/strategy/` and `brand/style-guide/`, and `brand/style-guide/tokens.css`, to the
@@ -227,5 +246,5 @@ the brand; everyday writing runs from these instructions.
    (`grep -rn "\[Open:" brand`).
 2. Log the last decisions.
 3. On claude.ai, run `pack` and offer the final `brand.zip`.
-4. Give the founder a short summary: what is in the folder, what is still open, and the first
+4. Give a short summary: what is in the folder, what is still open, and the first
    things to do with it (signatures, profile images, website head, the instructions block).

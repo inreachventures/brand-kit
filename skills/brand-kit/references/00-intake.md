@@ -5,10 +5,10 @@ because the gaps get filled with what any company would say. Take the time here.
 
 ## Before the first question
 
-Tell the founder briefly how this works: a short interview now, then research, positioning,
-messaging and voice, visual identity, a communication plan and the asset files, over as many
-sessions as they like. Everything ends up in a `brand/` folder they own. They make the decisions;
-you propose options and write things down.
+Tell the person you are working with briefly how this works: a short interview now, then
+research, positioning, messaging and voice, visual identity, a communication plan and the asset
+files, over as many sessions as they like. Everything ends up in a `brand/` folder the company
+owns. The company makes the decisions; you propose options and write things down.
 
 Ask them to share anything that already exists: website text, a pitch deck, past posts,
 product pages, customer emails, reviews, an existing logo. Material they already have is the
@@ -25,7 +25,8 @@ Ask one cluster at a time, three to five questions, and wait for the answers. Af
 cluster, play back what you heard in a few lines and ask if anything is wrong or missing. Skip
 questions the material they shared already answers, and say what you took from it instead.
 
-Adapt the wording to the founder. The clusters below are what you need to cover, not a script.
+Adapt the wording to the person and their role. The clusters below are what you need to cover,
+not a script.
 
 ### 1. The company
 
@@ -34,6 +35,9 @@ Adapt the wording to the founder. The clusters below are what you need to cover,
 - What does the company do, in one plain sentence a customer would understand?
 - How does it make money, and where does it operate (countries, languages)?
 - When did it start, and how many people work on it?
+- Who has the final say on brand decisions (positioning, voice, palette, logo)? If it is someone
+  other than the person you are talking to, note who, and agree how their sign-off will reach you
+  (they join a session, or the person you are working with brings their answer back).
 
 **If there is no name, stop here.** Explain that every part of the brand is built around the name,
 from the positioning line to the wordmark, and that naming is outside this skill. Suggest they
@@ -67,7 +71,7 @@ clusters or create any files.
 - Is there a logo? If so, ask for the file (SVG preferred, a large PNG otherwise) and whether
   it stays as it is. Save it as described under "Reading uploaded material".
 - A website, decks, product copy, social profiles, past newsletters or posts?
-- Any colours, fonts or phrases the founder is attached to, or wants to drop?
+- Any colours, fonts or phrases the company is attached to, or wants to drop?
 - Proof points: numbers, named customers, results, awards, press. Which can be said in public?
 
 ### 6. Who speaks for the company
@@ -84,22 +88,22 @@ clusters or create any files.
   already received.
 - Languages and scripts the brand must work in, beyond the document language (for example a
   name or market that needs Greek or Cyrillic letters).
-- Anything the founder already knows they dislike in brands.
+- Anything the company already knows it dislikes in brands.
 
 ## Reading uploaded material
 
-Read everything the founder shares before asking about what it covers. As you read, note:
+Read everything they share before asking about what it covers. As you read, note:
 
 - **Claims and proof**: what the company says about itself, and which claims have evidence
   (numbers, customers, results). Mark where each came from.
-- **Their words**: phrases the founder or customers use repeatedly. Copy them verbatim; they feed
+- **Their words**: phrases the team or customers use repeatedly. Copy them verbatim; they feed
   the messaging and the voice.
 - **How they sound now**: sentence length, formality, humour, jargon. Keep short quotes as
   evidence. Existing copy also gives the before-and-after rewrites in stage 3.
 - **Visual elements**: colours (exact hex values where the file has them), fonts, the logo, the
   imagery style.
-- **What to keep and what to drop**: ask the founder about anything you are unsure of. Marketing
-  copy is not always true; treat a claim as a fact only once the founder confirms it.
+- **What to keep and what to drop**: ask about anything you are unsure of. Marketing copy is not
+  always true; treat a claim as a fact only once the person you are working with confirms it.
 
 ### Save the material into `brand/`
 
@@ -141,9 +145,10 @@ claude.ai: start a new chat, upload the latest brand.zip and ask Claude to conti
 - Company name: [name, and whether it is a working name]
 - Language of the documents: [language]
 - Logo: [existing logo to upload / wordmark / undecided]
+- Final say on brand decisions: [name and role; "the person you are working with" if it is them]
 
-Next: [the stage or task agreed with the founder, for example "1 Research" or "5 Communication
-strategy (the founder chose it before 4)"]
+Next: [the stage or task agreed, for example "1 Research" or "5 Communication strategy (chosen
+before 4)"]
 
 ## Progress
 - [ ] 0 Intake: research/intake-notes.md, decisions.md
@@ -172,16 +177,22 @@ strategy (the founder chose it before 4)"]
 ## Open items
 [Every `[Open: ...]` marker in the folder, one line each with the file it sits in, plus anything
 else still to do. Find the markers with `grep -rn "\[Open:" brand`.]
+
+### Awaiting [decider]
+[Only when someone other than the person you are working with has the final say: one line per
+proposal in decisions.md that the decider has not yet agreed, with its date and title.
+`grep -n "awaiting" brand/decisions.md` finds the proposals; leave out any that a later entry
+confirms or replaces.]
 ```
 
-Tick a stage only when its files are written and the founder has seen them. Mark a stage that is
-under way as `[~]` with a line saying where it stopped. Update the "Next:" line at the end of every
-stage, and whenever the founder changes the plan.
+Tick a stage only when its files are written and the person you are working with has seen them.
+Mark a stage that is under way as `[~]` with a line saying where it stopped. Update the "Next:"
+line at the end of every stage, and whenever the plan changes.
 
 ### `brand/decisions.md`
 
-Start it as described in [decision-log.md](decision-log.md), with the first entries: the
-language of the documents, and anything the founder ruled out.
+Start it as described in [decision-log.md](decision-log.md), with the first entries: who has the
+final say on brand decisions, the language of the documents, and anything already ruled out.
 
 ### `brand/research/intake-notes.md`
 
@@ -191,7 +202,8 @@ language of the documents, and anything the founder ruled out.
 [Date of the interview. Who took part.]
 
 ## The company
-[What it does in one plain sentence, in the founder's words. Business model, markets, size, age.]
+[What it does in one plain sentence, in their words. Business model, markets, size, age. Who has
+the final say on brand decisions.]
 
 ## Customers and other audiences
 [Who pays, who uses, the best-customer story, why deals are lost, the other audiences named.]
@@ -200,14 +212,14 @@ language of the documents, and anything the founder ruled out.
 [Where the company is, the milestones ahead, what the brand must help with first.]
 
 ## Competitors and alternatives
-[The names given, the do-nothing alternatives, who the founder admires and why.]
+[The names given, the do-nothing alternatives, which brands the team admires and why.]
 
 ## Existing material
 [What was shared, with links, and where each item is saved: brand/research/source/,
 brand/research/source/voices/, brand/assets/source/.]
 
 ### Keep
-[Elements the founder wants to keep, and why.]
+[Elements the company wants to keep, and why.]
 
 ### Change or drop
 [Elements to change or drop, and why.]
@@ -226,11 +238,11 @@ holds their writing samples.]
 [Budget, deadlines, claims that must not be made, languages and scripts, known dislikes.]
 
 ## Words worth keeping
-[Verbatim phrases from the founder, customers or existing material.]
+[Verbatim phrases from the team, customers or existing material.]
 
 ## Open questions
 [What still needs an answer, each as `[Open: ...]`, and who can give it.]
 ```
 
-Then end the stage as SKILL.md describes and tell the founder that stage 1 looks at competitors.
+Then end the stage as SKILL.md describes and say that stage 1 looks at competitors.
 Ask whether they can add any competitor links before you start.

@@ -1,4 +1,4 @@
-"""Palette and type preview images the founder chooses from. Uses Pillow only."""
+"""Palette and type preview images to choose from. Uses Pillow only."""
 from __future__ import annotations
 
 from pathlib import Path

@@ -20,9 +20,9 @@ key hires. Ask which goal comes first if they conflict.
 
 **Channels.** Where do the audiences actually look? Which channels does the company use today,
 and which of those are working? Which does each person enjoy using? Owned channels are the ones
-the company controls: the website and blog, a newsletter, its social accounts, the founders'
-personal accounts, community spaces it runs. Press, partners and paid campaigns sit outside this
-plan unless the founder wants them noted.
+the company controls: the website and blog, a newsletter, its social accounts, the personal
+accounts of the people who speak for it, community spaces it runs. Press, partners and paid
+campaigns sit outside this plan unless the company wants them noted.
 
 **Time.** How many hours a week can each person give, in an ordinary week? Ask for the honest
 number, not the hoped-for one.
@@ -43,7 +43,7 @@ Steer the plan towards what a small team can keep up:
   Anything above it is a bonus, and the plan does not count on it.
 - **Topics from real work.** The best material comes from what the company already does:
   questions customers ask, objections in sales calls, product changes, numbers the company can
-  share, things the founders disagree with. Keep a running list of these, and say who adds to it.
+  share, things the team disagrees with. Keep a running list of these, and say who adds to it.
 - **Write once, use several times.** A long piece becomes a few posts, a newsletter section and
   a paragraph for sales emails.
 - **Approval that does not block.** Agree which content needs sign-off and which does not, with a
@@ -52,7 +52,7 @@ Steer the plan towards what a small team can keep up:
 - **Review after ninety days.** Keep what works, drop what does not, and reset each cadence to
   what actually happened.
 
-Push back gently if the founder commits to more than their hours allow. Show the arithmetic.
+Push back gently if they commit to more than their hours allow. Show the arithmetic.
 
 ## Template: `brand/communications/communication-strategy.md`
 
@@ -124,4 +124,4 @@ customers without permission, unreleased product, regulated claims, fundraising 
 [The date of the next review, who runs it, and what will be decided there.]
 ```
 
-Write it with the founder, then end the stage as SKILL.md describes.
+Write it with them, then end the stage as SKILL.md describes.

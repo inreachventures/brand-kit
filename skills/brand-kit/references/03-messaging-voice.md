@@ -6,20 +6,20 @@ anti-patterns guide with a voice note for each person who will publish.
 
 Read `strategy/positioning.md`, the audience files, `strategy/value-propositions.md`, the
 category clichés in `research/competitor-analysis.md`, the "words worth keeping" in
-`research/intake-notes.md`, the founder's existing material in `brand/research/source/`, and each
+`research/intake-notes.md`, the company's existing material in `brand/research/source/`, and each
 person's writing samples in `brand/research/source/voices/`.
 
 ## Order of work
 
-1. Draft the core message. Show the core message and get the founder's agreement or edits
-   before you build on it.
-2. Draft tagline candidates and let the founder choose.
+1. Draft the core message. Show the core message and get agreement or edits before you build
+   on it.
+2. Draft tagline candidates and let them choose.
 3. Draft the rest of the messaging framework and review it with them.
-4. Propose two voice directions, each a set of principles with examples. Let the founder choose
-   or combine, then adjust.
+4. Propose two voice directions, each a set of principles with examples. Let them choose or
+   combine, then adjust.
 5. Write the tone of voice, including rewrites of their existing copy.
 6. Write `strategy/writing-anti-patterns.md` with a voice note for each public voice.
-7. Show the founder the proposed defaults (see below) and keep only what they accept or change.
+7. Show the proposed defaults (see below) and keep only what is accepted or changed.
 
 Run the listening pass from [writing-anti-patterns.md](writing-anti-patterns.md) on every
 draft before you show it.
@@ -27,14 +27,14 @@ draft before you show it.
 ## Messaging framework
 
 **Core message.** The one idea every piece of communication should leave behind. It comes
-straight from the chosen positioning, in language a customer would use. Show it to the founder
-and record their agreement, or their edits, in the decision log. If they are not ready to agree
-to it, mark it `[Open: core message, to agree with the founder]`.
+straight from the chosen positioning, in language a customer would use. Show it to the person
+you are working with and record their agreement, or their edits, in the decision log. If they are
+not ready to agree to it, mark it `[Open: core message, to agree]`.
 
 **Tagline.** Draft six to ten candidates that take different approaches: a plain statement of
 what the company does, a promise, a short description of the customer's outcome, a phrase from
-the founder's or a customer's own words. Strike any that use a category cliché from the research.
-Show the founder the shortlist with a line on each, let them choose or ask for more, and record
+the team's or a customer's own words. Strike any that use a category cliché from the research.
+Show the shortlist with a line on each, let them choose or ask for more, and record
 the choice. A plain descriptive line that says what the company does is often the better choice
 for an early company, and that is a fine outcome.
 
@@ -49,11 +49,11 @@ proof, and what comes next. It should hold whether told in a sales call or on an
 seconds (around 75 words), about 60 seconds (around 150 words). Write them to be spoken. Read
 them aloud.
 
-**Phrases to use and avoid.** Use: the founder's and customers' own words, the specific terms for
+**Phrases to use and avoid.** Use: the team's and customers' own words, the specific terms for
 what the product does. Avoid: the category clichés, internal jargon customers do not use, and any
 claim the company cannot prove.
 
-**What we can say where.** Which facts and numbers can be said in which places. Founders often
+**What we can say where.** Which facts and numbers can be said in which places. Companies often
 share metrics in a deck that they would not want on a website, or the reverse. Ask about each proof
 point: public (website, social, press), private (investor updates, sales conversations, under NDA),
 or not at all yet. Note any regulatory limits from the intake.
@@ -67,7 +67,7 @@ principle needs a tension, so that it guides choices: "technical when it helps t
 something, never to show what we know" helps a writer decide; "friendly" does not. Build the
 directions from:
 
-- the founder's natural way of speaking, from the interview and their writing
+- how the people who speak for the company naturally talk, from the interview and their writing
 - the positioning (a company positioned on reliability should not sound breathless)
 - the tone gaps in the competitor analysis
 
@@ -77,7 +77,7 @@ specific to this company.
 For each principle, write a "like this" and a "not like this" example. Write them about the
 company's own subject matter, ideally rewriting a real sentence from their material.
 
-Show the founder the two directions side by side, with a short passage of their own copy
+Show the two directions side by side, with a short passage of their own copy
 rewritten in each, and give your recommendation. Ask which sounds like the company they want to
 be. They may pick one, or combine principles from both; a combined set still needs four to six
 principles that do not contradict each other. Then adjust the wording with them. Record the
@@ -85,15 +85,15 @@ chosen direction, the alternative and the reasons in the decision log.
 
 **We sound like / we do not sound like.** Short pairs that sum up the voice, such as "a shop
 owner talking you through the options" against "a catalogue listing them". Base them on the
-founder's reactions during the stage.
+reactions you heard during the stage.
 
 **Channel adaptation.** How the voice flexes in each channel the company actually uses, for
 example the website, social posts, email to customers, sales messages, support replies or job
 adverts. The principles stay; length, formality and humour move. Leave out channels and audiences
-the founder has ruled out. This table is a proposed default: the founder sees it in the last step
-before it stays.
+the company has ruled out. This table is a proposed default: it is shown in the last step before
+it stays.
 
-**Before and after.** Take three to five real passages from the founder's existing copy, saved
+**Before and after.** Take three to five real passages from the company's existing copy, saved
 in `brand/research/source/`, and rewrite each in the new voice, with a line on what changed and
 why. If nothing was saved there, ask for some copy (an email, a product description, a post) and
 save it there first. If there is none at all, write `[Open: before and after rewrites, once the
@@ -109,20 +109,20 @@ template in that file. Base each note on the samples of that person's writing in
 samples (a post, a long email, a talk transcript) and save them there first. Write the note only
 from those samples.
 
-If the founder cannot supply more (a co-founder who has written one short post, say), write only
+If they cannot supply more (a colleague who has written one short post, say), write only
 what the samples support, and say how many samples the note rests on. Mark each part of the note
 the samples cannot show as `[Open: ...]`, for example `[Open: how Tom writes at length; needs a
 long email or a post of more than a paragraph]`, and list it in the README's open items so the note
 is finished once more writing exists. Do not fill the gaps from the person's role or from how
-founders usually write.
+people in that role usually write.
 
 ## Proposed defaults
 
-Some of what this stage writes are rules you drafted rather than choices the founder made: the
+Some of what this stage writes are rules you drafted rather than choices the company made: the
 voice-by-channel table, and any rule in the messaging framework or tone of voice that did not come
 from their answers (a length limit, a word you added to the avoid list, a rule on humour or
 emoji). Before you end the stage, gather them into one short numbered list, one line each, and
-show it to the founder as proposed defaults. They accept, change or strike each line. Keep what
+show it as proposed defaults. They accept, change or strike each line. Keep what
 they accept or change, and delete what they strike along with anything you did not show them.
 Log the result as one entry in `decisions.md` that lists every default and what happened to it.
 

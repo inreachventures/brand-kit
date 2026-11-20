@@ -18,9 +18,9 @@ At stage 3:
 
 **Language.** The guide is written for English, and the tells and word lists are English ones.
 When the brand documents are in another language, keep the guide in English with the language
-note at its top, unless the founder asks for a translation. If you translate it, say in the note
+note at its top, unless the company asks for a translation. If you translate it, say in the note
 that some tells are specific to English, and add the habits that mark autopilot writing in that
-language if you or the founder know them. Write the voice notes in the language the person
+language if you or the person you are working with know them. Write the voice notes in the language the person
 publishes in.
 
 <!-- copy from here -->
@@ -186,7 +186,7 @@ What is wrong with it: a throat-clearing opener, "landscape" and "journey", an a
 three adjectives, a one-line reveal ("That's where we come in"), a closing reversal, and no fact a
 reader could check. The swap test fails on every sentence.
 
-The rewrite, after asking the founder for specifics:
+The rewrite, after asking for specifics:
 
 > A Larkfield bike carries up to 120 kg and costs a florist or a bakery less per month than the
 > fuel for a small van. We deliver it, service it every six weeks and swap it the same day if

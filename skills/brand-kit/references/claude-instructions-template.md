@@ -8,7 +8,7 @@ At the end of stage 6, copy the block below into `brand/CLAUDE-INSTRUCTIONS.md` 
 - list each person who has a voice note in `writing-anti-patterns.md`
 - translate the block if the documents are in another language, keeping the file names as they are
 
-The founder pastes it into a claude.ai Project's instructions or a repository's `CLAUDE.md` (see
+The company pastes it into a claude.ai Project's instructions or a repository's `CLAUDE.md` (see
 [06-assets.md](06-assets.md)).
 
 ```markdown

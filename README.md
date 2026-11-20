@@ -1,6 +1,6 @@
 # brand-kit
 
-A Claude skill that walks a startup founder through building their brand, stage by stage: competitor research, positioning, audiences, messaging, tone of voice, visual identity, communication strategy and brand assets. The founder makes every decision. Claude runs the interview, does the research, proposes options and writes it all down in a `brand/` folder that later sessions, and other people, can pick up.
+A Claude skill that builds a company's brand with you, stage by stage: competitor research, positioning, audiences, messaging, tone of voice, visual identity, communication strategy and brand assets. It is made for early-stage companies, and suits any company that wants its brand thought through and written down. You make every decision, or whoever in the company has the final say does; Claude runs the interview, does the research, proposes options and writes it all down in a `brand/` folder that later sessions, and other people, can pick up.
 
 ## What you get
 
@@ -51,7 +51,7 @@ Claude asks about the company first. The skill needs a company name before it go
 
 ## Logos
 
-The skill does not draw logos. If you have one, upload it as SVG (preferred) or PNG and the skill produces the variants from it. If you do not, it generates a typographic wordmark from your chosen fonts and colours, with a monogram tile, which is always built. Commission a designer for anything more.
+The skill does not draw logos. If you have one, upload it as SVG (preferred) or PNG and the skill produces the variants from it. A badge logo, such as a white letter on a coloured disc, keeps its letter as a cut-out in the one-colour versions, and a logo that only works in colour can keep its colours on the tile and banners. If you do not have a logo, it generates a typographic wordmark from your chosen fonts and colours, with a monogram tile, which is always built. Commission a designer for anything more.
 
 ## Resuming work
 
@@ -59,7 +59,7 @@ Everything lives in the `brand/` folder, and the decision log records where you 
 
 ## Fonts and licences
 
-The code is MIT licensed (see `LICENSE`). The bundled fonts are licensed under the SIL Open Font License, and each family's `OFL.txt` sits next to its font files in `skills/brand-kit/fonts/`. The OFL allows the fonts to be used in logos, documents and websites, and to be redistributed with the licence text.
+The code is MIT licensed (see `LICENSE`). The bundled fonts are licensed under the SIL Open Font License, and each family's `OFL.txt` sits next to its font files in `skills/brand-kit/fonts/`. The OFL allows the fonts to be used in logos, documents and websites, and to be redistributed with the licence text. Families whose licence declares a Reserved Font Name (IBM Plex, Lora, Playfair Display) are the unmodified upstream files; `skills/brand-kit/fonts/SOURCES.json` records where every file came from and how, and `tools/fetch_fonts.py` rebuilds the set.
 
 ## Development
 

@@ -1,6 +1,6 @@
 # Stage 4: Visual identity
 
-This stage turns the strategy into colours, type and rules for the logo and imagery. The founder
+This stage turns the strategy into colours, type and rules for the logo and imagery. The company
 chooses by looking: you render options as images with the scripts, and they pick.
 
 Read `strategy/positioning.md`, `strategy/tone-of-voice.md`, the colours and imagery in
@@ -17,8 +17,8 @@ path to the brand folder.
 3. Typography: pairings, preview, choice.
 4. Add the fonts to `tokens.json` and run `tokens-css`.
 5. Ask the photography questions, then write the five style-guide documents.
-6. Write the designer brief, if the founder wants a symbol.
-7. Show the founder the proposed defaults (see below) and keep only what they accept or change.
+6. Write the designer brief, if the company wants a symbol.
+7. Show the proposed defaults (see below) and keep only what is accepted or changed.
 
 Keep the option files and preview images in `brand/style-guide/previews/`, so the record of what
 was shown travels with the brand.
@@ -27,7 +27,7 @@ was shown travels with the brand.
 
 Ask which applies. Record the route in the decision log.
 
-### 1. The founder has a logo and is keeping it
+### 1. The company has a logo and is keeping it
 
 If the logo was saved at intake, it is already in `brand/assets/source/`. Otherwise ask for it as
 an SVG if they have one, or as a PNG at least 1200 px wide with a transparent background, and
@@ -35,14 +35,26 @@ save it as `brand/assets/source/logo.svg` or `brand/assets/source/logo.png`. Nev
 on every run.
 
 - **PNG.** A plain single-colour background is removed automatically. A busy background (a photo,
-  a gradient, a texture) is rejected, and the founder needs to supply a transparent version. From
+  a gradient, a texture) is rejected, and they need to supply a transparent version. From
   a PNG the build makes PNG variants only, with no SVG variants and no `favicon.svg`.
 - **SVG.** Turning an SVG into PNGs needs the `cairosvg` Python package. Check with
   `python3 -c "import cairosvg"`. If it is missing, ask for a PNG of the same logo, at least
   1200 px wide, and save it next to the SVG as `brand/assets/source/logo.png`. The SVG needs a
-  `viewBox` attribute.
+  `viewBox` attribute (or plain `width` and `height`).
 - **Shape.** The square tile used for avatars and favicons shows the whole logo inside the square.
-  A long, thin logo ends up small there. Warn the founder, and check the tile at stage 6.
+  A long, thin logo ends up small there. Say so, and check the tile at stage 6.
+- **Badges and other colour detail.** The single-colour versions, the tile, favicons, avatar,
+  banners and Open Graph image use the logo in one colour. Detail inside the shape that is much
+  lighter or darker than the shape's main colour, such as a white letter on an orange disc, is cut
+  out, so the letter shows as a hole and stays readable. Detail that reaches the outside edge, such
+  as a dark word beside a coloured mark, stays part of the outline. In the SVG versions the cut-out
+  uses an SVG mask, which browsers and design tools show; it works when the detail has its own
+  fill colour, and some converters (cairosvg among them) ignore the mask and show a solid shape,
+  so use the PNG versions there. A logo that only works in full colour (several colours of similar
+  lightness, a gradient, a photo) can keep its colours instead: set `"tile_style": "original"`
+  under `logo` in `assets/config.json`. The tile then shows the full-colour logo on the paper
+  colour, and the banners and Open Graph image put it on a paper panel. Choose with them at stage 6
+  by looking at both.
 
 The palette must work with the logo's colours: either build it from them, or check that the logo
 sits well on the primary colour and on paper.
@@ -55,14 +67,14 @@ font here also chooses the wordmark. Make sure the company name appears in the t
 Typography). The generated wordmark has no kerning, so look closely at letter pairs such as "AV"
 or "To" at stage 6; if the spacing looks wrong, try another heading font or weight.
 
-Ask which letters the tile should show. The default is the first letter of the name.
+Ask which letters the tile should show. The default is the first letter or digit of the name.
 
-### 3. The founder wants a symbol
+### 3. The company wants a symbol
 
 You do not draw symbols, icons or illustrated marks, in SVG or in any other way, however simple the
 request seems. Say so plainly: a symbol is design work for a designer. Offer the designer brief
 below, written from their strategy documents, and use route 2 in the meantime so the assets exist.
-When the designer delivers, the founder uploads the new logo (route 1) and re-runs stage 6.
+When the designer delivers, save the new logo (route 1) and re-run stage 6.
 
 ## Palette
 
@@ -75,8 +87,8 @@ from the category. Inputs:
 - the positioning and what the company wants to be known for
 - the tone of voice and how the company should feel
 - the competitor colours in the research: avoid the colours the category overuses for the
-  primary, unless the founder decides to sit inside the category on purpose, and record that
-- colours the founder wants to keep, and the logo's colours if they keep their logo
+  primary, unless the company decides to sit inside the category on purpose, and record that
+- colours the company wants to keep, and the logo's colours if it keeps its logo
 
 Each option has these colours:
 
@@ -136,7 +148,7 @@ different colours. Then:
 ```
 
 The image shows each option as a row of swatches, labelled with its name, with hex values and
-contrast ratios. Show it to the founder with one line on the idea behind each option and your
+contrast ratios. Show it with one line on the idea behind each option and your
 recommendation. Let them pick, combine or adjust hex values, and re-render until they are happy.
 Save each new round under a new file name (`palette-options-round2.json`, and so on) with new
 names for the options. Record the choice.
@@ -161,13 +173,13 @@ Check every family you propose against the company name and the language of the 
 Bundled weights are 400, 600 and 700 (400 and 700 for the display faces). A weight in between
 uses the nearest one.
 
-### Fonts the founder supplies
+### Fonts the company supplies
 
-A founder can use their own fonts. Put the files in `brand/assets/fonts/<Family>/`, one static
+The company can use its own fonts. Put the files in `brand/assets/fonts/<Family>/`, one static
 `.ttf` or `.otf` file per weight, with the licence file. The family name in `tokens.json` must match
 the family name inside the font files. A variable font is used only at its default weight, so ask
 for the static files. Check that the licence allows use on the web, in images and in documents;
-some commercial licences cover only one of these. Founder fonts are used ahead of bundled fonts
+some commercial licences cover only one of these. Supplied fonts are used ahead of bundled fonts
 with the same name.
 
 ### Build two or three pairings
@@ -194,13 +206,13 @@ Write the pairings to `brand/style-guide/previews/type-pairings.json` as a list 
 <cli> preview-type brand brand/style-guide/previews/type-pairings.json brand/style-guide/previews/type-pairings.png --sample "[the tagline, then a sentence or two of their real copy]"
 ```
 
-A founder judges type on their own words, so pass `--sample` with the tagline from stage 3
+People judge type best on their own words, so pass `--sample` with the tagline from stage 3
 followed by a sentence or two of their copy, such as the core message; without it the preview
 uses a pangram. Each pairing shows the company name in the heading font at logo size on the
 primary colour, then the first sentence of the sample as a heading and the whole sample as a
 paragraph in the body font, all in ink on paper. Without `tokens.json` the preview is black on
 white, and without `assets/config.json` it has no company name. The command prints a warning when
-a font lacks a character in the name or the sample. Show the founder, recommend one, record the
+a font lacks a character in the name or the sample. Show it, recommend one, record the
 choice.
 
 ### Type scale
@@ -240,7 +252,7 @@ after every change to `tokens.json`.
 
 ## Photography and imagery: ask first
 
-`photography-direction.md` needs answers only the founder can give. Before writing it, ask one
+`photography-direction.md` needs answers only the company can give. Before writing it, ask one
 cluster:
 
 - **Subjects:** what should the images show: the product in use, customers and their places, the
@@ -257,11 +269,11 @@ an open item in the README.
 
 ## Proposed defaults
 
-Parts of the style guide are rules you write rather than options the founder picks by looking:
+Parts of the style guide are rules you write rather than options chosen by looking:
 the type scale and the typography rules, the logo's clear space, minimum sizes and do-nots, the
 colour roles (what each colour is used for and kept off), the photography principles, style and
 illustration, and the rules for social posts. Before you end the stage, gather every such rule
-that did not come from the founder into one short numbered list, one line each, and show it to
+that did not come from the company into one short numbered list, one line each, and show it to
 them as proposed defaults. They accept, change or strike each line. Keep what they accept or
 change, and delete what they strike along with anything you did not show them; a section left
 empty becomes `[Open: ...]`. Log the result as one entry in `decisions.md` that lists every
@@ -289,7 +301,7 @@ default and what happened to it.
 
 ## Roles
 [Which colour does which job: large fills, links, highlights, text, borders. Note any colour a
-reader could take as a status, such as red for an error. Only roles the founder gave or accepted
+reader could take as a status, such as red for an error. Only roles the company gave or accepted
 as proposed defaults.]
 
 ## Contrast pairs
@@ -327,7 +339,7 @@ as proposed defaults.]
 | [level] | [px] | [weight] | [value] | [uses] |
 
 ## Rules
-[Only rules the founder gave or accepted as proposed defaults, for example line length, capitals,
+[Only rules the company gave or accepted as proposed defaults, for example line length, capitals,
 emphasis or numbers.]
 
 ## Fallbacks
@@ -345,7 +357,7 @@ exist. All paths are inside `brand/assets/`.
 ```
 # Logo usage
 
-[One or two sentences: what the logo is (the founder's own logo, or a wordmark in the heading font
+[One or two sentences: what the logo is (the company's own logo, or a wordmark in the heading font
 with a monogram tile) and where its source is.]
 
 ## Variants
@@ -363,21 +375,22 @@ with a monogram tile) and where its source is.]
 | Square tile | logos/mark-tile.svg, logos/mark-tile-160.png (also -400, -1200) | [uses] |
 | Favicons | favicons/favicon.svg, favicon-16.png, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png | [uses] |
 
-[For a PNG logo there are no .svg files and no favicon.svg; say so here.]
+[For a PNG logo there are no .svg files and no favicon.svg; say so here. If the single-colour
+versions cut out detail inside the logo, or `tile_style` is "original", say so too.]
 
 ## Clear space
 [The space to keep empty around the logo, expressed as a part of the logo itself, such as the
-height of a capital letter in the name. A proposed default until the founder accepts it.]
+height of a capital letter in the name. A proposed default until it is accepted.]
 
 ## Minimum sizes
 [The smallest width for the full logo on screen (in px) and in print (in mm), and for the tile.
-A proposed default until the founder accepts it.]
+A proposed default until it is accepted.]
 
 ## Do
 [Which variant goes on which background.]
 
 ## Do not
-[Only what the founder ruled out or accepted as a proposed default, for example stretching,
+[Only what the company ruled out or accepted as a proposed default, for example stretching,
 effects, rotation or setting the name in another font.]
 
 ## Which file where
@@ -395,14 +408,14 @@ effects, rotation or setting the name in another font.]
 [One or two sentences on the role imagery plays for this brand, from the positioning.]
 
 ## Principles
-[What images must show and how they should feel, from the founder's answers. Anything you add is
+[What images must show and how they should feel, from their answers. Anything you add is
 a proposed default.]
 
 ## Subjects
 [What and who to photograph: product in use, customers, team, places. What not to show.]
 
 ## Style
-[Light, colour treatment, composition, cropping: only what the founder said or accepted as a
+[Light, colour treatment, composition, cropping: only what the company said or accepted as a
 proposed default.]
 
 ## People
@@ -446,7 +459,7 @@ The sizes and file names below are the ones the stage 6 build produces. Keep the
 banner carrying the brand.]
 
 ## Posts
-[How posts look, only from the founder's answers or accepted proposed defaults: images, text on
+[How posts look, only from their answers or accepted proposed defaults: images, text on
 images, how quotes, numbers and announcements are laid out, alt text.]
 
 ## Voice on social
@@ -455,8 +468,8 @@ images, how quotes, numbers and announcements are laid out, alt text.]
 
 ## Template: `brand/style-guide/designer-brief.md`
 
-Only when the founder wants a symbol. Fill it from the strategy and style-guide documents, and
-show it to the founder before they send it.
+Only when the company wants a symbol. Fill it from the strategy and style-guide documents, and
+show it to the person you are working with before they send it.
 
 ```
 # Logo brief: [company name]

@@ -37,7 +37,7 @@ def css_fallback(family: str) -> str:
     """Generic CSS fallback stack for a family, by its catalogue category.
 
     Display faces use their "fallback" category (serif or sans). Families not in the catalogue,
-    such as fonts the founder supplied, are treated as sans.
+    such as fonts the company supplied, are treated as sans.
     """
     for entry in catalogue():
         if _norm(entry["family"]) == _norm(family):
@@ -83,7 +83,7 @@ def _brand_fonts(brand_dir: Path, family: str) -> list[tuple[int, Path]]:
 
 
 def _brand_family_names(brand_dir: Path) -> list[str]:
-    """Family names (name ID 1) of the founder-supplied fonts, sorted and without duplicates."""
+    """Family names (name ID 1) of the fonts in brand/assets/fonts/, sorted and without duplicates."""
     root = Path(brand_dir) / "assets" / "fonts"
     names: set[str] = set()
     if root.is_dir():
@@ -102,7 +102,7 @@ def _nearest(options: list[tuple[int, Path]], weight: int) -> Path:
 
 
 def resolve(spec: FontSpec, brand_dir: Path) -> Path:
-    """Path of the font file for spec: founder-supplied fonts first, then the bundled set."""
+    """Path of the font file for spec: fonts in brand/assets/fonts/ first, then the bundled set."""
     own = _brand_fonts(brand_dir, spec.family)
     if own:
         return _nearest(own, spec.weight)

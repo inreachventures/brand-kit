@@ -1,6 +1,6 @@
 # Stage 1: Research
 
-The research shows what the category already sounds and looks like, so the founder can choose
+The research shows what the category already sounds and looks like, so the company can choose
 deliberately where to fit in and where to stand apart. Its most useful outputs are the list of
 category clichés, which every later stage avoids, and the gaps, which feed the positioning
 options.
@@ -14,10 +14,10 @@ Aim for four to eight. Start from the names in the intake notes and add a mix:
   problem.
 - **The status quo**: what customers do instead (a spreadsheet, an agency, hiring someone, doing
   nothing). Describe how it is talked about, even though it has no website.
-- **A brand the founder admires**, if they named one, even from another category. It shows what
+- **A brand the team admires**, if they named one, even from another category. It shows what
   they are drawn to.
 
-Show the founder the list and the reason for each before you start, and let them change it.
+Show the list and the reason for each before you start, and let them change it.
 
 ## What to capture for each
 
@@ -63,14 +63,14 @@ possibilities, not decisions.
 
 If you cannot search or fetch pages in this runtime:
 
-1. Say so to the founder plainly before you start, and explain that the analysis will be limited
+1. Say so plainly before you start, and explain that the analysis will be limited
    to what they can give you.
 2. Ask them to paste each competitor's homepage headline and a paragraph of copy, and to share
    screenshots if they can. Screenshots let you note colours and type.
 3. You may add what you already know about well-known companies, marked as background knowledge
    that may be out of date. Never invent a quote, a colour or a claim.
 4. Without competitor copy you cannot count how many in the set use a phrase, so widen what
-   counts as evidence for the clichés: the founder's own existing copy (it usually borrows the
+   counts as evidence for the clichés: the company's own existing copy (it usually borrows the
    category's language), their descriptions of how competitors talk, and the words customers
    repeat back from competitors. Give each cliché its source, for example "our old homepage",
    "Maya's description of two competitors" or "pasted copy from [competitor]", instead of a count.
@@ -78,7 +78,7 @@ If you cannot search or fetch pages in this runtime:
 
 ## Present and confirm
 
-Before writing the file, give the founder a short summary in chat: the clichés and the gaps. Ask
+Before writing the file, give a short summary in chat: the clichés and the gaps. Ask
 whether it matches what they see in the market and what you missed. Their reactions often say a
 lot about the positioning they want.
 
@@ -87,7 +87,7 @@ lot about the positioning they want.
 ```
 # Competitor analysis
 
-[Date. Sources used: web research, founder input, or both. If the research was limited, say how
+[Date. Sources used: web research, input from the company, or both. If the research was limited, say how
 and why here.]
 
 ## Scope
@@ -133,7 +133,7 @@ source of each one.]
 [Observations phrased as questions or possibilities, not decisions.]
 
 ## Limits of this analysis
-[What was not checked, and anything taken on the founder's word or from background knowledge.]
+[What was not checked, and anything taken on the company's word or from background knowledge.]
 ```
 
 End the stage as SKILL.md describes. Stage 2 builds positioning options on these gaps.
