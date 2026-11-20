@@ -7,13 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10", "3.12"]
+        include:
+          - python-version: "3.10"
+          - python-version: "3.12"
+          # the oldest Pillow the scripts support (rounded_rectangle needs 8.2); it has wheels up to 3.9
+          - python-version: "3.9"
+            pillow: "8.2.0"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install -r requirements-dev.txt
+      - if: matrix.pillow
+        run: pip install --only-binary pillow "pillow==${{ matrix.pillow }}"
+      - run: python -c "import PIL, fontTools; print('Pillow', PIL.__version__, 'fontTools', fontTools.version)"
       - run: pytest -q
       - name: No em-dashes
         run: |
