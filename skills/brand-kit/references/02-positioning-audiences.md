@@ -122,6 +122,10 @@ solution, what success looks like to them.]
 [Where they look, who they ask, what evidence they trust, what puts them off, who else has a say
 in the decision.]
 
+## What they are not getting today
+[The needs their current options leave unmet, whether a competitor, a workaround or doing
+nothing, linked to the gaps in the competitor analysis.]
+
 ## What we do not know yet
 [Assumptions and open questions, each with how to check it.]
 

@@ -39,8 +39,8 @@ company thinks.
 
 None of the habits below is a mistake in itself. Each is a device good writers use, which is why
 models and tired writers reach for them. The problem is frequency. One closing reversal in an
-essay can land well; one in every paragraph makes the whole piece sound like a template. So the
-rule is not "never". It is "rarely, and only when the device is doing real work".
+essay can land well; one in every paragraph makes the whole piece sound like a template. Use
+each of them rarely, and only when it does real work in that sentence.
 
 When you find one of these habits in a draft, do not just delete it. It usually marks a spot where
 the writer had nothing specific to say. Find the specific thing (the number, the name, the

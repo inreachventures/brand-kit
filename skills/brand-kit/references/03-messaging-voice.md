@@ -5,14 +5,16 @@ files: the messaging framework, the tone of voice, and the company's copy of the
 anti-patterns guide with a voice note for each person who will publish.
 
 Read `strategy/positioning.md`, the audience files, `strategy/value-propositions.md`, the
-category clichés in `research/competitor-analysis.md`, and the "words worth keeping" and existing
-material in `research/intake-notes.md`.
+category clichés in `research/competitor-analysis.md`, the "words worth keeping" in
+`research/intake-notes.md`, the founder's existing material in `brand/research/source/`, and each
+person's writing samples in `brand/research/source/voices/`.
 
 ## Order of work
 
 1. Draft the core message and tagline candidates. Let the founder choose.
 2. Draft the rest of the messaging framework and review it with them.
-3. Propose the voice principles, with examples. Let the founder choose and adjust.
+3. Propose two voice directions, each a set of principles with examples. Let the founder choose
+   or combine, then adjust.
 4. Write the tone of voice, including rewrites of their existing copy.
 5. Write `strategy/writing-anti-patterns.md` with a voice note for each public voice.
 
@@ -53,8 +55,11 @@ not at all yet. Note any regulatory limits from the intake.
 
 ## Tone of voice
 
-**Voice principles.** Propose four to six. Each one needs a tension, so that it guides choices:
-"direct, but never curt" helps a writer decide; "friendly" does not. Build them from:
+**Voice directions.** Propose two distinct directions. Each is a set of four to six principles
+with its own examples, and the two should sound clearly different when read side by side: for
+example one plainer and more reserved, one warmer and more conversational, both true to the
+company. Each principle needs a tension, so that it guides choices: "direct, but never curt"
+helps a writer decide; "friendly" does not. Build the directions from:
 
 - the founder's natural way of speaking, from the interview and their writing
 - the positioning (a company positioned on reliability should not sound breathless)
@@ -67,8 +72,11 @@ For each principle, write a "like this" and a "not like this" example. Write the
 company's own subject matter, ideally rewriting a real sentence from their material. Examples
 about a generic product teach nothing.
 
-Present the proposed principles to the founder, ask which feel true and which feel like someone
-else, and adjust. Record the result in the decision log.
+Show the founder the two directions side by side, with a short passage of their own copy
+rewritten in each, and give your recommendation. Ask which sounds like the company they want to
+be. They may pick one, or combine principles from both; a combined set still needs four to six
+principles that do not contradict each other. Then adjust the wording with them. Record the
+chosen direction, the alternative and the reasons in the decision log.
 
 **We sound like / we do not sound like.** Short pairs that sum up the voice, such as "a
 knowledgeable colleague, not a salesperson". Base them on the founder's reactions during the
@@ -78,18 +86,20 @@ stage.
 customers, sales messages, support replies, investor updates, job adverts. The principles stay;
 length, formality and humour move.
 
-**Before and after.** Take three to five real passages from the founder's existing copy and
-rewrite each in the new voice, with a line on what changed and why. If they supplied no copy,
-ask for some (an email, a product description, a post). If there is none at all, leave the
-section with a note to fill it after the first new pieces are written.
+**Before and after.** Take three to five real passages from the founder's existing copy, saved
+in `brand/research/source/`, and rewrite each in the new voice, with a line on what changed and
+why. If nothing was saved there, ask for some copy (an email, a product description, a post) and
+save it there first. If there is none at all, leave the section with a note to fill it after the
+first new pieces are written.
 
 ## Writing anti-patterns and voice notes
 
 Create `brand/strategy/writing-anti-patterns.md` from
 [writing-anti-patterns.md](writing-anti-patterns.md), following the instructions at its top.
 Then write a voice note for each person who will publish in the company's name, using the
-template in that file. Base each note on samples of that person's writing. If you have no
-samples, ask for two or three (a post, a long email, a talk transcript); a voice note written
+template in that file. Base each note on the samples of that person's writing in
+`brand/research/source/voices/<person>.md`. If that file is missing or thin, ask for two or three
+samples (a post, a long email, a talk transcript) and save them there first; a voice note written
 without samples will describe someone else.
 
 ## Template: `brand/strategy/messaging-framework.md`

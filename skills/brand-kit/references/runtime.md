@@ -47,8 +47,17 @@ python3 <skill folder>/scripts/brandkit/cli.py <command> [arguments]
 python3 -c "import PIL, fontTools; print('ok')"
 ```
 
-- **Claude Code**: if either is missing, ask the founder before installing anything, then run
-  `python3 -m pip install pillow fonttools` (inside a virtual environment if they use one).
+- **Claude Code**: if either is missing, ask the founder before installing anything. Many
+  systems, including Homebrew Python on a Mac, refuse `pip install` outside a virtual environment,
+  so create one for the skill, outside `brand/`:
+
+  ```
+  python3 -m venv ~/.brand-kit-venv
+  ~/.brand-kit-venv/bin/python -m pip install pillow fonttools
+  ```
+
+  Then use `~/.brand-kit-venv/bin/python` in place of `python3` for every script command. If the
+  founder already has a virtual environment they prefer, install into that instead.
 - **claude.ai**: both are normally present. If one is missing and the sandbox has no network,
   tell the founder that the asset stage cannot run in this environment and suggest running
   stage 6 in Claude Code instead. The strategy stages do not need the scripts.
@@ -60,10 +69,11 @@ A script that fails prints a single line starting `error:` that says what to fix
 - **Claude Code**: `brand/` sits in the current working directory. If that directory looks wrong
   for it (the home folder, or an unrelated code project), ask the founder where they want the
   folder before creating it.
-- **claude.ai**: work on `brand/` in a writable folder in the sandbox, such as the current
-  directory or `/mnt/user-data/outputs/`. Write `brand.zip` to `/mnt/user-data/outputs/` so the
-  founder can download it. If the folders named here do not exist, find the ones this
-  environment shares with the user and use those.
+- **claude.ai**: work on `brand/` in a writable working folder in the sandbox that is not the
+  outputs folder, such as the current directory or your home directory. Put only files meant for
+  the founder in `/mnt/user-data/outputs/`: `brand.zip` and the preview images you want them to
+  see. If the folders named here do not exist, find the ones this environment shares with the
+  user and use those.
 
 Pass the path of `brand/` itself to the commands that take a `brand_dir`.
 

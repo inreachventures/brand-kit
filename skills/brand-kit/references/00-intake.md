@@ -60,7 +60,7 @@ clusters or create any files.
 ### 5. What already exists
 
 - Is there a logo? If so, ask for the file (SVG preferred, a large PNG otherwise) and whether
-  it stays as it is.
+  it stays as it is. Save it as described under "Reading uploaded material".
 - A website, decks, product copy, social profiles, past newsletters or posts?
 - Any colours, fonts or phrases the founder is attached to, or wants to drop?
 - Proof points: numbers, named customers, results, awards, press. Which can be said in public?
@@ -95,6 +95,27 @@ Read everything the founder shares before asking about what it covers. As you re
   imagery style.
 - **What to keep and what to drop**: ask the founder about anything you are unsure of. Marketing
   copy is not always true; treat a claim as a fact only once the founder confirms it.
+
+### Save the material into `brand/`
+
+Later stages need the material itself, not only your notes on it: stage 3 rewrites real passages
+and writes voice notes from real samples, and stages 4 and 6 need the logo file and the exact
+colours. On claude.ai the uploads are gone in the next chat, so save everything into `brand/` as
+you read it:
+
+- **Shared files and pasted text** go in `brand/research/source/`. Copy documents as they are
+  (keep the file name, or give it a plain descriptive one). For anything you cannot keep as a
+  file, such as a web page or a long paste in chat, save the relevant passages verbatim in a
+  markdown file there, with where they came from and the date. Keep enough of the existing copy
+  for the before-and-after rewrites.
+- **An uploaded logo** goes straight to `brand/assets/source/logo.svg` or
+  `brand/assets/source/logo.png`, the path the asset build reads. If there is both an SVG and a
+  PNG of the same logo, keep both under those names.
+- **Writing samples for each person** who will publish go in
+  `brand/research/source/voices/<person>.md`, one file per person (`<person>` is a lowercase
+  slug of their name), with each sample quoted verbatim and its source.
+
+List what you saved in the intake notes under "Existing material".
 
 ## What to write
 
@@ -157,7 +178,8 @@ language of the documents, and anything the founder ruled out.
 [The names given, the do-nothing alternatives, who the founder admires and why.]
 
 ## Existing material
-[What was shared, with file names or links.]
+[What was shared, with links, and where each item is saved: brand/research/source/,
+brand/research/source/voices/, brand/assets/source/.]
 
 ### Keep
 [Elements the founder wants to keep, and why.]
@@ -169,7 +191,8 @@ language of the documents, and anything the founder ruled out.
 [Each claim with its evidence and source, and whether it can be said in public.]
 
 ## Who speaks for the company
-[One line per person: name, role, channels, where to find samples of their writing.]
+[One line per person: name, role, channels, and the file in brand/research/source/voices/ that
+holds their writing samples.]
 
 ## Email signatures
 [Name, job title and email for each person who needs one.]

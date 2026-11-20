@@ -27,9 +27,9 @@ Ask which applies. Record the route in the decision log.
 
 ### 1. The founder has a logo and is keeping it
 
-Ask for the logo as an SVG if they have one, otherwise as a PNG at least 1200 px wide with a
-transparent background. Save it as `brand/assets/source/logo.svg` or `brand/assets/source/logo.png`.
-Never save it inside `brand/assets/logos/`: the asset build clears its own files out of that folder
+If the logo was saved at intake, it is already in `brand/assets/source/`. Otherwise ask for it as
+an SVG if they have one, or as a PNG at least 1200 px wide with a transparent background, and
+save it as `brand/assets/source/logo.svg` or `brand/assets/source/logo.png`. Never save it inside `brand/assets/logos/`: the asset build clears its own files out of that folder
 on every run.
 
 - **PNG.** A plain single-colour background is removed automatically. A busy background (a photo,
@@ -104,7 +104,10 @@ Use the WCAG 2 contrast ratios:
 The pairs that must pass at 4.5:1, because the generated assets use them:
 
 - ink on paper
-- paper or ink on primary (the banners and tile use whichever is stronger)
+- paper or ink on primary. The social banners and the Open Graph image draw the logo in whichever
+  of paper and ink contrasts more with the primary. A generated monogram tile uses paper if it
+  reaches at least 3:1 on the primary, otherwise whichever of paper and ink contrasts more. The
+  tile for an uploaded logo draws it in pure white or pure black, whichever contrasts more.
 - primary on white and on paper, if the primary is used for links (the email signatures use it)
 - neutral `500` on white and on paper (secondary text in the email signatures)
 

@@ -20,13 +20,15 @@ brand/
   README.md              progress checklist and how to resume
   decisions.md           every choice, with the alternatives and the reason
   CLAUDE-INSTRUCTIONS.md paste-in instructions for using the brand day to day
-  research/              intake-notes.md, competitor-analysis.md
+  research/              intake-notes.md, competitor-analysis.md,
+                         source/ (the founder's material, voices/ for writing samples)
   strategy/              positioning.md, audience-<name>.md, value-propositions.md,
                          messaging-framework.md, tone-of-voice.md, writing-anti-patterns.md
   style-guide/           color-palette.md, typography.md, logo-usage.md,
                          photography-direction.md, social-branding.md, tokens.json, tokens.css
   communications/        communication-strategy.md
-  assets/                logos/, fonts/, favicons/, social/, og-image.png, email-signatures/
+  assets/                config.json, source/ (an uploaded logo), logos/, fonts/, favicons/,
+                         social/, og-image.png, email-signatures/
 ```
 
 File and folder names stay exactly as above, in English, whatever language the documents are
@@ -45,7 +47,11 @@ written in. The scripts and later sessions rely on them.
 
 ## Stages
 
-Run them in order. Read only the reference for the stage you are in.
+Run them in order. Of the stage guides, read only the one for the stage you are in. Three
+references apply throughout: [runtime](references/runtime.md) for running scripts and moving
+work between chats, [decision-log](references/decision-log.md) whenever the founder decides
+something, and [writing-anti-patterns](references/writing-anti-patterns.md) for checking anything
+you write.
 
 | # | Stage | Needs | Writes | Guide |
 |---|-------|-------|--------|-------|
@@ -76,10 +82,12 @@ them:
 
 - Name changes touch everything, including `assets/config.json`; re-run the assets.
 - Positioning or audience changes reach value propositions, messaging, the examples in the tone
-  of voice, the communication strategy, the photography direction and the Open Graph line.
+  of voice, the communication strategy, the photography direction and `og_descriptor` (the Open
+  Graph line) in `assets/config.json`.
 - Voice changes reach the messaging phrasing and the voice notes.
 - Palette or font changes need `tokens.json`, `tokens.css`, the style-guide documents, and a
-  re-run of the assets (`fonts-copy` first for a font change).
+  re-run of the assets. For a font change, delete the old bundled family's folder from
+  `assets/fonts/` and run `fonts-copy` first.
 - A new person on the team needs an entry in `assets/config.json` and `assets --only signatures`.
 
 ## How to work with the founder
@@ -91,7 +99,8 @@ length and out of order; take what is useful and come back for gaps later.
 **Never fill a section without the founder's input.** Every document is built from their answers,
 their material and the research. If a section has no input behind it, ask. If they want to skip
 it, write `[Not decided yet: what is needed]` in its place and list it under open items in the
-README. A placeholder is honest. Invented content is not.
+README. A marked gap tells the next reader what is missing, where invented content would mislead
+them.
 
 **Apply the swap test to everything you write.** If you could put a competitor's name in place of
 the company's and the sentence would still be true, it is filler. Rewrite it around something

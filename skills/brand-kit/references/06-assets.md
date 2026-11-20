@@ -23,6 +23,7 @@ Check that:
   "company_name": "[company name]",
   "website": "https://[their website]",
   "logo": {"mode": "wordmark", "monogram": "[one or two letters]"},
+  "og_descriptor": "[the agreed line for the Open Graph image]",
   "people": [{"name": "[full name]", "title": "[job title]", "email": "[email address]"}]
 }
 ```
@@ -36,15 +37,22 @@ Check that:
   path is relative to `brand/`.
 - **logo.monogram**: the letters on the tile in wordmark mode. Leave it out for the first letter of
   the name.
+- **og_descriptor**: the line printed under the logo on the Open Graph image, the preview shown
+  when someone shares the website. Use the plain-words positioning line or the tagline, whichever
+  reads better on its own. It fits up to three lines, about 140 characters; anything longer is cut
+  with an ellipsis. Agree it with the founder and record it in the decision log. Keeping it here
+  means every later run of `assets` uses it; leave the key out for an image with the logo only.
 - **people**: everyone who needs an email signature, from the intake notes. Confirm each name,
   title and address with the founder. `name` and `email` must not be empty; `title` may be an empty
   string. Leave the list out if nobody needs a signature.
 
 ## The founder's logo
 
-Save the uploaded file as `brand/assets/source/logo.svg` or `brand/assets/source/logo.png`, never
-inside `brand/assets/logos/`, because every build clears its own files from that folder. On
-claude.ai, the uploaded file is usually in `/mnt/user-data/uploads/`; copy it across.
+The logo is normally saved at intake as `brand/assets/source/logo.svg` or
+`brand/assets/source/logo.png`; check it is there. If the founder uploads it now, save it under
+the same name, never inside `brand/assets/logos/`, because every build clears its own files from
+that folder. On claude.ai, the uploaded file is usually in `/mnt/user-data/uploads/`; copy it
+across.
 
 - A PNG should have a transparent background and be at least 1200 px wide. A plain single-colour
   background is removed automatically; a busy one is rejected. A PNG gives PNG variants only, with
@@ -59,13 +67,12 @@ Copy the chosen fonts and their licences into the brand folder, then build every
 
 ```
 <cli> fonts-copy brand
-<cli> assets brand --descriptor "[one line about the company]"
+<cli> assets brand
 ```
 
-The descriptor is the line printed under the logo on the Open Graph image, the preview shown when
-someone shares the website. Use the plain-words positioning line or the tagline, whichever reads
-better on its own. It fits up to three lines, about 140 characters; anything longer is cut with
-an ellipsis. Agree it with the founder and record it.
+`assets` reads the Open Graph line from `og_descriptor` in `config.json`. The `--descriptor "..."`
+option overrides it for one run, which is useful for trying out wordings; once the founder picks
+one, put it in `config.json` so later runs keep it.
 
 `fonts-copy` leaves fonts the founder supplied in `brand/assets/fonts/` where they are. If the
 build stops with a message that the heading font has no glyphs for some characters in the name,
@@ -114,10 +121,10 @@ first, then everything that uses them, so the files never fall out of step.
 | The founder wants | Do this |
 |-------------------|---------|
 | Different colours | Edit `tokens.json`, run `tokens-css`, update `color-palette.md`, log the decision, re-run `assets` |
-| A different font | Edit `tokens.json`, run `tokens-css` and `fonts-copy`, update `typography.md`, log it, re-run `assets` |
+| A different font | Edit `tokens.json`, run `tokens-css`, delete the old bundled family's folder from `assets/fonts/` (never a font the founder supplied), run `fonts-copy`, update `typography.md`, log it, re-run `assets` |
 | Different tile letters | Set `logo.monogram` in `config.json`, re-run `assets` |
 | A new logo file | Replace the file in `assets/source/`, re-run `assets` |
-| A different Open Graph line | Re-run `assets` with the new `--descriptor` |
+| A different Open Graph line | Change `og_descriptor` in `config.json`, log it, re-run `assets` |
 | A new or changed person | Edit `people` in `config.json`, run `assets brand --only signatures` |
 
 `--only` takes any of `logos`, `favicons`, `social` and `signatures`, comma-separated.
@@ -161,7 +168,8 @@ Fill in the block from [claude-instructions-template.md](claude-instructions-tem
 it as `brand/CLAUDE-INSTRUCTIONS.md`. Then tell the founder where to paste it:
 
 - **claude.ai**: in a Project, paste it into the Project's instructions and add the markdown files
-  from `brand/strategy/` and `brand/style-guide/` to the Project's knowledge.
+  from `brand/strategy/` and `brand/style-guide/`, and `brand/style-guide/tokens.css`, to the
+  Project's knowledge.
 - **Claude Code**: add it to the `CLAUDE.md` of the repository where they write, with `brand/`
   in that repository.
 

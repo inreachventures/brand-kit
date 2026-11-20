@@ -111,7 +111,8 @@ def _assets(args: argparse.Namespace) -> int:
     if "favicons" in only:
         written += favicons.build_favicons(brand, t, cfg)
     if "social" in only:
-        written += social.build_social(brand, t, cfg, descriptor=args.descriptor)
+        descriptor = args.descriptor if args.descriptor is not None else cfg.og_descriptor
+        written += social.build_social(brand, t, cfg, descriptor=descriptor)
     if "signatures" in only:
         if cfg.people:
             written += signatures.build_signatures(brand, t, cfg)
@@ -172,7 +173,10 @@ def main(argv: list[str]) -> int:
     p = sub.add_parser("assets", help="generate logos, favicons, social images and email signatures")
     p.add_argument("brand_dir")
     p.add_argument("--only", help="comma-separated subset of: " + ",".join(ALL_ASSETS))
-    p.add_argument("--descriptor", help="one-line description shown on the Open Graph image")
+    p.add_argument(
+        "--descriptor",
+        help="one-line description shown on the Open Graph image; overrides og_descriptor in assets/config.json",
+    )
     p.set_defaults(func=_assets)
 
     p = sub.add_parser("pack", help="zip the brand folder")

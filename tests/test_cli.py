@@ -32,6 +32,30 @@ def test_cli_assets_only(brand_dir, capsys):
     assert not (brand_dir / "assets" / "logos").exists()
 
 
+def _capture_descriptor(monkeypatch):
+    from brandkit import social
+
+    seen = []
+    monkeypatch.setattr(social, "build_social", lambda brand, t, cfg, descriptor=None: seen.append(descriptor) or [])
+    return seen
+
+
+def test_cli_assets_uses_config_og_descriptor(brand_dir, monkeypatch):
+    cp = brand_dir / "assets" / "config.json"
+    cp.write_text(json.dumps({**json.loads(cp.read_text()), "og_descriptor": "From config"}))
+    seen = _capture_descriptor(monkeypatch)
+    assert cli.main(["assets", str(brand_dir), "--only", "social"]) == 0
+    assert seen == ["From config"]
+
+
+def test_cli_assets_descriptor_flag_overrides_config(brand_dir, monkeypatch):
+    cp = brand_dir / "assets" / "config.json"
+    cp.write_text(json.dumps({**json.loads(cp.read_text()), "og_descriptor": "From config"}))
+    seen = _capture_descriptor(monkeypatch)
+    assert cli.main(["assets", str(brand_dir), "--only", "social", "--descriptor", "From flag"]) == 0
+    assert seen == ["From flag"]
+
+
 def test_cli_assets_only_unknown(brand_dir, capsys):
     assert cli.main(["assets", str(brand_dir), "--only", "bogus"]) == 2
     assert "bogus" in capsys.readouterr().err
