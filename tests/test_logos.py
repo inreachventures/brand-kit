@@ -211,3 +211,63 @@ def test_load_mark_and_logo(brand_dir):
 def test_load_before_build(brand_dir):
     with pytest.raises(BrandKitError):
         logos.load_mark(brand_dir)
+
+
+def test_opaque_white_background_upload(brand_dir):
+    img = Image.new("RGB", (900, 300), (255, 255, 255))
+    img.paste((200, 30, 30), (100, 100, 400, 200))
+    img.paste((200, 30, 30), (500, 100, 800, 200))  # a white gap between two blocks
+    img.save(brand_dir / "assets" / "logo-white.png")
+    _set_config(brand_dir, mode="upload", source="assets/logo-white.png", monogram="A")
+    _build(brand_dir)
+    white = Image.open(_logos(brand_dir) / "logo-mono-white-400.png")
+    assert white.getchannel("A").getextrema()[0] == 0
+    assert white.getchannel("A").getpixel((200, white.height // 2)) == 0  # the gap is transparent
+    assert white.getchannel("A").getpixel((20, white.height // 2)) == 255
+    tile = Image.open(_logos(brand_dir) / "mark-tile-400.png")
+    b = _content_bbox(tile, (0x1B, 0x3A, 0x6B))
+    assert b is not None
+    assert b[2] - b[0] <= 0.70 * 400 + 2
+    assert len(tile.convert("RGB").getcolors(100000)) > 2
+
+
+def test_busy_background_upload_rejected(brand_dir):
+    img = Image.new("RGB", (400, 200), (255, 255, 255))
+    img.putpixel((0, 0), (0, 0, 0))
+    img.putpixel((399, 0), (255, 0, 0))
+    img.save(brand_dir / "assets" / "busy.png")
+    _set_config(brand_dir, mode="upload", source="assets/busy.png", monogram="A")
+    with pytest.raises(BrandKitError, match="transparent"):
+        _build(brand_dir)
+
+
+def test_rebuild_after_mode_change_leaves_nothing_stale(brand_dir):
+    _build(brand_dir)
+    _upload(brand_dir, "logo-wide.png")
+    _build(brand_dir)
+    assert not list(_logos(brand_dir).glob("*.svg"))
+    assert not list(_logos(brand_dir).glob("logo-on-*"))
+    img = logos.load_logo(brand_dir, "light")
+    assert img.width == 1200
+    px = img.load()
+    assert px[img.width // 2, img.height // 2][:3] == (200, 30, 30)  # the upload, not the wordmark
+
+
+def test_load_logo_is_trimmed(brand_dir):
+    _build(brand_dir)
+    for on in ("light", "dark"):
+        img = logos.load_logo(brand_dir, on)
+        l, t, r, b = img.getchannel("A").point(lambda a: 255 if a > 8 else 0).getbbox()
+        assert l <= 1 and r >= 1199 and t <= 1 and b >= img.height - 1
+
+
+def test_svg_tile_strips_xml_header(brand_dir, monkeypatch):
+    (brand_dir / "assets" / "logo.svg").write_text(
+        '<?xml version="1.0"?>\n<!DOCTYPE svg PUBLIC "x" "y">\n' + SVG
+    )
+    _set_config(brand_dir, mode="upload", source="assets/logo.svg", monogram="A")
+    _make_wide(brand_dir / "assets" / "logo.png")
+    monkeypatch.setitem(sys.modules, "cairosvg", None)
+    _build(brand_dir)
+    tile = (_logos(brand_dir) / "mark-tile.svg").read_text()
+    assert "<?xml" not in tile and "<!DOCTYPE" not in tile

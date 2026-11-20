@@ -14,10 +14,10 @@ from xml.sax.saxutils import escape
 
 from fontTools.pens.boundsPen import BoundsPen
 from fontTools.svgLib.path import parse_path
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFont
 
 from . import BrandKitError, fonts
-from .config import AssetsConfig
+from .config import AssetsConfig, load_config
 from .tokens import FontSpec, Tokens, best_on, contrast_ratio
 
 WIDTHS = (160, 400, 1200)
@@ -27,13 +27,21 @@ MONOGRAM_BOX = (0.56, 0.50)  # monogram max width and height as fractions of the
 _SIZE = 200  # em size, in SVG units, that text is outlined at
 _PAD = 0.12  # padding around a wordmark, as a fraction of its height
 _MIN_CONTRAST = 3.0
+_ALPHA_MIN = 8  # alpha at or below this counts as empty when trimming
+_CORNER_TOLERANCE = 24  # corner colours within this per channel count as one background
+_KEY_SOFT = (12, 60)  # colour distance range over which a keyed-out edge fades in
+_STEMS = ("logo-on-light", "logo-on-dark", "logo-mono-black", "logo-mono-white", "logo-original", "mark-tile")
 
 
 # ---------- helpers ----------
 
 def _logos_dir(brand_dir: Path) -> Path:
+    """The logos folder, emptied of this module's earlier output so a rebuild leaves nothing stale."""
     d = Path(brand_dir) / "assets" / "logos"
     d.mkdir(parents=True, exist_ok=True)
+    for stem in _STEMS:
+        for old in [*d.glob(f"{stem}.*"), *d.glob(f"{stem}-*.png")]:
+            old.unlink()
     return d
 
 
@@ -115,10 +123,32 @@ def _recolour_png(img: Image.Image, colour: str) -> Image.Image:
 
 
 def _trim(img: Image.Image) -> Image.Image:
-    box = img.getchannel("A").getbbox()
+    box = img.getchannel("A").point(lambda a: 255 if a > _ALPHA_MIN else 0).getbbox()
     if box is None:
         raise BrandKitError("the logo image is fully transparent")
     return img.crop(box)
+
+
+def _key_out_background(img: Image.Image, source: Path) -> Image.Image:
+    """Give an opaque image an alpha channel by keying out its (uniform) background colour."""
+    if img.getchannel("A").getextrema()[0] < 255:
+        return img
+    w, h = img.size
+    corners = [img.getpixel(p)[:3] for p in ((0, 0), (w - 1, 0), (0, h - 1), (w - 1, h - 1))]
+    bg = corners[0]
+    if any(max(abs(a - b) for a, b in zip(c, bg)) > _CORNER_TOLERANCE for c in corners):
+        raise BrandKitError(
+            f"{source.name} has no transparency and its background is not a single colour. "
+            f"Supply a PNG with a transparent background, or an SVG."
+        )
+    solid = Image.new("RGB", img.size, bg)
+    diff = ImageChops.difference(img.convert("RGB"), solid)
+    dist = ImageChops.lighter(ImageChops.lighter(*diff.split()[:2]), diff.split()[2])
+    lo, hi = _KEY_SOFT
+    alpha = dist.point(lambda d: 0 if d <= lo else 255 if d >= hi else round((d - lo) * 255 / (hi - lo)))
+    out = img.copy()
+    out.putalpha(alpha)
+    return out
 
 
 def _tile_png(size: int, bg: str, glyph: Image.Image, fit: tuple[float, float]) -> Image.Image:
@@ -225,7 +255,7 @@ def _rasterise_svg(svg: str, source: Path) -> Image.Image:
         return Image.open(io.BytesIO(png)).convert("RGBA")
     sibling = source.with_suffix(".png")
     if sibling.is_file():
-        return Image.open(sibling).convert("RGBA")
+        return _key_out_background(Image.open(sibling).convert("RGBA"), sibling)
     raise BrandKitError(
         f"{source.name} is an SVG and cairosvg is not installed, so it cannot be turned into PNGs. "
         f"Supply a PNG of the logo at least 1200 px wide as {sibling.name} next to it, "
@@ -248,7 +278,7 @@ def _build_upload(brand_dir: Path, tokens: Tokens, cfg: AssetsConfig) -> list[Pa
     if is_svg:
         base = _trim(_rasterise_svg(svg_text, source))
     else:
-        base = _trim(Image.open(source).convert("RGBA"))
+        base = _trim(_key_out_background(Image.open(source).convert("RGBA"), source))
         print("note: the logo is a PNG, so SVG variants and favicon.svg are skipped; PNG variants only.")
         if base.width < WIDTHS[-1]:
             print(f"note: the logo is only {base.width} px wide; the 1200 px variants are upscaled.")
@@ -281,7 +311,8 @@ def _upload_tile_svg(out_dir: Path, svg_text: str, primary: str, mono: str) -> P
     box = 1000 * TILE_FIT
     s = min(box / vw, box / vh)
     w, h = vw * s, vh * s
-    inner_svg = _recolour_svg(svg_text, mono)
+    inner_svg = re.sub(r"<\?xml[^>]*\?>|<!DOCTYPE[^>]*>", "", svg_text, flags=re.I)
+    inner_svg = _recolour_svg(inner_svg, mono)
     inner_svg = re.sub(
         r"<svg\b[^>]*>",
         lambda m: _nested_root(m.group(0), (1000 - w) / 2, (1000 - h) / 2, w, h),
@@ -308,12 +339,11 @@ def build_logos(brand_dir: Path, tokens: Tokens, cfg: AssetsConfig) -> list[Path
     return _build_wordmark(brand_dir, tokens, cfg)
 
 
-def _open(brand_dir: Path, *names: str) -> Image.Image:
-    d = Path(brand_dir) / "assets" / "logos"
-    for name in names:
-        if (d / name).is_file():
-            return Image.open(d / name).convert("RGBA")
-    raise BrandKitError(f"{d / names[0]} not found; build the logos first")
+def _open(brand_dir: Path, name: str) -> Image.Image:
+    path = Path(brand_dir) / "assets" / "logos" / name
+    if not path.is_file():
+        raise BrandKitError(f"{path} not found; build the logos first")
+    return Image.open(path).convert("RGBA")
 
 
 def load_mark(brand_dir: Path) -> Image.Image:
@@ -322,12 +352,16 @@ def load_mark(brand_dir: Path) -> Image.Image:
 
 
 def load_logo(brand_dir: Path, on: Literal["light", "dark"]) -> Image.Image:
-    """The trimmed logo, 1200 px wide, for a light or dark background.
+    """The logo trimmed to its ink and 1200 px wide, for a light or dark background.
 
     An uploaded logo is used as supplied on light and as its white version on dark.
     """
-    if on == "light":
-        return _open(brand_dir, "logo-on-light-1200.png", "logo-original-1200.png")
-    if on == "dark":
-        return _open(brand_dir, "logo-on-dark-1200.png", "logo-mono-white-1200.png")
-    raise BrandKitError(f"on: expected 'light' or 'dark', got {on!r}")
+    if on not in ("light", "dark"):
+        raise BrandKitError(f"on: expected 'light' or 'dark', got {on!r}")
+    if load_config(brand_dir).logo_mode == "upload":
+        name = "logo-original-1200.png" if on == "light" else "logo-mono-white-1200.png"
+    else:
+        name = f"logo-on-{on}-1200.png"
+    img = _trim(_open(brand_dir, name))
+    h = max(1, round(img.height * WIDTHS[-1] / img.width))
+    return img.resize((WIDTHS[-1], h), Image.LANCZOS)
