@@ -40,3 +40,9 @@ def test_palette_preview_empty_raises(tmp_path):
     from brandkit import BrandKitError
     with pytest.raises(BrandKitError):
         previews.palette_preview([], tmp_path / "x.png")
+
+
+def test_body_text_has_no_double_full_stop():
+    text = previews._body_text("Quick wafting zephyrs vex bold Jim.")
+    assert ".." not in text
+    assert text == "Quick wafting zephyrs vex bold Jim. Quick wafting zephyrs vex bold Jim."

@@ -1,0 +1,11 @@
+{
+  "name": "brand-kit",
+  "owner": {"name": "InReach Ventures"},
+  "plugins": [
+    {
+      "name": "brand-kit",
+      "source": "./",
+      "description": "Walks a startup founder through building their brand, then generates brand assets."
+    }
+  ]
+}

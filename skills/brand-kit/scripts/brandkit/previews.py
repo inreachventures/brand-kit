@@ -77,6 +77,11 @@ def _wrap(text: str, font: ImageFont.FreeTypeFont, width: int) -> list[str]:
     return lines + [cur] if cur else lines
 
 
+def _body_text(sample: str) -> str:
+    """The sample twice, joined with a single space (the sample already ends in a full stop)."""
+    return f"{sample} {sample}"
+
+
 def type_preview(
     pairings: list[tuple[FontSpec, FontSpec]], sample: str, brand_dir: Path, out: Path
 ) -> tuple[Path, list[str]]:
@@ -95,7 +100,7 @@ def type_preview(
         hf = fonts.pil_font(heading, brand_dir, 64)
         bf = fonts.pil_font(body, brand_dir, 26)
         h_lines = _wrap(sample, hf, inner)
-        b_lines = _wrap(sample + ". " + sample, bf, inner)
+        b_lines = _wrap(_body_text(sample), bf, inner)
         blocks.append((heading, body, hf, bf, h_lines, b_lines))
     heights = [34 + len(b[4]) * 80 + 12 + len(b[5]) * 38 + 50 for b in blocks]
     img = Image.new("RGB", (width, _PAD * 2 + sum(heights)), _BG)
