@@ -45,7 +45,7 @@ def build_favicons(brand_dir: Path, tokens: Tokens, cfg: AssetsConfig) -> list[P
         mark.resize((size, size), Image.LANCZOS).save(path)
         written.append(path)
     manifest = out_dir / "site.webmanifest"
-    manifest.write_text(json.dumps(web_manifest(tokens, cfg), indent=2, ensure_ascii=False) + "\n")
+    manifest.write_text(json.dumps(web_manifest(tokens, cfg), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     written.append(manifest)
     return written
 

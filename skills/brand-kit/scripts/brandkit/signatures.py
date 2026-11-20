@@ -105,6 +105,11 @@ def _readable_neutral(tokens: Tokens) -> str:
     return tokens.ink
 
 
+def _page(table: str) -> str:
+    """A minimal UTF-8 page around the signature table, so browsers show accented names correctly."""
+    return f'<!doctype html>\n<html>\n<head><meta charset="utf-8"></head>\n<body>\n{table}</body>\n</html>\n'
+
+
 def _render(tokens: Tokens, logo_src: str, company: str, name: str, title: str, email: str,
             email_href: str) -> str:
     e = ec = _esc
@@ -141,7 +146,8 @@ def build_signatures(brand_dir: Path, tokens: Tokens, cfg: AssetsConfig) -> list
     for old in out_dir.glob("*.html"):
         old.unlink()
     template = out_dir / "_template.html"
-    template.write_text(_render(tokens, logo_src, company, "[NAME]", "[TITLE]", "[EMAIL]", "[EMAIL]"))
+    template_html = _page(_render(tokens, logo_src, company, "[NAME]", "[TITLE]", "[EMAIL]", "[EMAIL]"))
+    template.write_text(template_html, encoding="utf-8")
     written.append(template)
     used: set[str] = set()
     for i, person in enumerate(cfg.people, 1):
@@ -151,9 +157,10 @@ def build_signatures(brand_dir: Path, tokens: Tokens, cfg: AssetsConfig) -> list
             slug, n = f"{base}-{n}", n + 1
         used.add(slug)
         path = out_dir / f"{slug}.html"
-        path.write_text(_render(tokens, logo_src, company, person.name, person.title, person.email, person.email))
+        html_text = _page(_render(tokens, logo_src, company, person.name, person.title, person.email, person.email))
+        path.write_text(html_text, encoding="utf-8")
         written.append(path)
     readme = out_dir / "README.md"
-    readme.write_text(README_TEMPLATE.replace("{logo_src}", logo_src))
+    readme.write_text(README_TEMPLATE.replace("{logo_src}", logo_src), encoding="utf-8")
     written.append(readme)
     return written

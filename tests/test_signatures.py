@@ -154,3 +154,18 @@ def test_signature_company_escaped_in_template(brand_dir):
     tpl = (brand_dir / "assets" / "email-signatures" / "_template.html").read_text()
     assert "A<b>" not in tpl and "A&lt;b&gt; &amp; Co" in tpl
     assert "[NAME]" in tpl and "[TITLE]" in tpl and "[EMAIL]" in tpl
+
+
+def test_signature_pages_declare_utf8(brand_dir):
+    _set_config(brand_dir, people=[{"name": "Zoë Ölçü", "title": "CTO", "email": "zoe@acme.example"}])
+    tokens, cfg = _load(brand_dir)
+    signatures.build_signatures(brand_dir, tokens, cfg)
+    out = brand_dir / "assets" / "email-signatures"
+    for name in ("_template.html", "zoe-olcu.html"):
+        page = (out / name).read_text(encoding="utf-8")
+        assert page.startswith("<!doctype html>")
+        head = page[: page.index("<body>")]
+        assert '<meta charset="utf-8">' in head
+        body = page[page.index("<body>") + 6 : page.index("</body>")].strip()
+        assert body.startswith("<table") and body.endswith("</table>")
+    assert "Zoë Ölçü" in (out / "zoe-olcu.html").read_bytes().decode("utf-8")

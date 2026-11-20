@@ -19,7 +19,7 @@ ALL_ASSETS = ("logos", "favicons", "social", "signatures")
 
 def _read_json(path: Path):
     try:
-        return json.loads(Path(path).read_text())
+        return json.loads(Path(path).read_text(encoding="utf-8-sig"))
     except FileNotFoundError:
         raise BrandKitError(f"{path}: file not found") from None
     except json.JSONDecodeError as e:
@@ -162,6 +162,17 @@ def _fonts_list(args: argparse.Namespace) -> int:
     return 0
 
 
+def _safe_streams() -> None:
+    """Print names and messages that the terminal's encoding cannot show as escapes, not a crash."""
+    for stream in (sys.stdout, sys.stderr):
+        enc = (getattr(stream, "encoding", None) or "").lower().replace("-", "").replace("_", "")
+        if enc != "utf8" and hasattr(stream, "reconfigure"):
+            try:
+                stream.reconfigure(errors="backslashreplace")
+            except (ValueError, OSError):
+                pass
+
+
 def main(argv: list[str]) -> int:
     parser = argparse.ArgumentParser(prog="brandkit", description="Generate brand assets and move the brand/ folder between chats.")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -215,6 +226,7 @@ def main(argv: list[str]) -> int:
     p.set_defaults(func=_fonts_list)
 
     args = parser.parse_args(argv)
+    _safe_streams()
     try:
         return args.func(args)
     except (BrandKitError, OSError) as e:

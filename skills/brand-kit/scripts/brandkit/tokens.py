@@ -68,7 +68,7 @@ class Colours:
 
 def _read(path: Path) -> object:
     try:
-        return json.loads(Path(path).read_text())
+        return json.loads(Path(path).read_text(encoding="utf-8-sig"))
     except FileNotFoundError:
         raise BrandKitError(f"{path}: file not found") from None
     except json.JSONDecodeError as e:
@@ -135,4 +135,4 @@ def write_css(t: Tokens, path: Path) -> None:
     for name, f in t.fonts.items():
         lines.append(f'  --font-{name}: "{f.family}", {css_fallback(f.family)};')
         lines.append(f"  --font-{name}-weight: {f.weight};")
-    Path(path).write_text(":root {\n" + "\n".join(lines) + "\n}\n")
+    Path(path).write_text(":root {\n" + "\n".join(lines) + "\n}\n", encoding="utf-8")

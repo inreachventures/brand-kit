@@ -23,7 +23,7 @@ def _folder(family: str) -> str:
 
 
 def catalogue() -> list[dict]:
-    return json.loads((BUNDLED_DIR / "catalogue.json").read_text())
+    return json.loads((BUNDLED_DIR / "catalogue.json").read_text(encoding="utf-8"))
 
 
 CSS_FALLBACKS = {

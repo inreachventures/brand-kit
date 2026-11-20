@@ -104,3 +104,38 @@ def test_empty_person_name_or_email_rejected(brand_dir):
         p.write_text(json.dumps(c))
         with pytest.raises(BrandKitError, match=rf"people\[0\]\.{key}"):
             load_config(brand_dir)
+
+
+@pytest.mark.parametrize("website", ["acme.example", "www.acme.example", "ftp://acme.example", "//acme.example"])
+def test_website_needs_http_scheme(brand_dir, website):
+    _write(brand_dir, {"company_name": "A", "website": website, "logo": {"mode": "wordmark"}})
+    with pytest.raises(BrandKitError, match="^website: .*https://"):
+        config.load_config(brand_dir)
+
+
+def test_website_accepts_http_and_blank(brand_dir):
+    for given, expected in (("http://acme.example", "http://acme.example"),
+                            (" https://acme.example/ ", "https://acme.example/"), ("  ", None)):
+        _write(brand_dir, {"company_name": "A", "website": given, "logo": {"mode": "wordmark"}})
+        assert config.load_config(brand_dir).website == expected
+
+
+@pytest.mark.parametrize("name, monogram", [("ßeta", "ß"), ("(Acme)", "A"), ("acme", "A"), ("  42 Labs", "4"),
+                                            ("élan", "É"), ("!!!", "!")])
+def test_default_monogram_is_one_character(brand_dir, name, monogram):
+    _write(brand_dir, {"company_name": name, "logo": {"mode": "wordmark"}})
+    assert config.load_config(brand_dir).monogram == monogram
+
+
+def test_tile_style(brand_dir):
+    upload = {"mode": "upload", "source": "assets/logo.png"}
+    _write(brand_dir, {"company_name": "A", "logo": upload})
+    assert config.load_config(brand_dir).tile_style == "mono"
+    _write(brand_dir, {"company_name": "A", "logo": {**upload, "tile_style": "original"}})
+    assert config.load_config(brand_dir).tile_style == "original"
+    _write(brand_dir, {"company_name": "A", "logo": {**upload, "tile_style": "colour"}})
+    with pytest.raises(BrandKitError, match=r"logo\.tile_style"):
+        config.load_config(brand_dir)
+    _write(brand_dir, {"company_name": "A", "logo": {"mode": "wordmark", "tile_style": "original"}})
+    with pytest.raises(BrandKitError, match=r"logo\.tile_style"):
+        config.load_config(brand_dir)

@@ -261,3 +261,44 @@ def test_cli_unwritable_output_is_clean(brand_dir, tmp_path, capsys):
     assert cli.main(["preview-palette", str(tmp_path / "o.json"), str(blocker / "sub" / "p.png")]) == 2
     err = capsys.readouterr().err
     assert err.startswith("error:") and "Traceback" not in err
+
+
+def _non_utf8_env():
+    """An environment whose default text encoding is not UTF-8, or None if none can be made."""
+    import os
+
+    base = {k: v for k, v in os.environ.items() if k not in ("PYTHONIOENCODING", "LANG", "LC_CTYPE")}
+    base.update(PYTHONUTF8="0", PYTHONCOERCECLOCALE="0")
+    for loc in ("en_US.ISO8859-1", "en_US.ISO-8859-1", "C"):
+        env = {**base, "LC_ALL": loc}
+        probe = subprocess.run(
+            [sys.executable, "-c", "import locale; print(locale.getpreferredencoding(False))"],
+            env=env, capture_output=True, text=True,
+        )
+        enc = probe.stdout.strip().lower().replace("-", "").replace("_", "")
+        if probe.returncode == 0 and enc and enc != "utf8":
+            return env
+    return None
+
+
+def test_cli_assets_non_utf8_locale(brand_dir):
+    env = _non_utf8_env()
+    if env is None:
+        pytest.skip("no non-UTF-8 locale available")
+    cp = brand_dir / "assets" / "config.json"
+    cfg = {**json.loads(cp.read_text(encoding="utf-8")), "company_name": "Ölçü", "logo": {"mode": "wordmark"}}
+    cfg["people"] = [{"name": "Zoë Ölçü", "title": "Gründerin", "email": "zoe@olcu.example"}]
+    cp.write_text(json.dumps(cfg, ensure_ascii=False), encoding="utf-8")
+    r = subprocess.run([sys.executable, str(CLI), "assets", str(brand_dir)], env=env, capture_output=True)
+    assert r.returncode == 0, r.stderr.decode("utf-8", "replace")
+    logos_dir = brand_dir / "assets" / "logos"
+    assert "<title>Ölçü</title>" in (logos_dir / "logo-on-light.svg").read_text(encoding="utf-8")
+    manifest = json.loads((brand_dir / "assets" / "favicons" / "site.webmanifest").read_text(encoding="utf-8"))
+    assert manifest["name"] == "Ölçü"
+    sig = (brand_dir / "assets" / "email-signatures" / "zoe-olcu.html").read_text(encoding="utf-8")
+    assert "Zoë Ölçü" in sig and "Gründerin" in sig
+    from brandkit.config import load_config
+
+    assert load_config(brand_dir).company_name == "Ölçü"
+    r = subprocess.run([sys.executable, str(CLI), "tokens-css", str(brand_dir)], env=env, capture_output=True)
+    assert r.returncode == 0, r.stderr.decode("utf-8", "replace")
