@@ -365,3 +365,11 @@ def load_logo(brand_dir: Path, on: Literal["light", "dark"]) -> Image.Image:
     img = _trim(_open(brand_dir, name))
     h = max(1, round(img.height * WIDTHS[-1] / img.width))
     return img.resize((WIDTHS[-1], h), Image.LANCZOS)
+
+
+def ensure_logos(brand_dir: Path, tokens: Tokens, cfg: AssetsConfig) -> None:
+    """Build the logo variants only when the files the other generators read are missing."""
+    d = Path(brand_dir) / "assets" / "logos"
+    needed = ("mark-tile-1200.png", "mark-tile-400.png", "mark-tile-160.png")
+    if not all((d / n).is_file() for n in needed) or not any(d.glob("logo-*-1200.png")):
+        build_logos(brand_dir, tokens, cfg)
