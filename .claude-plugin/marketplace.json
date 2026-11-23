@@ -1,7 +1,7 @@
 {
   "name": "brand-kit",
   "owner": {"name": "InReach Ventures"},
-  "description": "brand-kit, a Claude skill that builds a company's brand with you and generates its brand assets.",
+  "description": "Marketplace for brand-kit, a Claude skill that builds a company's brand with you and generates its brand assets.",
   "plugins": [
     {
       "name": "brand-kit",
